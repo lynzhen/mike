@@ -310,7 +310,7 @@
             </a>
             <ul class="treeview-menu">
               <li class="<?=uri_string() == 'goods/index' ? 'active' : ''?>"><a href="../goods/index"><i class="fa fa-list-ul"></i> 商品列表</a></li>
-              <li class="<?=uri_string() == 'category/hot' ? 'active' : ''?>"><a href="../category/hot"><i class="fa fa-sitemap"></i> 商品热销</a></li>
+              <li class="<?=uri_string() == 'goods/hot' ? 'active' : ''?>"><a href="../goods/hot"><i class="fa fa-sitemap"></i> 商品热销</a></li>
             </ul>
           </li>
           <li class="<?=strpos(uri_string(), 'shop') !== false || strpos(uri_string(), 'category') !== false ? 'active' : ''?> treeview">
