@@ -7,8 +7,8 @@
 	<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
 	<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<meta name="keywords" content="灵动云商,开源商城系统,微信小程序">
-	<meta name="description" content="灵动云商开源系统是一款基于LeanCloud开发的小程序，包括分类、购物车、微信登录、微信支付、收货地址、评价等基本模块">
+	<meta name="keywords" content="芈客,采购平台,芈客采购平台">
+	<meta name="description" content="芈客采购平台">
 	<style>
 		/*分隔线*/
 		.line {
