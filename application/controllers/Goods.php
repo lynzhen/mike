@@ -164,13 +164,30 @@ class Goods extends AdminController {
 		// $data['pid'] = $query
 		$data['title'] = '商品分类';
 
-		for($i=0;$i<count($result);$i++){
-			for ($j=0; $j<count($data['categories']); $j++) { 
-				if($result[$i]['pid'] = $data['categories'][$j]['id']){
-					$result[$i]['pname'] = $data['categories'][$j]['title'];
-				}
-			}
+		$querys = new Query("Category");
+		foreach ($result as $value) {
+
+			echo $value;
+			// if($result["pid"]==0){
+			// 	//把变量存到数组里
+
+			// }else{
+			// 	//把变量存到数组里 
+
+			// }
 		}
+		foreach ($data["categories"] as $value) {
+
+			echo $value;
+			// if($result["pid"]==0){
+			// 	//把变量存到数组里
+
+			// }else{
+			// 	//把变量存到数组里 
+
+			// }
+		}
+
 		var_dump($data);
 		var_dump($result);
 		$this->layout->view('goods/category', $data);
