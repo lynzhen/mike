@@ -135,4 +135,29 @@ class Goods extends AdminController {
 		$data['redirect'] = 'index';
 		$this->layout->view('goods/msg', $data);
 	}
+
+	// 商品分类-adminlte
+	public function category() {
+		// 获取get参数
+		$pageIndex = $this->input->get('per_page');
+		// 分页查询数据
+		$query = new Query("Category");
+		$query->descend("updatedAt");
+		$query->limit($this->config->item('per_page'));
+		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
+		$result = $query->find();
+		// 分页控件
+		// url路径前缀
+		$config['base_url'] = base_url(uri_string());
+		// 总条数
+		$config['total_rows'] = (new Query("Category"))->count();
+		// 初始化
+		$this->pagination->initialize($config); 
+		$data['pagination'] = $this->pagination->create_links();
+		// 渲染
+		$data['result'] = $result;
+		$data['title'] = '商品分类';
+		$this->layout->view('goods/category', $data);
+	}
+	
 }
