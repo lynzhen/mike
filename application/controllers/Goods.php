@@ -163,7 +163,10 @@ class Goods extends AdminController {
 		$data['result'] = $result;
 		// $data['pid'] = $query
 		$data['title'] = '商品分类';
-		var_dump($data);
+		// foreach ($result as $key => $value) {
+		// 	$result[key]['pid'] = $
+		// }
+		var_dump($data['categoties']);
 		var_dump($result);
 		$this->layout->view('goods/category', $data);
 	}
