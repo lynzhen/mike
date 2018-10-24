@@ -40,6 +40,16 @@
 							</tr>
 						<?php endforeach;?>
 					</tbody>
+					<tbody>
+						<?php foreach($categories as $item):?>
+							<tr>
+								<td><?=$item->get('title')?></td>
+								<td><?=$item->get('pid')?></td>
+								<td><?=$item->get('index')?></td>
+								<td><a type="button" class="btn btn-primary" href="editcate?objectId=<?=$item->get('objectId')?>">修改</a></td>
+							</tr>
+						<?php endforeach;?>
+					</tbody>
 				</table>
 				<script type="text/javascript">
 					$('.delete').confirmation({
