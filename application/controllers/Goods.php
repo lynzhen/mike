@@ -162,7 +162,8 @@ class Goods extends AdminController {
 		// 渲染
 		$data['result'] = $result;
 		$data['title'] = '商品分类';
-		echo $result;
+		print_r($data);
+		print_r($result);
 		$this->layout->view('goods/category', $data);
 	}
 	

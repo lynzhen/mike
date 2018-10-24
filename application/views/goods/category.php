@@ -27,8 +27,7 @@
 							<th>分类名称</th>
 							<th>父级分类</th>
 							<th>序号</th>
-							<th>操作</th>
-			
+							<th>操作</th>			
 						</tr>
 					</thead>
 					<tbody>
@@ -38,7 +37,6 @@
 								<td><?=$item->get('count')?></td>
 								<td><?=$item->get('index')?></td>
 								<td><a type="button" class="btn btn-primary" href="editcate?objectId=<?=$item->get('objectId')?>">修改</a></td>
-								<td><a type="button" class="btn btn-danger>" href="twolevel?objectId=<?=$item->get('objectId')?>">查看二级分类</a></td>
 							</tr>
 						<?php endforeach;?>
 					</tbody>
