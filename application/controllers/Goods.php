@@ -138,10 +138,17 @@ class Goods extends AdminController {
 
 	// 商品分类-adminlte
 	public function category() {
+		//查询顶级分类
+	
 		// 获取get参数
 		$pageIndex = $this->input->get('per_page');
 		// 分页查询数据
 		$query = new Query("Category");
+
+		//顶级父类对不对
+		$pida=$query->where("pid",'0')->select();
+		echo $pida;
+
 		$query->descend("updatedAt");
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
@@ -160,6 +167,7 @@ class Goods extends AdminController {
 		$data['categories'] = $this->category_model->findAll();
 		$data['result'] = $result;
 		$data['title'] = '商品分类';
+		echo $data;
 		$this->layout->view('goods/category', $data);
 	}
 	

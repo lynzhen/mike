@@ -67,6 +67,7 @@ $hook['pre_system'] = function() {
 	// 参数依次为 AppId, AppKey, MasterKey
 	Client::initialize("xim8nwfJmEWgWrarLzhh4DYe-gzGzoHsz", "RSxqmzUqDiBT2LamDvKhLwgB" ,"HprzvLEkh69SXU3yAqiwAC96");
 	Client::useMasterKey(true);
+	Client::setDebug(true);
 	Client::setStorage(new CookieStorage());
 	$engine = new CIEngine();
 	// 以下是核心语句，直接像使用函数那样在对象上调用

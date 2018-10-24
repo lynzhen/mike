@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
 	<meta charset="utf-8">
-	<title>灵动云商</title>
+	<title>芈客采购平台</title>
 	<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
 	<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
 	<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -46,8 +46,8 @@
 	</nav>
 	<!-- 巨屏展播 -->
 	<div class="jumbotron" style="padding: 100px; height: 800px; background: center center url(<?=base_url('assets/images/banner.jpg') ?>);">
-		<h1 style="color: #fff;">灵动云商</h1>
-		<p>手机买好货利器</p>
+		<h1 style="color: #fff;">芈客采购平台</h1>
+		<p>采购好帮手</p>
 		<p>
 			<button type="button" class="btn btn-success btn-lg popover-show" style="width: 256px; height: 60px" title="小程序" data-container="body" data-placement="bottom" data-toggle="popover" data-html="true" data-trigger="hover focus click" data-content="<img src='<?=base_url('assets/images/qrcode.jpg')?>' />"><span class="glyphicon glyphicon-qrcode" style="margin-right: 5px;"></span> 扫一扫</button>
         </p>
