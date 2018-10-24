@@ -5,7 +5,7 @@ use \LeanCloud\Object;
 use \LeanCloud\Query;
 use \LeanCloud\File;
 
-class Goods extends AdminController {
+class Report extends AdminController {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('Category_model', 'category_model');
