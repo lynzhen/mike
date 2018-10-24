@@ -147,8 +147,7 @@ class Goods extends AdminController {
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		// 查询一级分类
 		$result = $query->find();
-		$users = $query->where(['pid' => 0])->all();
-		print_r($users);die();
+		
 		// 分页控件
 		// url路径前缀
 		$config['base_url'] = base_url(uri_string());
@@ -158,6 +157,7 @@ class Goods extends AdminController {
 		$this->pagination->initialize($config); 
 		$data['pagination'] = $this->pagination->create_links();
 		// 渲染
+		$data['categories'] = $this->category_model->findAll();
 		$data['result'] = $result;
 		$data['title'] = '商品分类';
 		$this->layout->view('goods/category', $data);
