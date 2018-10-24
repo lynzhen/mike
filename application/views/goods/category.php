@@ -28,18 +28,17 @@
 							<th>二级分类数量</th>
 							<th>排序</th>
 							<th>操作</th>
-							<th>查看二级分类</th>
+							<th>二级分类</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php foreach($result as $item):?>
 							<tr>
-								<td></td>
 								<td><?=$item->get('title')?></td>
 								<td><?=$item->get('count')?></td>
 								<td><?=$item->get('index')?></td>
 								<td><a type="button" class="btn btn-primary" href="edit?objectId=<?=$item->get('objectId')?>">修改</a></td>
-								<td><a type="button" class="btn btn-danger>" href="delete?objectId=<?=$item->get('objectId')?>">删除</a></td>
+								<td><a type="button" class="btn btn-danger>" href="delete?objectId=<?=$item->get('objectId')?>">查看二级分类</a></td>
 							</tr>
 						<?php endforeach;?>
 					</tbody>
