@@ -32,7 +32,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach($cate as $item):?>
+						<?php foreach($result as $item):?>
 							<tr>
 								<td><?=$item->get('title')?></td>
 								<td><?=$item->get('count')?></td>
