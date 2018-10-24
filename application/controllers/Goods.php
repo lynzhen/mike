@@ -100,6 +100,31 @@ class Goods extends AdminController {
 		$this->layout->view('goods/index', $data);
 	}
 
+	// 商品热销-adminlte
+	public function hot() {
+		// 获取get参数
+		$pageIndex = $this->input->get('per_page');
+		// 分页查询数据
+		$query = new Query("Goods");
+		$query->_include("category");
+		$query->descend("updatedAt");
+		$query->limit($this->config->item('per_page'));
+		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
+		$result = $query->find();
+		// 分页控件
+		// url路径前缀
+		$config['base_url'] = base_url(uri_string());
+		// 总条数
+		$config['total_rows'] = (new Query("Goods"))->count();
+		// 初始化
+		$this->pagination->initialize($config); 
+		$data['pagination'] = $this->pagination->create_links();
+		// 渲染
+		$data['result'] = $result;
+		$data['title'] = '商品热销';
+		$this->layout->view('goods/hot', $data);
+	}
+
 	// 删除商品
 	public function delete() {
 		$objectId = $this->input->get('objectId');

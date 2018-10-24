@@ -44,4 +44,8 @@ class Order extends AdminController {
 		$this->layout->view('order/msg', $data);
 
 	}
+	public function deliver(){
+		$data['title'] = '配送管理';
+		$this->layout->view('order/deliver', $data);
+	}
 }
