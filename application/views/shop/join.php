@@ -24,42 +24,27 @@
 				<table class="table table-hover table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>缩略图</th>
-							<th>名称</th>
-							<th>分类</th>
-							<th>价格</th>
-							<th>修改</th>
-							<th>删除</th>
+							<th>商家名称</th>
+							<th>商家地址</th>
+							<th>联系名称</th>
+							<th>联系电话</th>
+							<th>通过</th>
+							<th>拒绝</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach($result as $item):?>
+						<!-- <?php foreach($result as $item):?> -->
 							<tr>
-								<td><img width="40" height="40" src="<?=$item->get('avatar')?>" class="popover-show" data-container="body" data-placement="bottom" data-toggle="popover" data-html="true" data-trigger="hover focus click" data-content="<img src='<?=$item->get('avatar')?>' />" /></td>
-								<td><?=$item->get('title')?></td>
-								<td><?=$item->get('category') == NULL ? '' : $item->get('category')->get('title')?></td>
-								<td><?=$item->get('price')?></td>
-								<td><a type="button" class="btn btn-primary <?=$item->get('isLock') == true ? ' disabled' : ''?>" href="edit?objectId=<?=$item->get('objectId')?>">修改</a></td>
-								<td><a type="button" class="btn btn-danger delete <?=$item->get('isLock') == true ? ' disabled' : ''?>" href="delete?objectId=<?=$item->get('objectId')?>">删除</a></td>
+								<td><?=$item->get('shopname')?></td>
+								<td><?=$item->get('addr')?></td>
+								<td><?=$item->get('name')?></td>
+								<td><?=$item->get('tel')?></td>
+								<td><a type="button" class="btn btn-primary >" href="">通过</a></td>
+								<td><a type="button" class="btn btn-danger >" href="">拒绝</a></td>
 							</tr>
-						<?php endforeach;?>
+						<!-- <?php endforeach;?> -->
 					</tbody>
 				</table>
-				<script type="text/javascript">
-					$('.delete').confirmation({
-						onConfirm: function() { },
-						onCancel: function() { },
-						href: function (e) {
-							return $(e).attr('href');
-						},
-						title: '确定删除吗？',
-						btnOkClass: 'btn btn-sm btn-danger btn-margin',
-						btnCancelClass: 'btn btn-sm btn-default btn-margin',
-						btnOkLabel: '删除',
-						btnCancelLabel: '取消',
-						placement: 'bottom'
-					})
-				</script>
 			</div><!-- /.box-body -->
 			<div class="box-footer">
 			<?=$pagination;?>
@@ -70,6 +55,6 @@
 </div>
 <script>
 	$(function () { 
-		$("[data-toggle='popover']").popover();
+		$("[data-toggletoggle='popover']").popover();
 	});
 </script>
