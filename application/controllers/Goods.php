@@ -163,10 +163,13 @@ class Goods extends AdminController {
 		$data['result'] = $result;
 		// $data['pid'] = $query
 		$data['title'] = '商品分类';
-		foreach ($result as $key => $value) {
-			if($result[key]['pid'] = $data['categories']['id']){
-				$result[key]['pname'] = $data['categories']['title'];
-			}			
+
+		for($i=0;$i<count($result);$i++){
+			for ($j=0; $j<count($data['categories']); $j++) { 
+				if($result[$i]['pid'] = $data['categories'][$j]['id']){
+					$result[$i]['pname'] = $data['categories'][$j]['title'];
+				}
+			}
 		}
 		var_dump($data);
 		var_dump($result);
