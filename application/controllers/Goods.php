@@ -147,17 +147,19 @@ class Goods extends AdminController {
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
 		// 查询一级分类
-		$cate = (new Query())->select('title')->from('Category')->where('pid=0');
+		$cate = $query->find()->where('pid=0');
+		// (new Query())->select('title')->from('Category')->where('pid=0');
 		// 分页控件
 		// url路径前缀
 		$config['base_url'] = base_url(uri_string());
 		// 总条数
-		$config['total_rows'] = (new Query("Category"))->count();
+		$config['total_rows'] = (new Query("Category"))->where('pid=0')->count();
 		// 初始化
 		$this->pagination->initialize($config); 
 		$data['pagination'] = $this->pagination->create_links();
 		// 渲染
-		$data['result'] = $cate;
+		$data['cate'] = $cate;
+		$data['result'] = $result;
 		$data['title'] = '商品分类';
 		$this->layout->view('goods/category', $data);
 	}
