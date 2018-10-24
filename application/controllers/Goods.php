@@ -166,17 +166,18 @@ class Goods extends AdminController {
 
 		$querys = new Query("Category");
 		$itemquerys=$querys->find();
-		foreach ($itemquerys as $value) {
+		echo $itemquerys;
+		// foreach ($itemquerys as $value) {
 
-			echo $value;
-			// if($result["pid"]==0){
-			// 	//把变量存到数组里
+		// 	echo $value;
+		// 	// if($result["pid"]==0){
+		// 	// 	//把变量存到数组里
 
-			// }else{
-			// 	//把变量存到数组里 
+		// 	// }else{
+		// 	// 	//把变量存到数组里 
 
-			// }
-		}
+		// 	// }
+		// }
 		// foreach ($data["categories"] as $value) {
 
 		// 	echo $value;
