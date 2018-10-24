@@ -165,7 +165,8 @@ class Goods extends AdminController {
 		$data['title'] = '商品分类';
 
 		$querys = new Query("Category");
-		foreach ($querys as $value) {
+		$itemquerys=$querys->find();
+		foreach ($itemquerys as $value) {
 
 			echo $value;
 			// if($result["pid"]==0){
