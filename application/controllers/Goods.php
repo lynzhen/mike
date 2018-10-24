@@ -175,7 +175,7 @@ class Goods extends AdminController {
 		}
 	//	echo $todos;
 		foreach($todos as $item){
-echo $item;
+			var_dump($item);
 		}
 	
 		// foreach ($itemquerys as $value) {
