@@ -165,9 +165,15 @@ class Goods extends AdminController {
 		$data['title'] = '商品分类';
 
 		$querys = new Query("Category");
-		$querys->equalTo("pid",0);
-		$itemquerys=$querys->find();
-		echo $itemquerys;
+		$querys->descend("createdAt");
+		try {
+			$todos = $querys->find();
+			echo $todos;
+		} catch (\Exception $ex) {
+			error_log("Query todo failed!");
+			$todos = array();
+		}
+	
 		// foreach ($itemquerys as $value) {
 
 		// 	echo $value;
