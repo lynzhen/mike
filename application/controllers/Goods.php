@@ -168,10 +168,14 @@ class Goods extends AdminController {
 		$querys->descend("createdAt");
 		try {
 			$todos = $querys->find();
-			echo $todos;
+			
 		} catch (\Exception $ex) {
 			error_log("Query todo failed!");
 			$todos = array();
+		}
+	//	echo $todos;
+		foreach($todos as $item){
+echo $item;
 		}
 	
 		// foreach ($itemquerys as $value) {
