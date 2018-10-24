@@ -165,7 +165,7 @@ class Goods extends AdminController {
 		$data['title'] = '商品分类';
 
 		$querys = new Query("Category");
-		foreach ($result as $value) {
+		foreach ($querys as $value) {
 
 			echo $value;
 			// if($result["pid"]==0){
@@ -176,17 +176,17 @@ class Goods extends AdminController {
 
 			// }
 		}
-		foreach ($data["categories"] as $value) {
+		// foreach ($data["categories"] as $value) {
 
-			echo $value;
-			// if($result["pid"]==0){
-			// 	//把变量存到数组里
+		// 	echo $value;
+		// 	// if($result["pid"]==0){
+		// 	// 	//把变量存到数组里
 
-			// }else{
-			// 	//把变量存到数组里 
+		// 	// }else{
+		// 	// 	//把变量存到数组里 
 
-			// }
-		}
+		// 	// }
+		// }
 
 		var_dump($data);
 		var_dump($result);
