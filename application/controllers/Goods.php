@@ -164,45 +164,25 @@ class Goods extends AdminController {
 		// $data['pid'] = $query
 		$data['title'] = '商品分类';
 
-		$querys = new Query("Category");
-		$querys->descend("createdAt");
-		try {
-			$todos = $querys->find();
-			
-		} catch (\Exception $ex) {
-			error_log("Query todo failed!");
-			$todos = array();
-		}
-	//	echo $todos;
-		foreach($todos as $item){
-			var_dump($item);
-		}
+		// $querys = new Query("Category");
+
+		// // 获取顶级分类
+		// $data['categories'] = $this->category_model->findAll();
+		// $objectId = $this->input->get('objectId');
+		// $query = new Query('Goods');
+		// $pidname = $query->get($pid);
+		// $goods = $query->get($objectId);
+		// $data['goods'] = $goods;
+		// $this->layout->view('goods/edit', $data);
+
 	
-		// foreach ($itemquerys as $value) {
 
-		// 	echo $value;
-		// 	// if($result["pid"]==0){
-		// 	// 	//把变量存到数组里
+		foreach ($result as $value) {	
+			var_dump($value);
+		}
 
-		// 	// }else{
-		// 	// 	//把变量存到数组里 
-
-		// 	// }
-		// }
-		// foreach ($data["categories"] as $value) {
-
-		// 	echo $value;
-		// 	// if($result["pid"]==0){
-		// 	// 	//把变量存到数组里
-
-		// 	// }else{
-		// 	// 	//把变量存到数组里 
-
-		// 	// }
-		// }
-
-		var_dump($data);
-		var_dump($result);
+		// var_dump($data);
+		// var_dump($result);
 		$this->layout->view('goods/category', $data);
 	}
 	
