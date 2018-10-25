@@ -33,7 +33,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
-              <form id="edit-form" class="form-horizontal" action="save" method="post">
+              <form id="edit-form" class="form-horizontal" action="savecate" method="post">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
@@ -107,7 +107,7 @@
         }
        console.log('valid');
        $.post(
-          'savecate',
+          'save',
           {
             title: $('#title').val(),
             images: $('#images').val()

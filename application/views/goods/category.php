@@ -16,7 +16,7 @@
 		<div class="box box-info">
 			<div class="box-header with-border">
 				<h3 class="box-title"><?=$title?></h3>
-				<div class="box-tools pull-right">
+				<div class="box-tools pull-right" style="right:120px;">
 					<a class="btn btn-sm btn-primary" href="addcate">添加一级分类</a>
 				</div>
 				<div class="box-tools pull-right">
