@@ -185,10 +185,10 @@ class Goods extends AdminController {
 			}else{
 				$querys->equalTo('objectId', $pid);
 				$parent = $querys->find();
-				// $pname = $parent->get('title');
+				$pname = $parent->get('title');
 
-				var_dump($parent);
-				// $value->set('pname', $pname);
+				var_dump($pname);
+				$value->set('pname', $pname);
 			}
 		}
 		$data['result'] = $result;
