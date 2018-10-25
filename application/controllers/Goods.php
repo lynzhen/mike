@@ -187,7 +187,7 @@ class Goods extends AdminController {
 				var_dump('无');
 			}else{
 				$querys->equalTo('objectid', $pid);
-				$pname = $querys->find();
+				$result = $querys->find();
 			// 	var_dump($pname);
 			// 	// $value->set('pname', $pname);
 			}
