@@ -192,7 +192,7 @@ class Goods extends AdminController {
 				// $value->set('pname', $pname);
 			}
 		}
-		$data['result'] = $result;
+		// $data['result'] = $result;
 
 		// var_dump($data);
 		// var_dump($result);
