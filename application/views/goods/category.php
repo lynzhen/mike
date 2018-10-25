@@ -17,8 +17,12 @@
 			<div class="box-header with-border">
 				<h3 class="box-title"><?=$title?></h3>
 				<div class="box-tools pull-right">
-					<a class="btn btn-sm btn-primary" href="addcate">添加</a>
-				</div><!-- /.box-tools -->
+					<a class="btn btn-sm btn-primary" href="addcate">添加一级分类</a>
+				</div>
+				<div class="box-tools pull-right">
+					<a class="btn btn-sm btn-primary" href="addcates">添加二级分类</a>
+				</div>
+				<!-- /.box-tools -->
 			</div><!-- /.box-header -->
 			<div class="box-body">
 				<table class="table table-hover table-striped table-bordered">

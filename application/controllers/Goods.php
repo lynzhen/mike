@@ -186,12 +186,20 @@ class Goods extends AdminController {
 		$this->layout->view('goods/category', $data);
 	}
 
-	// 添加商品分类-adminlte
+	// 添加商品一级分类-adminlte
 	public function addcate() {
 		// 获取顶级分类
 		$data['categories'] = $this->category_model->findAll();
 		$data['title'] = '添加商品';
-		$this->layout->view('goods/add', $data);
+		$this->layout->view('goods/addcate', $data);
+	}
+
+	// 添加商品二级分类-adminlte
+	public function addcates() {
+		// 获取顶级分类
+		$data['categories'] = $this->category_model->findAll();
+		$data['title'] = '添加商品';
+		$this->layout->view('goods/addcates', $data);
 	}
 	
 }
