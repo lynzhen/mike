@@ -179,11 +179,12 @@ class Goods extends AdminController {
 
 		$querys = new Query("Category");
 		foreach ($result as $value) {	
-			var_dump($value->get('pid'));
+			$pname = $value->get('pid');
+			var_dump($pname);
 			
-			
-			// if($value.pid == '0'){
-			// 	$value['pname'] = '无';
+			// if($value->get('pid') == '0'){
+			// 	// $value['pname'] = '无';
+			// 	$value.set('pname', $value->get('pid'));
 			// }else{
 			// 	query.equal_to('objectid', 'pid');
 			// 	$value['pname'] = $pidname['title'];
