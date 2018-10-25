@@ -174,7 +174,7 @@ class Goods extends AdminController {
 		// $data['goods'] = $goods;
 		// $this->layout->view('goods/edit', $data);	
 
-		$query = new Query("Category");
+		$querys = new Query("Category");
 		foreach ($result as $value) {	
 			$pid = $value->get('pid');
 			var_dump($pid);
@@ -183,9 +183,9 @@ class Goods extends AdminController {
 				$value->set('pname', '无');
 				var_dump('无');
 			}else{
-				$query->equalTo('objectid', $pid);
-				$result = $query->find();
-				
+				$querys->equalTo('objectid', $pid);
+				$querys->find();
+
 			// 	var_dump($pname);
 			// 	// $value->set('pname', $pname);
 			}
