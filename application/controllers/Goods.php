@@ -186,13 +186,13 @@ class Goods extends AdminController {
 				$querys->equalTo('objectId', $pid);
 				$pname = $querys->find();
 
-				var_dump($pname);
-				$value->set('pname', $pname);
+				var_dump($pname->get('title'));
+				// $value->set('pname', $pname);
 			}
 		}
-		$data['results'] = $result;
+		$data['result'] = $result;
 
-		var_dump($data);
+		// var_dump($data);
 		// var_dump($result);
 		$this->layout->view('goods/category', $data);
 	}
