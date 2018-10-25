@@ -161,43 +161,37 @@ class Goods extends AdminController {
 		$data['pagination'] = $this->pagination->create_links();
 		// 渲染
 		$data['result'] = $result;
-		$data['title'] = '商品分类';
-
-		// $querys = new Query("Category");
-
-		// // 获取顶级分类
-		// $data['categories'] = $this->category_model->findAll();
-		// $objectId = $this->input->get('objectId');
-		// $query = new Query('Goods');
-		// $pidname = $query->get($pid);
-		// $goods = $query->get($objectId);
-		// $data['goods'] = $goods;
-		// $this->layout->view('goods/edit', $data);	
+		$data['title'] = '商品分类';	
 
 		$querys = new Query("Category");
 		foreach ($result as $value) {	
 			$pid = $value->get('pid');
-			var_dump($pid);
+			// var_dump($pid);
 			
 			if($pid == '0'){
 				$value->set('pname', '无');
-				var_dump('无');
+				// var_dump('无');
 			}else{
 				$querys->equalTo('objectId', $pid);
 				$parent = $querys->find();
 				forEach($parent as $item) {
 					$title = $item->get("title");
 				}
-
-				var_dump($title);
+				// var_dump($title);
 				$value->set('pname', $title);
 			}
 		}
 		$data['result'] = $result;
 
-		// var_dump($data);
-		// var_dump($result);
 		$this->layout->view('goods/category', $data);
+	}
+
+	// 添加商品分类-adminlte
+	public function editcate() {
+		// 获取顶级分类
+		$data['categories'] = $this->category_model->findAll();
+		$data['title'] = '添加商品';
+		$this->layout->view('goods/add', $data);
 	}
 	
 }
