@@ -182,11 +182,11 @@ class Goods extends AdminController {
 			$pid = $value->get('pid');
 			var_dump($pid);
 			
-			if($pname == '0'){
+			if($pid == '0'){
 				$value.set('pname', '无');
 			}else{
-				query.equal_to('objectid', $pid);
-				$pname = query.first();
+				$querys->equalTo('objectid', $pid);
+				$pname = $querys.first();
 				$value['pname'] = $pname;
 			}
 		}
