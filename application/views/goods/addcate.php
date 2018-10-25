@@ -39,7 +39,23 @@
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="title" id="title" placeholder="请输入一级的标题" value="">
                   </div>
-                </div>               
+                </div> 
+                <!-- upload images -->
+                <div class="form-group">
+                  <label for="images" class="col-sm-2 control-label">banner图</label>
+                  <div class="col-sm-8">
+                    <div id="uploader-demo">
+                      <!--用来存放item-->
+                      <div id="imagesList" class="uploader-list"></div>
+                      <div class="btns">
+                        <div id="imagesPicker">选择图片</div>
+                          <!-- <button id="ctlBtn" type="button" class="hidden btn btn-default">开始上传</button> -->
+                      </div>
+                      <!-- input控件用于保存详情图片的url -->
+                      <input type="hidden" name="images" value="[]" id="images" />
+                    </div>
+                  </div>
+                </div>              
                   <script src="/assets/js/goods/edit.js"></script>
                 <!-- /upload -->
               </div>
@@ -71,15 +87,43 @@
              }
            }
          },
-         category: {
+         detail: {
            validators: {
-             notEmpty: {
-               message: '分类不能为空'
+             regexp: {
+                 regexp: /^\[.+\]$/,
+                 message: '请上传描述图'
              }
            }
-         },
+         }
        }
       });
+      ;
+      var bootstrapValidator = $("#edit-form").data('bootstrapValidator');
+      bootstrapValidator.validate();
+      if(bootstrapValidator.isValid()) {
+        if ($('#images').val() == '[]') {
+          sweetAlert("提示", "请上传产品图", "error");
+          return;
+        }
+       console.log('valid');
+       $.post(
+          'savecate',
+          {
+            title: $('#title').val(),
+            images: $('#images').val()
+          },
+          function (response) {
+            sweetAlert("提示", response.message, "success");
+            if (response.success) {
+              $('#edit-form').data('bootstrapValidator').resetForm();
+              $('#title').val("");
+              $('#images').val("[]");
+            }
+          }
+        );
+     } else {
+      console.log('invalid');
+     }
     });
   });
   </script>

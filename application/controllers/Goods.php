@@ -186,7 +186,7 @@ class Goods extends AdminController {
 		$this->layout->view('goods/category', $data);
 	}
 
-	// 添加商品一级分类-adminlte
+	// 跳转添加商品一级分类-adminlte
 	public function addcate() {
 		// 获取顶级分类
 		$data['categories'] = $this->category_model->findAll();
@@ -194,12 +194,36 @@ class Goods extends AdminController {
 		$this->layout->view('goods/addcate', $data);
 	}
 
-	// 添加商品二级分类-adminlte
+	// 跳转添加商品二级分类-adminlte
 	public function addcates() {
 		// 获取顶级分类
 		$data['categories'] = $this->category_model->findAll();
 		$data['title'] = '添加商品';
 		$this->layout->view('goods/addcates', $data);
 	}
+
+	// 保存商品一级分类
+	public function savecate() {
+		// 获取参数
+		$title = $this->input->post('title');		
+		// save to leanCloud
+		$object = new Object("Category");		
+		if (isset($title)) {
+			// 编辑产品
+			$object = Object::create('Category', $title);
+			$data['redirect'] = 'index';
+			$data['msg'] = '添加成功';
+		}
+		$object->set("title", $title);
+
+		$data['redirect'] = 'add';
+		try {
+			$object->save();
+			$this->echo_json('添加成功');
+		} catch (Exception $ex) {
+			$this->echo_json('操作失败');
+		}
+	}
+
 	
 }
