@@ -187,7 +187,7 @@ class Goods extends AdminController {
 	}
 
 	// 添加商品分类-adminlte
-	public function editcate() {
+	public function addcate() {
 		// 获取顶级分类
 		$data['categories'] = $this->category_model->findAll();
 		$data['title'] = '添加商品';
