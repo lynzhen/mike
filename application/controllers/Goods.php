@@ -192,9 +192,9 @@ class Goods extends AdminController {
 			// 	// $value->set('pname', $pname);
 			// }
 		}
-		// $data['result'] = $result;
+		$data['results'] = $result;
 
-		// var_dump($data);
+		var_dump($data);
 		// var_dump($result);
 		$this->layout->view('goods/category', $data);
 	}
