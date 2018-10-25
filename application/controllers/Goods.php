@@ -161,7 +161,6 @@ class Goods extends AdminController {
 		$data['pagination'] = $this->pagination->create_links();
 		// 渲染
 		$data['result'] = $result;
-		// $data['pid'] = $query
 		$data['title'] = '商品分类';
 
 		// $querys = new Query("Category");
@@ -173,11 +172,9 @@ class Goods extends AdminController {
 		// $pidname = $query->get($pid);
 		// $goods = $query->get($objectId);
 		// $data['goods'] = $goods;
-		// $this->layout->view('goods/edit', $data);
+		// $this->layout->view('goods/edit', $data);	
 
-	
-
-		$querys = new Query("Category");
+		$query = new Query("Category");
 		foreach ($result as $value) {	
 			$pid = $value->get('pid');
 			var_dump($pid);
@@ -186,8 +183,9 @@ class Goods extends AdminController {
 				$value->set('pname', '无');
 				var_dump('无');
 			}else{
-				$querys->equalTo('objectid', $pid);
-				$result = $querys->find();
+				$query->equalTo('objectid', $pid);
+				$result = $query->find();
+				
 			// 	var_dump($pname);
 			// 	// $value->set('pname', $pname);
 			}
