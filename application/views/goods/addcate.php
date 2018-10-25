@@ -39,7 +39,7 @@
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="title" id="title" placeholder="请输入一级的标题" value="">
                   </div>
-                </div> 
+                </div>                 
                 <!-- upload images -->
                 <div class="form-group">
                   <label for="images" class="col-sm-2 control-label">banner图</label>
@@ -55,7 +55,32 @@
                       <input type="hidden" name="images" value="[]" id="images" />
                     </div>
                   </div>
-                </div>              
+                </div><!-- upload detail -->
+                <div class="form-group">
+                  <label for="detail" class="col-sm-2 control-label">描述图</label>
+                  <div class="col-sm-8">
+                    <div id="uploader">
+                      <div class="queueList">
+                        <div id="dndArea" class="placeholder">
+                          <div id="filePicker"></div>
+                          <p>或将照片拖到这里，单次最多可选300张</p>
+                        </div>
+                      </div>
+                      <div class="statusBar" style="display:none;">
+                          <div class="progress">
+                              <span class="text">0%</span>
+                              <span class="percentage"></span>
+                          </div><div class="info"></div>
+                          <div class="btns">
+                              <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+                          </div>
+                      </div>
+                    </div>
+                    <!-- input控件用于保存详情图片的url -->
+                    <input type="hidden" name="detail" value="[]" id="detail" />
+
+                    <!-- .upload -->
+                  </div>              
                   <script src="/assets/js/goods/edit.js"></script>
                 <!-- /upload -->
               </div>
@@ -70,9 +95,7 @@
   <script type="text/javascript">
   $(function() {
     $('#submit').click(function (e) {
-      // $('#edit-form').submit();return;
       $('#edit-form').bootstrapValidator({
-        // live: 'disabled',
          message: '输入不正确',
          feedbackIcons: {
            valid: 'glyphicon glyphicon-ok',
@@ -87,11 +110,11 @@
              }
            }
          },
-         detail: {
+         images: {
            validators: {
              regexp: {
                  regexp: /^\[.+\]$/,
-                 message: '请上传描述图'
+                 message: '请上传banner图'
              }
            }
          }
@@ -102,7 +125,7 @@
       bootstrapValidator.validate();
       if(bootstrapValidator.isValid()) {
         if ($('#images').val() == '[]') {
-          sweetAlert("提示", "请上传产品图", "error");
+          sweetAlert("提示", "请上传banner图", "error");
           return;
         }
        console.log('valid');

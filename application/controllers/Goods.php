@@ -197,20 +197,24 @@ class Goods extends AdminController {
 	// 保存商品一级分类
 	public function savecate() {
 		// 获取参数
-		$title = $this->input->post('title');		
+		$title = $this->input->post('title');
+		$images = $this->input->post('images');	
+		// 主图是第一个产品图
+		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;	
 		// save to leanCloud
-		$object = new Object("Category");		
+		$category = new Object("Category");		
 		if (isset($title)) {
 			// 编辑产品
-			$object = Object::create('Category', $title);
+			$category = Object::create('Category', $title);
 			$data['redirect'] = 'index';
 			$data['msg'] = '添加成功';
 		}
-		$object->set("title", $title);
+		$category->set("title", $title);
+		$category->set("avatar", $avatar);
 
-		$data['redirect'] = 'add';
+		$data['redirect'] = 'category';
 		try {
-			$object->save();
+			$category->save();
 			$this->echo_json('添加成功');
 		} catch (Exception $ex) {
 			$this->echo_json('操作失败');
