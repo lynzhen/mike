@@ -187,7 +187,7 @@ class Goods extends AdminController {
 				$pname = $querys->find();
 
 				var_dump($pname);
-			// 	// $value->set('pname', $pname);
+				$value->set('pname', $pname);
 			}
 		}
 		$data['results'] = $result;
