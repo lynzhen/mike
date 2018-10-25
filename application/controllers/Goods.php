@@ -198,7 +198,11 @@ class Goods extends AdminController {
 	public function savecate() {
 		// 获取参数
 		$title = $this->input->post('title');
-		$images = $this->input->post('images');	
+		$images = $this->input->post('images');
+		echo $title;
+		echo $images;
+		die;
+
 		// 主图是第一个产品图
 		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;	
 		// save to leanCloud

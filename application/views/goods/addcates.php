@@ -37,7 +37,7 @@
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题" value="">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入二级分类的标题" value="">
                   </div>
                 </div>
                 <div class="form-group">
@@ -51,12 +51,6 @@
                         </optgroup>
                       <?php endforeach;?>
                     </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="price" class="col-sm-2 control-label">价格</label>
-                  <div class="col-sm-8">
-                    <input type="number" class="form-control" name="price" id="price" placeholder="0.0" step="0.01" value="">
                   </div>
                 </div>
                 <!-- upload images -->
