@@ -190,7 +190,7 @@ class Goods extends AdminController {
 				}
 
 				var_dump($title);
-				// $value->set('pname', $pname);
+				$value->set('pname', $title);
 			}
 		}
 		$data['result'] = $result;
