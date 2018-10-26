@@ -156,8 +156,6 @@ class Goods extends AdminController {
 		// 渲染
 		$data['result'] = $result;
 		$data['title'] = '商品分类';
-		var_dump($data);
-		die();	
 
 		$querys = new Query("Category");
 		foreach ($result as $value) {	
@@ -177,6 +175,8 @@ class Goods extends AdminController {
 				$value->set('pname', $title);
 			}
 		}
+		var_dump($result);
+		die();	
 		$data['result'] = $result;
 
 		$this->layout->view('goods/category', $data);
