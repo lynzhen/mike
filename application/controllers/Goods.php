@@ -171,10 +171,10 @@ class Goods extends AdminController {
 				forEach($parent as $item) {
 					$title = $item->get("title");
 				}
-				var_dump($result);
-				die();
 				// var_dump($title);
 				$value->set('pname', $title);
+				var_dump($result);
+				die();
 			}
 		}	
 		$data['result'] = $result;
