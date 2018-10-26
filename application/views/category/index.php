@@ -1,3 +1,18 @@
+<!--引入CSS-->
+<link rel="stylesheet" type="text/css" href="/bower_components/fex-webuploader/dist/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/webuploader.css">
+<!--引入JS-->
+<script type="text/javascript" src="/bower_components/fex-webuploader/dist/webuploader.js"></script>
+<!-- Select2 -->
+<link rel="stylesheet" href="/bower_components/AdminLTE/plugins/select2/select2.min.css">
+<script src="/bower_components/AdminLTE/plugins/select2/select2.full.min.js"></script>
+<!-- 表单验证 -->
+<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.min.js"></script>
+<link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
+<!-- sweet alet -->
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
 <!-- 引入JavaScript -->
 <script src="/bower_components/bs-confirmation/bootstrap-confirmation.js"></script>
 <!--引入CSS-->
