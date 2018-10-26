@@ -230,7 +230,7 @@ class Goods extends AdminController {
 
 		$data['redirect'] = 'add';
 		try {
-			$object->save();
+			$category->save();
 			$this->echo_json('发布成功');
 		} catch (Exception $ex) {
 			$this->echo_json('操作失败');
