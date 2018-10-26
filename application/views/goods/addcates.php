@@ -165,7 +165,7 @@
         }
        console.log('valid');
        $.post(
-          'savecate',
+          'savecates',
           {
             title: $('#title').val(),
             category: $('#category').val(),
