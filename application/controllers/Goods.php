@@ -199,7 +199,7 @@ class Goods extends AdminController {
 	}
 	// 保存商品一级分类
 	public function savecate() {
-		// 获取参数
+		// 获取参数 //zhixing 
 		$title = $this->input->post('title');
 		$category = $this->input->post('category');
 		$price = $this->input->post('price');
@@ -233,7 +233,7 @@ class Goods extends AdminController {
 			$category->save();
 			$this->echo_json('发布成功');
 		} catch (Exception $ex) {
-			$this->echo_json('操作失败');
+			$this->echo_json('添加分类失败！'+$ex);
 		}
 	}
 	// 保存商品二级分类

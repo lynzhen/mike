@@ -73,4 +73,7 @@
   </section>
   <!-- /.content -->
 </div>
-<script src="/assets/js/category/edit.js"></script>
+
+<script >
+//提交
+</script>
