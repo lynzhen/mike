@@ -226,7 +226,7 @@ class Goods extends AdminController {
 		$category->set("title", $title);
 		$category->set("banner", $file);
 		$category->set("pid", '0');
-		$category->set("parent", null);
+		$category->set("parent", $category);
 
 		$data['redirect'] = 'add';
 		try {
@@ -252,7 +252,9 @@ class Goods extends AdminController {
 		// die();
 		// save to leanCloud
 		$category = new Object("Category");
+		// 获取传过来的objectId
 		$objectId = $this->input->post('objectId'); 
+		// 如果没有传objectId 就自动生成
 		if (isset($objectId)) {
 			// 编辑产品
 			$category = Object::create('Category', $objectId);
@@ -261,7 +263,7 @@ class Goods extends AdminController {
 		}
 		$category->set("title", $title);
 		$category->set("avatar", $file);
-		$category->set("pid", '0');
+		$category->set("pid", $category);
 		$category->set("parent", $category);
 
 		$data['redirect'] = 'add';
