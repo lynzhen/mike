@@ -210,8 +210,8 @@ class Goods extends AdminController {
 		// 主图是第一个产品图
 		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
 		$file = File::createWithUrl("111.png", $avatar);
-		var_dump($avatar);
-		die();
+		// var_dump($avatar);
+		// die();
 		// save to leanCloud
 		$category = new Object("Category");
 		$objectId = $this->input->post('objectId'); 
