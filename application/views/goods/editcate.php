@@ -130,7 +130,7 @@
         }
        console.log('valid');
        $.post(
-          'save',
+          'savecate',
           {
             title: $('#title').val(),
             images: $('#images').val()

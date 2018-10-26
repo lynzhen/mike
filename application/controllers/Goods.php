@@ -201,7 +201,7 @@ class Goods extends AdminController {
 		$images = $this->input->post('images');
 		echo $title;
 		echo $images;
-		die;
+		die();
 
 		// 主图是第一个产品图
 		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;	
@@ -228,9 +228,9 @@ class Goods extends AdminController {
 	// 跳转编辑商品一级分类-adminlte
 	public function editcate() {
 		$objectId = $this->input->get('objectId');
-		$query = new Query();
-		$query->equalTo('objectId', $objectId);
-		$list = $querys->find();
+		$query2 = new Query();
+		$query2->equalTo('objectId', $objectId);
+		$list = $query2->find();
 		forEach($list as $item) {
 			$title = $item->get("title");
 			$avatar = $item->get("avatar");
