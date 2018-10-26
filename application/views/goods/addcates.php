@@ -46,9 +46,8 @@
                     <select class="form-control select2" style="width: 100%;" name="category" id="category">
                       <option></option>
                       <?php foreach ($categories as $category):?>
-                        <optgroup label="<?=$category->get('title')?>">
-                          
-                        </optgroup>
+                        <option value="<?=$category->get('objectId')?>"><?=$category->get('title')?></option>
+                       
                       <?php endforeach;?>
                     </select>
                   </div>
@@ -127,13 +126,6 @@
              }
            }
          },
-         price: {
-           validators: {
-             notEmpty: {
-               message: '价格不能为空'
-             }
-           }
-         },
          category: {
            validators: {
              notEmpty: {
@@ -177,9 +169,6 @@
           {
             title: $('#title').val(),
             category: $('#category').val(),
-            price: $('#price').val(),
-            isNew: $('#isNew .active input').val(),
-            isHot: $('#isHot .active input').val(),
             images: $('#images').val(),
             detail: $('#detail').val()
           },
@@ -187,8 +176,6 @@
             sweetAlert("提示", response.message, "success");
             if (response.success) {
               $('#edit-form').data('bootstrapValidator').resetForm();
-              $('#title').val("");
-              $('#price').val("");
               $('#images').val("[]");
               $('#detail').val("[]");
             }

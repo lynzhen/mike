@@ -155,7 +155,9 @@ class Goods extends AdminController {
 		$data['pagination'] = $this->pagination->create_links();
 		// 渲染
 		$data['result'] = $result;
-		$data['title'] = '商品分类';	
+		$data['title'] = '商品分类';
+		var_dump($data);
+		die();	
 
 		$querys = new Query("Category");
 		foreach ($result as $value) {	
@@ -195,7 +197,7 @@ class Goods extends AdminController {
 		$data['title'] = '添加商品';
 		$this->layout->view('goods/addcates', $data);
 	}
-	
+	// 保存商品一级分类
 	public function savecate() {
 		// 获取参数
 		$title = $this->input->post('title');
@@ -224,14 +226,7 @@ class Goods extends AdminController {
 		$category->set("title", $title);
 		$category->set("banner", $file);
 		$category->set("pid", '0');
-		$category->set("parent", null);
-		// // 将category转为LeanCloud对象
-		// $category->set("category", Object::create('Category', $category));
-		// $category->set("price", (float)$price);
-		// $category->set("isHot", (bool)$isHot);
-		// $category->set("isNew", (bool)$isNew);
-		// $category->set("images", json_decode($images));
-		// $category->set("detail", json_decode($detail));
+		$category->set("parent", false);
 
 		$data['redirect'] = 'add';
 		try {
@@ -241,6 +236,43 @@ class Goods extends AdminController {
 			$this->echo_json('操作失败');
 		}
 	}
+	// 保存商品二级分类
+	public function savecates() {
+		// 获取参数
+		$title = $this->input->post('title');
+		$category = $this->input->post('category');
+		$images = $this->input->post('images');
+		$detail = $this->input->post('detail');
+		// echo $title;
+		// die();
+		// 主图是第一个产品图
+		$avatar = sizeof(json_decode($detail)) > 0 ? json_decode($detail)[0] : null;
+		$file = File::createWithUrl("111.png", $avatar);
+		// var_dump($avatar);
+		// die();
+		// save to leanCloud
+		$category = new Object("Category");
+		$objectId = $this->input->post('objectId'); 
+		if (isset($objectId)) {
+			// 编辑产品
+			$category = Object::create('Category', $objectId);
+			$data['redirect'] = 'index';
+			$data['msg'] = '修改成功';
+		}
+		$category->set("title", $title);
+		$category->set("avatar", $file);
+		$category->set("pid", '0');
+		$category->set("parent", null);
+
+		$data['redirect'] = 'add';
+		try {
+			$category->save();
+			$this->echo_json('发布成功');
+		} catch (Exception $ex) {
+			$this->echo_json('操作失败');
+		}
+	}
+
 
 	// 跳转编辑商品一级分类-adminlte
 	public function editcate() {
