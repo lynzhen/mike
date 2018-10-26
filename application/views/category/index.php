@@ -27,7 +27,7 @@
                 <thead>
                   <tr>
                     <!-- 读取大类名称 -->
-                    <th style="width: 60%;"><?=$category->get('title')?></th>
+                    <th style="width: 60%;line-height:30px;"><?=$category->get('title')?></th>
                     <th><a type="button" class="btn btn-primary<?=$category->get('isLock') == true ? ' disabled' : ''?>" href="add?objectId=<?=$category->get('objectId')?>">添加</a></th>
                     <th><a type="button" class="btn btn-info<?=$category->get('isLock') == true ? ' disabled' : ''?>" href="edit?objectId=<?=$category->get('objectId')?>">修改</a></th>
                     <th><a type="button" class="btn btn-danger delete<?=$category->get('isLock') == true ? ' disabled' : ''?>" href="delete?objectId=<?=$category->get('objectId')?>">删除</a></th>
@@ -39,7 +39,7 @@
                   <?php foreach ($category->children as $child):?>
                   <tr>
                     <td>
-                      <div class="col-xs-offset-2"><?=$child->get('title')?></div>
+                      <div class="col-xs-offset-2" style="line-height:30px;"><?=$child->get('title')?></div>
                     </td>
                     <td>
                     </td>
