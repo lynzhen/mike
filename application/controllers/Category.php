@@ -121,173 +121,148 @@ class Category extends AdminController {
 		$this->layout->view('category/msg', $data);
 	}
 	// 商品分类-adminlte
-	public function category() {
-		//查询顶级分类
-		$data['categories'] = $this->category_model->findAll();
+	// public function index() {
+	// 	//查询顶级分类
+	// 	$data['categories'] = $this->category_model->findAll();
 	
-		// 获取get参数
-		$pageIndex = $this->input->get('per_page');
-		// 分页查询数据
-		$query = new Query("Category");
-		$query->descend("updatedAt");
-		$query->limit($this->config->item('per_page'));
-		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
-		// 查询一级分类
-		$result = $query->find();
+	// 	// 获取get参数
+	// 	$pageIndex = $this->input->get('per_page');
+	// 	// 分页查询数据
+	// 	$query = new Query("Category");
+	// 	$query->descend("updatedAt");
+	// 	$query->limit($this->config->item('per_page'));
+	// 	$query->skip($this->config->item('per_page') * ($pageIndex - 1));
+	// 	// 查询一级分类
+	// 	$result = $query->find();
 		
-		// 分页控件
-		// url路径前缀
-		$config['base_url'] = base_url(uri_string());
-		// 总条数
-		$config['total_rows'] = (new Query("Category"))->count();
-		// 初始化
-		$this->pagination->initialize($config); 
-		$data['pagination'] = $this->pagination->create_links();
-		// 渲染
-		// $data['result'] = $result;
-		$data['title'] = '商品分类';
+	// 	// 分页控件
+	// 	// url路径前缀
+	// 	$config['base_url'] = base_url(uri_string());
+	// 	// 总条数
+	// 	$config['total_rows'] = (new Query("Category"))->count();
+	// 	// 初始化
+	// 	$this->pagination->initialize($config); 
+	// 	$data['pagination'] = $this->pagination->create_links();
+	// 	// 渲染
+	// 	// $data['result'] = $result;
+	// 	$data['title'] = '商品分类';
 
-		$querys = new Query("Category");
-		foreach ($result as $value) {	
-			$pid = $value->get('pid');
-			// var_dump($pid);
+	// 	$querys = new Query("Category");
+	// 	foreach ($result as $value) {	
+	// 		$pid = $value->get('pid');
+	// 		// var_dump($pid);
 			
-			if($pid == '0'){
-				$value->set('pname', '无');
-				// var_dump('无');
-			}else{
-				$querys->equalTo('objectId', $pid);
-				$parent = $querys->find();
-				forEach($parent as $item) {
-					$title = $item->get("title");
-				}
-				// var_dump($title);
-				$value->set('pname', $title);
-			}
-		}	
-		$data['result'] = $result;
+	// 		if($pid == '0'){
+	// 			$value->set('pname', '无');
+	// 			// var_dump('无');
+	// 		}else{
+	// 			$querys->equalTo('objectId', $pid);
+	// 			$parent = $querys->find();
+	// 			forEach($parent as $item) {
+	// 				$title = $item->get("title");
+	// 			}
+	// 			// var_dump($title);
+	// 			$value->set('pname', $title);
+	// 		}
+	// 	}	
+	// 	$data['result'] = $result;
 
-		var_dump($result);
-		// die();
-		$this->layout->view('goods/category', $data);
-	}
+	// 	var_dump($result);
+	// 	// die();
+	// 	$this->layout->view('goods/category', $data);
+	// }
 
-	// 跳转添加商品一级分类-adminlte
-	public function addcate() {
-		// 获取顶级分类
-		$data['categories'] = $this->category_model->findAll();
-		$data['title'] = '添加商品';
-		$this->layout->view('goods/addcate', $data);
-	}
+	// // 跳转添加商品一级分类-adminlte
+	// public function addcate() {
+	// 	// 获取顶级分类
+	// 	$data['categories'] = $this->category_model->findAll();
+	// 	$data['title'] = '添加商品';
+	// 	$this->layout->view('goods/addcate', $data);
+	// }
 
-	// 跳转添加商品二级分类-adminlte
-	public function addcates() {
-		// 获取顶级分类
-		$data['categories'] = $this->category_model->findAll();
-		$data['title'] = '添加商品';
-		$this->layout->view('goods/addcates', $data);
-	}
-	// 保存商品一级分类
-	public function savecate() {
-		// 获取参数 //zhixing 
-		$title = $this->input->post('title');
-		$category = $this->input->post('category');
-		$price = $this->input->post('price');
-		$isHot = $this->input->post('isHot');
-		$isNew = $this->input->post('isNew');
-		$images = $this->input->post('images');
-		$detail = $this->input->post('detail');
-		// echo $title;
-		// die();
-		// 主图是第一个产品图
-		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
-		$file = File::createWithUrl("111.png", $avatar);
-		// var_dump($avatar);
-		// die();
-		// save to leanCloud
-		$category = new Object("Category");
-		$objectId = $this->input->post('objectId'); 
-		if (isset($objectId)) {
-			// 编辑产品
-			$category = Object::create('Category', $objectId);
-			$data['redirect'] = 'index';
-			$data['msg'] = '修改成功';
-		}
-		$category->set("title", $title);
-		$category->set("banner", $file);
-		$category->set("pid", '0');
-		$category->set("parent", $category);
+	// // 跳转添加商品二级分类-adminlte
+	// public function addcates() {
+	// 	// 获取顶级分类
+	// 	$data['categories'] = $this->category_model->findAll();
+	// 	$data['title'] = '添加商品';
+	// 	$this->layout->view('goods/addcates', $data);
+	// }
+	// // 保存商品一级分类
+	// public function savecate() {
+	// 	// 获取参数 //zhixing 
+	// 	$title = $this->input->post('title');
+	// 	$category = $this->input->post('category');
+	// 	$price = $this->input->post('price');
+	// 	$isHot = $this->input->post('isHot');
+	// 	$isNew = $this->input->post('isNew');
+	// 	$images = $this->input->post('images');
+	// 	$detail = $this->input->post('detail');
+	// 	// echo $title;
+	// 	// die();
+	// 	// 主图是第一个产品图
+	// 	$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
+	// 	$file = File::createWithUrl("111.png", $avatar);
+	// 	// var_dump($avatar);
+	// 	// die();
+	// 	// save to leanCloud
+	// 	$category = new Object("Category");
+	// 	$objectId = $this->input->post('objectId'); 
+	// 	if (isset($objectId)) {
+	// 		// 编辑产品
+	// 		$category = Object::create('Category', $objectId);
+	// 		$data['redirect'] = 'index';
+	// 		$data['msg'] = '修改成功';
+	// 	}
+	// 	$category->set("title", $title);
+	// 	$category->set("banner", $file);
+	// 	$category->set("pid", '0');
+	// 	$category->set("parent", $category);
 
-		$data['redirect'] = 'add';
-		try {
-			$category->save();
-			$this->echo_json('发布成功');
-		} catch (Exception $ex) {
-			$this->echo_json('添加分类失败！'+$ex);
-		}
-	}
-	// 保存商品二级分类
-	public function savecates() {
-		// 获取参数
-		$title = $this->input->post('title');
-		$category = $this->input->post('category');
-		$images = $this->input->post('images');
-		$detail = $this->input->post('detail');
-		// echo $title;
-		// die();
-		// 主图是第一个产品图
-		$avatar = sizeof(json_decode($detail)) > 0 ? json_decode($detail)[0] : null;
-		$file = File::createWithUrl("111.png", $avatar);
-		// var_dump($avatar);
-		// die();
-		// save to leanCloud
-		$category = new Object("Category");
-		// 获取传过来的objectId
-		$objectId = $this->input->post('objectId'); 
-		// 如果没有传objectId 就自动生成
-		if (isset($objectId)) {
-			// 编辑产品
-			$category = Object::create('Category', $objectId);
-			$data['redirect'] = 'index';
-			$data['msg'] = '修改成功';
-		}
-		$category->set("title", $title);
-		$category->set("avatar", $file);
-		$category->set("pid", $category);
-		$category->set("parent", $category);
+	// 	$data['redirect'] = 'add';
+	// 	try {
+	// 		$category->save();
+	// 		$this->echo_json('发布成功');
+	// 	} catch (Exception $ex) {
+	// 		$this->echo_json('添加分类失败！'+$ex);
+	// 	}
+	// }
+	// // 保存商品二级分类
+	// public function savecates() {
+	// 	// 获取参数
+	// 	$title = $this->input->post('title');
+	// 	$category = $this->input->post('category');
+	// 	$images = $this->input->post('images');
+	// 	$detail = $this->input->post('detail');
+	// 	// echo $title;
+	// 	// die();
+	// 	// 主图是第一个产品图
+	// 	$avatar = sizeof(json_decode($detail)) > 0 ? json_decode($detail)[0] : null;
+	// 	$file = File::createWithUrl("111.png", $avatar);
+	// 	// var_dump($avatar);
+	// 	// die();
+	// 	// save to leanCloud
+	// 	$category = new Object("Category");
+	// 	// 获取传过来的objectId
+	// 	$objectId = $this->input->post('objectId'); 
+	// 	// 如果没有传objectId 就自动生成
+	// 	if (isset($objectId)) {
+	// 		// 编辑产品
+	// 		$category = Object::create('Category', $objectId);
+	// 		$data['redirect'] = 'index';
+	// 		$data['msg'] = '修改成功';
+	// 	}
+	// 	$category->set("title", $title);
+	// 	$category->set("avatar", $file);
+	// 	$category->set("pid", $category);
+	// 	$category->set("parent", $category);
 
-		$data['redirect'] = 'add';
-		try {
-			$category->save();
-			$this->echo_json('发布成功');
-		} catch (Exception $ex) {
-			$this->echo_json('操作失败');
-		}
-	}
+	// 	$data['redirect'] = 'add';
+	// 	try {
+	// 		$category->save();
+	// 		$this->echo_json('发布成功');
+	// 	} catch (Exception $ex) {
+	// 		$this->echo_json('操作失败');
+	// 	}
+	// }
 
-
-	// 跳转编辑商品一级分类-adminlte
-	public function editcate() {
-		$objectId = $this->input->get('objectId');
-		$query2 = new Query();
-		$query2->equalTo('objectId', $objectId);
-		$list = $query2->find();
-		forEach($list as $item) {
-			$title = $item->get("title");
-			$avatar = $item->get("avatar");
-		}
-		// 获取顶级分类
-		$data['categories'] = $this->category_model->findAll();
-		$data['title'] = $title;
-		$data['avatar'] = $avatar;
-		$this->layout->view('goods/editcate', $data);
-	}
-
-	// 跳转编辑商品二级分类-adminlte
-	public function editcates() {
-		// 获取顶级分类
-		$data['categories'] = $this->category_model->findAll();
-		$data['title'] = '添加商品';
-		$this->layout->view('goods/editcates', $data);
-	}
 }

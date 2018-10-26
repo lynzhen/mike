@@ -22,42 +22,57 @@
 				<!-- /.box-tools -->
 			</div><!-- /.box-header -->
 			<div class="box-body">
-				<table class="table table-hover table-striped table-bordered">
-					<thead>
-						<tr>
-							<th>分类名称</th>
-							<th>父级分类</th>
-							<th>一级序号</th>
-							<th>操作</th>			
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach($result as $item):?>
-							<tr>
-								<td><?=$item->get('title')?></td>
-								<td><?=$item->get('pname')?></td>
-								<td><?=$item->get('index')?></td>
-								<td><a type="button" class="btn btn-primary" href="editcate?objectId=<?=$item->get('objectId')?>">修改</a></td>
-							</tr>
-						<?php endforeach;?>
-					</tbody>
+      <?php foreach($categories as $category):?>
+          <table class="table table-hover table-striped table-bordered">
+            <thead>
+              <tr>
+                <!-- 读取大类名称 -->
+                <th><img width="50" src="<?=$category->get('avatar')->get('url');?>" /></th>
+                <th style="width: 60%;"><?=$category->get('title')?></th>
+                <th><a type="button" class="btn btn-primary<?=$category->get('isLock') == true ? ' disabled' : ''?>" href="add?objectId=<?=$category->get('objectId')?>">添加</a></th>
+                <th><a type="button" class="btn btn-info<?=$category->get('isLock') == true ? ' disabled' : ''?>" href="edit?objectId=<?=$category->get('objectId')?>">修改</a></th>
+                <th><a type="button" class="btn btn-danger delete<?=$category->get('isLock') == true ? ' disabled' : ''?>" href="delete?objectId=<?=$category->get('objectId')?>">删除</a></th>
 
-				</table>
-				<script type="text/javascript">
-					$('.delete').confirmation({
-						onConfirm: function() { },
-						onCancel: function() { },
-						href: function (e) {
-							return $(e).attr('href');
-						},
-						title: '确定删除吗？',
-						btnOkClass: 'btn btn-sm btn-danger btn-margin',
-						btnCancelClass: 'btn btn-sm btn-default btn-margin',
-						btnOkLabel: '删除',
-						btnCancelLabel: '取消',
-						placement: 'bottom'
-					})
-				</script>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 遍历子类 -->
+              <?php foreach ($category->children as $child):?>
+              <tr>
+                <td><img width="50" src="<?=$child->get('avatar')->get('url');?>" /></td>
+                <td>
+                  <div class="col-xs-offset-2"><?=$child->get('title')?></div>
+                </td>
+                <td>
+                  <a type="button" class="btn btn-primary<?=$child->get('isLock') == true ? ' disabled' : ''?>" href="add?objectId=<?=$child->get('objectId')?>">添加</a>
+                </td>
+                <td>
+                  <a type="button" class="btn btn-info<?=$child->get('isLock') == true ? ' disabled' : ''?>" href="edit?objectId=<?=$child->get('objectId')?>">修改</a>
+                </td>
+                <td>
+                  <a type="button" class="btn btn-danger delete<?=$child->get('isLock') == true ? ' disabled' : ''?>" href="delete?objectId=<?=$child->get('objectId')?>">删除</a>
+                </td>
+              </tr>
+              <?php endforeach;?>
+            </tbody>
+          </table>
+          <?php endforeach;?>
+				
+          <script type="text/javascript">
+                $('.delete').confirmation({
+                  onConfirm: function() { },
+                  onCancel: function() { },
+                  href: function (e) {
+                    return $(e).attr('href');
+                  },
+                  title: '确定删除吗？',
+                  btnOkClass: 'btn btn-sm btn-danger btn-margin',
+                  btnCancelClass: 'btn btn-sm btn-default btn-margin',
+                  btnOkLabel: '删除',
+                  btnCancelLabel: '取消',
+                  placement: 'bottom'
+                })
+              </script>
 			</div><!-- /.box-body -->
 			<div class="box-footer">
 			<?=$pagination;?>
