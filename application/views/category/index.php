@@ -27,7 +27,6 @@
                 <thead>
                   <tr>
                     <!-- 读取大类名称 -->
-                    <th><img width="50" src="<?=$category->get('avatar')->get('url')?>" /></th>
                     <th style="width: 60%;"><?=$category->get('title')?></th>
                     <th><a type="button" class="btn btn-primary<?=$category->get('isLock') == true ? ' disabled' : ''?>" href="add?objectId=<?=$category->get('objectId')?>">添加</a></th>
                     <th><a type="button" class="btn btn-info<?=$category->get('isLock') == true ? ' disabled' : ''?>" href="edit?objectId=<?=$category->get('objectId')?>">修改</a></th>
@@ -39,7 +38,6 @@
                   <!-- 遍历子类 -->
                   <?php foreach ($category->children as $child):?>
                   <tr>
-                    <td><img width="50" src="<?=$child->get('avatar')->get('url')?>" /></td>
                     <td>
                       <div class="col-xs-offset-2"><?=$child->get('title')?></div>
                     </td>
