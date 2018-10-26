@@ -205,34 +205,36 @@ class Goods extends AdminController {
 		$detail = $this->input->post('detail');
 		echo $title;
 		die();
-		// // 主图是第一个产品图
-		// $avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
-		// // save to leanCloud
-		// $object = new Object("Goods");
-		// $objectId = $this->input->post('objectId'); 
-		// if (isset($objectId)) {
-		// 	// 编辑产品
-		// 	$object = Object::create('Goods', $objectId);
-		// 	$data['redirect'] = 'index';
-		// 	$data['msg'] = '修改成功';
-		// }
-		// $object->set("title", $title);
-		// $object->set("avatar", $avatar);
+		// 主图是第一个产品图
+		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
+		// save to leanCloud
+		$category = new Object("Category");
+		$objectId = $this->input->post('objectId'); 
+		if (isset($objectId)) {
+			// 编辑产品
+			$category = Object::create('Category', $objectId);
+			$data['redirect'] = 'index';
+			$data['msg'] = '修改成功';
+		}
+		$category->set("title", $title);
+		$category->set("avatar", $avatar);
+		$category->set("pid", '0');
+		$category->set("parent", '');
 		// // 将category转为LeanCloud对象
-		// $object->set("category", Object::create('Category', $category));
-		// $object->set("price", (float)$price);
-		// $object->set("isHot", (bool)$isHot);
-		// $object->set("isNew", (bool)$isNew);
-		// $object->set("images", json_decode($images));
-		// $object->set("detail", json_decode($detail));
+		// $category->set("category", Object::create('Category', $category));
+		// $category->set("price", (float)$price);
+		// $category->set("isHot", (bool)$isHot);
+		// $category->set("isNew", (bool)$isNew);
+		// $category->set("images", json_decode($images));
+		// $category->set("detail", json_decode($detail));
 
-		// $data['redirect'] = 'add';
-		// try {
-		// 	$object->save();
-		// 	$this->echo_json('发布成功');
-		// } catch (Exception $ex) {
-		// 	$this->echo_json('操作失败');
-		// }
+		$data['redirect'] = 'add';
+		try {
+			$object->save();
+			$this->echo_json('发布成功');
+		} catch (Exception $ex) {
+			$this->echo_json('操作失败');
+		}
 	}
 
 	// 跳转编辑商品一级分类-adminlte
