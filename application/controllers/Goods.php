@@ -226,7 +226,7 @@ class Goods extends AdminController {
 		$category->set("title", $title);
 		$category->set("banner", $file);
 		$category->set("pid", '0');
-		$category->set("parent", '');
+		$category->set("parent", null);
 
 		$data['redirect'] = 'add';
 		try {
