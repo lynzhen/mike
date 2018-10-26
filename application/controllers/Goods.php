@@ -39,6 +39,8 @@ class Goods extends AdminController {
 		$detail = $this->input->post('detail');
 		// 主图是第一个产品图
 		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
+		var_dump($avatar);
+		die();
 		// save to leanCloud
 		$object = new Object("Goods");
 		$objectId = $this->input->post('objectId'); 
@@ -207,6 +209,8 @@ class Goods extends AdminController {
 		// die();
 		// 主图是第一个产品图
 		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
+		var_dump($avatar);
+		die();
 		// save to leanCloud
 		$category = new Object("Category");
 		$objectId = $this->input->post('objectId'); 

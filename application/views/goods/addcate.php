@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">分类</label>
-                  <div class="col-sm-8">category
+                  <div class="col-sm-8">
                     <input type="text" class="form-control" name="category" id="category" placeholder="请输入分类" value="">
                   </div>
                 </div>
