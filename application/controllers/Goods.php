@@ -158,11 +158,11 @@ class Goods extends AdminController {
 		$data['title'] = '商品分类';
 
 		$querys = new Query("Category");
-		var_dump($result);
-		die();
 		foreach ($result as $value) {	
 			$pid = $value->get('pid');
 			// var_dump($pid);
+		var_dump($result);
+		die();
 			
 			if($pid == '0'){
 				$value->set('pname', '无');
