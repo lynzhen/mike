@@ -173,12 +173,12 @@ class Goods extends AdminController {
 				}
 				// var_dump($title);
 				$value->set('pname', $title);
-				var_dump($result);
-				die();
 			}
 		}	
 		$data['result'] = $result;
 
+		var_dump($result);
+		die();
 		$this->layout->view('goods/category', $data);
 	}
 
