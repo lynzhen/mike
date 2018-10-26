@@ -37,19 +37,13 @@
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题" value="">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入标题" value="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">分类</label>
-                  <div class="col-sm-8">
-                    <select class="form-control select2" style="width: 100%;" name="category" id="category">
-                      <option></option>
-                      <?php foreach ($categories as $category):?>
-                        <optgroup label="<?=$category->get('title')?>">
-                        </optgroup>
-                      <?php endforeach;?>
-                    </select>
+                  <div class="col-sm-8">category
+                    <input type="text" class="form-control" name="category" id="category" placeholder="请输入分类" value="">
                   </div>
                 </div>
                 <div class="form-group">
