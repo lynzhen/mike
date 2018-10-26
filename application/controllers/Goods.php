@@ -168,11 +168,11 @@ class Goods extends AdminController {
 			}else{
 				$querys->equalTo('objectId', $pid);
 				$parent = $querys->find();
-				var_dump($result);
-				die();
 				forEach($parent as $item) {
 					$title = $item->get("title");
 				}
+				var_dump($result);
+				die();
 				// var_dump($title);
 				$value->set('pname', $title);
 			}
