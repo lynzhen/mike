@@ -42,7 +42,6 @@
                       <div class="col-xs-offset-2"><?=$child->get('title')?></div>
                     </td>
                     <td>
-                      <a type="button" class="btn btn-primary<?=$child->get('isLock') == true ? ' disabled' : ''?>" href="add?objectId=<?=$child->get('objectId')?>">添加</a>
                     </td>
                     <td>
                       <a type="button" class="btn btn-info<?=$child->get('isLock') == true ? ' disabled' : ''?>" href="edit?objectId=<?=$child->get('objectId')?>">修改</a>
