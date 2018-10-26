@@ -203,8 +203,8 @@ class Goods extends AdminController {
 		$isNew = $this->input->post('isNew');
 		$images = $this->input->post('images');
 		$detail = $this->input->post('detail');
-		echo $title;
-		die();
+		// echo $title;
+		// die();
 		// 主图是第一个产品图
 		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
 		// save to leanCloud
