@@ -209,6 +209,7 @@ class Goods extends AdminController {
 		// die();
 		// 主图是第一个产品图
 		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
+		$file = File::createWithUrl("111.png", $avatar);
 		var_dump($avatar);
 		die();
 		// save to leanCloud
@@ -221,7 +222,7 @@ class Goods extends AdminController {
 			$data['msg'] = '修改成功';
 		}
 		$category->set("title", $title);
-		$category->set("avatar", $avatar);
+		$category->set("banner", $file);
 		$category->set("pid", '0');
 		$category->set("parent", '');
 		// // 将category转为LeanCloud对象
