@@ -154,7 +154,7 @@ class Goods extends AdminController {
 		$this->pagination->initialize($config); 
 		$data['pagination'] = $this->pagination->create_links();
 		// 渲染
-		$data['result'] = $result;
+		// $data['result'] = $result;
 		$data['title'] = '商品分类';
 
 		$querys = new Query("Category");
@@ -178,7 +178,7 @@ class Goods extends AdminController {
 		$data['result'] = $result;
 
 		var_dump($result);
-		die();
+		// die();
 		$this->layout->view('goods/category', $data);
 	}
 
