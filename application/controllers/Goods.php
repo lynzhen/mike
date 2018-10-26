@@ -224,7 +224,7 @@ class Goods extends AdminController {
 		$category->set("title", $title);
 		$category->set("banner", $file);
 		$category->set("pid", '0');
-		$category->set("parent", 0);
+		$category->set("parent", null);
 		// // 将category转为LeanCloud对象
 		// $category->set("category", Object::create('Category', $category));
 		// $category->set("price", (float)$price);
