@@ -15,6 +15,7 @@ class Category extends AdminController {
 	public function index() {
 		$categories = $this->category_model->findAll();
 		$data['categories'] = $categories;
+		var_dump($categories);
 		$this->layout->view('category/index', $data);
 	}
 
