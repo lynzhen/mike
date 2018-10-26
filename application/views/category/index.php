@@ -7,15 +7,15 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
     <ol class="breadcrumb">
-      <li><a href="<?=base_url('dashboard/index')?>"><i class="fa fa-dashboard"></i> 首页</a></li>
-      <li class="active"><?=$title?></li>
+      <li><a href="../dashboard/index"><i class="fa fa-dashboard"></i> 首页</a></li>
+      <li class="active">商品分类</li>
     </ol>
 	</section>
 	<!-- Main content -->
 	<section class="content">
 		<div class="box box-info">
 			<div class="box-header with-border">
-				<h3 class="box-title"><?=$title?></h3>
+				<h3 class="box-title">分类</h3>
 				<div class="box-tools pull-right">
                 <a class="btn btn-sm btn-primary" href="add">添加</a>
 				</div>
