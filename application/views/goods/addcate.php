@@ -18,7 +18,7 @@
   <section class="content-header">
     <ol class="breadcrumb">
       <li><a href="../dashboard/index"><i class="fa fa-dashboard"></i> 首页</a></li>
-      <li class="active">商品分类管理</li>
+      <li class="active">商品管理</li>
     </ol>
   </section>
   <!-- Main content -->
@@ -27,7 +27,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">添加</h3>
                 <div class="box-tools pull-right">
-                <a class="btn btn-sm btn-primary" href="index">返回列表</a>
+                <a class="btn btn-sm btn-primary" href="category">返回列表</a>
                 </div><!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
@@ -37,12 +37,56 @@
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入一级的标题" value="">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题" value="">
                   </div>
-                </div>                 
+                </div>
+                <div class="form-group">
+                  <label for="title" class="col-sm-2 control-label">分类</label>
+                  <div class="col-sm-8">
+                    <select class="form-control select2" style="width: 100%;" name="category" id="category">
+                      <option></option>
+                      <?php foreach ($categories as $category):?>
+                        <optgroup label="<?=$category->get('title')?>">
+                        </optgroup>
+                      <?php endforeach;?>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="price" class="col-sm-2 control-label">价格</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" name="price" id="price" placeholder="0.0" step="0.01" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="isHot" class="col-sm-2 control-label">推荐</label>
+                  <div class="col-sm-8">
+                    <div class="btn-group" id="isHot" data-toggle="buttons">
+                      <label class="btn btn-default active">
+                        <input type="radio" name="isHot" value="1" id="option1" autocomplete="off" checked> 推荐
+                      </label>
+                      <label class="btn btn-default">
+                        <input type="radio" name="isHot" value="0" id="option3" autocomplete="off"> 不推荐
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="isNew" class="col-sm-2 control-label">新品</label>
+                  <div class="col-sm-8">
+                    <div class="btn-group" id="isNew" data-toggle="buttons">
+                      <label class="btn btn-default active">
+                        <input type="radio" name="isNew" value="1" autocomplete="off"> 新品
+                      </label>
+                      <label class="btn btn-default">
+                        <input type="radio" name="isNew" value="0" autocomplete="off"> 非新品
+                      </label>
+                    </div>
+                  </div>
+                </div>
                 <!-- upload images -->
                 <div class="form-group">
-                  <label for="images" class="col-sm-2 control-label">banner图</label>
+                  <label for="images" class="col-sm-2 control-label">产品图</label>
                   <div class="col-sm-8">
                     <div id="uploader-demo">
                       <!--用来存放item-->
@@ -55,7 +99,8 @@
                       <input type="hidden" name="images" value="[]" id="images" />
                     </div>
                   </div>
-                </div><!-- upload detail -->
+                </div>
+                <!-- upload detail -->
                 <div class="form-group">
                   <label for="detail" class="col-sm-2 control-label">描述图</label>
                   <div class="col-sm-8">
@@ -80,7 +125,8 @@
                     <input type="hidden" name="detail" value="[]" id="detail" />
 
                     <!-- .upload -->
-                  </div>              
+                  </div>
+                </div>
                   <script src="/assets/js/goods/edit.js"></script>
                 <!-- /upload -->
               </div>
@@ -95,7 +141,9 @@
   <script type="text/javascript">
   $(function() {
     $('#submit').click(function (e) {
+      // $('#edit-form').submit();return;
       $('#edit-form').bootstrapValidator({
+        // live: 'disabled',
          message: '输入不正确',
          feedbackIcons: {
            valid: 'glyphicon glyphicon-ok',
@@ -110,11 +158,33 @@
              }
            }
          },
+         price: {
+           validators: {
+             notEmpty: {
+               message: '价格不能为空'
+             }
+           }
+         },
+         category: {
+           validators: {
+             notEmpty: {
+               message: '分类不能为空'
+             }
+           }
+         },
          images: {
            validators: {
              regexp: {
                  regexp: /^\[.+\]$/,
-                 message: '请上传banner图'
+                 message: '请上传产品图'
+             }
+           }
+         },
+         detail: {
+           validators: {
+             regexp: {
+                 regexp: /^\[.+\]$/,
+                 message: '请上传描述图'
              }
            }
          }
@@ -125,22 +195,33 @@
       bootstrapValidator.validate();
       if(bootstrapValidator.isValid()) {
         if ($('#images').val() == '[]') {
-          sweetAlert("提示", "请上传banner图", "error");
+          sweetAlert("提示", "请上传产品图", "error");
+          return;
+        }
+        if ($('#detail').val() == '[]') {
+          sweetAlert("提示", "请上传描述图", "error");
           return;
         }
        console.log('valid');
        $.post(
-          'save',
+          'savecate',
           {
             title: $('#title').val(),
-            images: $('#images').val()
+            category: $('#category').val(),
+            price: $('#price').val(),
+            isNew: $('#isNew .active input').val(),
+            isHot: $('#isHot .active input').val(),
+            images: $('#images').val(),
+            detail: $('#detail').val()
           },
           function (response) {
             sweetAlert("提示", response.message, "success");
             if (response.success) {
               $('#edit-form').data('bootstrapValidator').resetForm();
               $('#title').val("");
+              $('#price').val("");
               $('#images').val("[]");
+              $('#detail').val("[]");
             }
           }
         );
