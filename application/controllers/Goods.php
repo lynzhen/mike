@@ -65,6 +65,7 @@ class Goods extends AdminController {
 		$object->set("boxnumber", $boxnumber);
 		$object->set("FCL", (bool)$FCL);
 		$object->set("size", $size);
+		$object->set("singleSize", $singleSize);
 		$object->set("singleTP", $singleTP);
 		$object->set("barcode", $barcode);
 		$object->set("avatar", $avatar);

@@ -293,6 +293,7 @@
           boxnumber: $('#boxnumber').val(),
           FCL: $('#FCL .active input').val(),
           size: $('#size').val(),
+          boxprice: $('#boxprice').val(),
           singleTP: $('#singleTP').val(),
           singleSize: $('#singleSize').val(),
           barcode: $('#barcode').val(),
