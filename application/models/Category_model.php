@@ -12,7 +12,7 @@ class Category_model extends CI_Model {
 		$categoris = $query->find();
 		echo '所有的一级分类';
 		var_dump($categoris);
-		$query->equalTo('parent', '5bd68efd44d904005ecee95f');
+		$query->equalTo('objectId', '5bd6beaf9f5454006e294f9e');
 		$aaa = $query->find();
 		echo '$aaa';
 		var_dump($aaa);
