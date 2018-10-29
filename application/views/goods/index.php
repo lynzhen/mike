@@ -53,6 +53,7 @@
 								<td><?=$item->get('boxnumber')?></td>
 								<td><?=$item->get('FCL') == true ? '否' : '是' ?></td>
 								<td><?=$item->get('size')?></td>
+								<td><?=$item->get('boxprice')?></td>
 								<td><?=$item->get('singleTP')?></td>
 								<td><?=$item->get('singleSize')?></td>
 								<td><?=$item->get('barcode')?></td>

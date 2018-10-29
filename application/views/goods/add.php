@@ -41,7 +41,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">分类</label>
+                  <label for="category" class="col-sm-2 control-label">分类</label>
                   <div class="col-sm-8">
                     <select class="form-control select2" style="width: 100%;" name="category" id="category">
                       <option></option>
@@ -55,10 +55,77 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="price" class="col-sm-2 control-label">价格</label>
                   <div class="col-sm-8">
                     <input type="number" class="form-control" name="price" id="price" placeholder="0.0" step="0.01" value="">
+                  </div>
+                </div> -->
+                <div class="form-group">
+                  <label for="singleCode" class="col-sm-2 control-label">单瓶条码</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" name="singleCode" id="singleCode" placeholder="单瓶条码" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="suppliers" class="col-sm-2 control-label">供货商名称</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" name="suppliers" id="suppliers" placeholder="供货商名称" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="price" class="col-sm-2 control-label">进货价</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" name="price" id="price" placeholder="进货价" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="boxnumber" class="col-sm-2 control-label">箱入数</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" name="boxnumber" id="boxnumber" placeholder="箱入数" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="FCL" class="col-sm-2 control-label">必须整箱订货</label>
+                  <div class="col-sm-8">
+                    <div class="btn-group" id="FCL" data-toggle="buttons">
+                      <label class="btn btn-default active">
+                        <input type="radio" name="FCL" value="1" id="option1" autocomplete="off" checked> 是
+                      </label>
+                      <label class="btn btn-default">
+                        <input type="radio" name="FCL" value="0" id="option3" autocomplete="off"> 否
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="size" class="col-sm-2 control-label">箱单位</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" name="size" id="size" placeholder="箱单位" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="boxprice" class="col-sm-2 control-label">箱价格</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" name="boxprice" id="boxprice" placeholder="箱价格" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="singleTP" class="col-sm-2 control-label">单瓶商品规格</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" name="singleTP" id="singleTP" placeholder="单瓶商品规格" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="singleSize" class="col-sm-2 control-label">单瓶单位</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" name="singleSize" id="singleSize" placeholder="单瓶单位" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="barcode" class="col-sm-2 control-label">条码</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" name="barcode" id="barcode" placeholder="条码" value="">
                   </div>
                 </div>
                 <div class="form-group">

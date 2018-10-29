@@ -32,7 +32,15 @@ class Goods extends AdminController {
 		// 获取参数
 		$title = $this->input->post('title');
 		$category = $this->input->post('category');
+		$singleCode = $this->input->post('singleCode');
+		$suppliers = $this->input->post('suppliers');
 		$price = $this->input->post('price');
+		$boxnumber = $this->input->post('boxnumber');
+		$FCL = $this->input->post('FCL');
+		$size = $this->input->post('size');
+		$singleTP = $this->input->post('singleTP');
+		$singleSize = $this->input->post('singleSize');
+		$barcode = $this->input->post('barcode');
 		$isHot = $this->input->post('isHot');
 		$isNew = $this->input->post('isNew');
 		$images = $this->input->post('images');
@@ -51,10 +59,17 @@ class Goods extends AdminController {
 			$data['msg'] = '修改成功';
 		}
 		$object->set("title", $title);
+		$object->set("singleCode", $singleCode);
+		$object->set("suppliers", $suppliers);
+		$object->set("price", (float)$price);
+		$object->set("boxnumber", $boxnumber);
+		$object->set("FCL", (bool)$FCL);
+		$object->set("size", $size);
+		$object->set("singleTP", $singleTP);
+		$object->set("barcode", $barcode);
 		$object->set("avatar", $avatar);
 		// 将category转为LeanCloud对象
 		$object->set("category", Object::create('Category', $category));
-		$object->set("price", (float)$price);
 		$object->set("isHot", (bool)$isHot);
 		$object->set("isNew", (bool)$isNew);
 		$object->set("images", json_decode($images));
