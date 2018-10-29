@@ -15,7 +15,7 @@ class Category_model extends CI_Model {
 		// 2. sub  
 		// if(!empty($categoris)){
 		foreach ($categoris as $category) {	
-			$query->equalTo('parent', $category);
+			$query->equalTo('parent', '5bd68efd44d904005ecee95f');
 			$children = $query->find();			
 			echo '所有的二级分类';
 			var_dump($children);
