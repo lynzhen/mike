@@ -15,10 +15,10 @@ class Category_model extends CI_Model {
 		// 2. sub  
 		// if(!empty($categoris)){
 		foreach ($categoris as $category) {	
-			 $parentId = $category->get('objectId');
+			 $parentId = $category->get('NCategory_OnlyId');
 			// var_dump($parent);Category
 			$newquerys=new Query("Category");
-			$newquerys->equalTo('parent', $parentId);
+			$newquerys->equalTo('NparentId', $parentId);
 			$children = $newquerys->find();		
 			echo '所有的二级分类';
 			var_dump($parentId);
