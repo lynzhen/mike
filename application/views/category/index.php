@@ -21,7 +21,7 @@
 				</div>
 				<!-- /.box-tools -->
 			</div><!-- /.box-header -->
-			<div class="box-body">              
+			<div class="box-body">             
         <?php foreach($categories as $category):?>
               <table class="table table-hover table-striped table-bordered">
                 <thead>
@@ -54,6 +54,7 @@
                 </tbody>
               </table>
               <?php endforeach;?>
+
 
 				<script type="text/javascript">
 					$('.delete').confirmation({

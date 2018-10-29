@@ -6,21 +6,25 @@ class Category_model extends CI_Model {
 	// 获取全部分类
 	public function findAll() {
 		// 1. 查询所有顶级分类
+		//
 		$query = new Query("Category");
-		$query->equalTo('parent', 12);
+		// $query->equalTo('parent', null);
 		$categoris = $query->find();
 		echo '所有的一级分类';
 		var_dump($categoris);
-		// 2. sub
-		foreach ($categoris as $category) {
-			$query->equalTo('parent', $category);
-			$children = $query->find();
-			// 不必使用转数组再动态添加成员属性，$category = $category->toJSON();object同样可以实现操作
-			$category->children = $children;
-			$result[] = $category;
-
+		// 2. sub  迭代的时候
+		if(!empty($categoris)){
+			foreach ($categoris as $category) {
+				$query->equalTo('parent', $category);
+				$children = $query->find();
+				// 不必使用转数组再动态添加成员属性，$category = $category->toJSON();object同样可以实现操作
+				$category->children = $children;
+				$result[] = $category;
+	
+			}
+			return $result;
 		}
-		return $result;
+	
 	}
 
 	// 删除分类
