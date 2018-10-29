@@ -64,25 +64,25 @@
                 <div class="form-group">
                   <label for="singleCode" class="col-sm-2 control-label">单瓶条码</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="singleCode" id="singleCode" placeholder="单瓶条码" value="">
+                    <input type="text" class="form-control" name="singleCode" id="singleCode" placeholder="单瓶条码" value="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="suppliers" class="col-sm-2 control-label">供货商名称</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="suppliers" id="suppliers" placeholder="供货商名称" value="">
+                    <input type="text" class="form-control" name="suppliers" id="suppliers" placeholder="供货商名称" value="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="price" class="col-sm-2 control-label">进货价</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="price" id="price" placeholder="进货价" value="">
+                    <input type="text" class="form-control" name="price" id="price" placeholder="进货价" value="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="boxnumber" class="col-sm-2 control-label">箱入数</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="boxnumber" id="boxnumber" placeholder="箱入数" value="">
+                    <input type="text" class="form-control" name="boxnumber" id="boxnumber" placeholder="箱入数" value="">
                   </div>
                 </div>
                 <div class="form-group">
@@ -101,31 +101,31 @@
                 <div class="form-group">
                   <label for="size" class="col-sm-2 control-label">箱单位</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="size" id="size" placeholder="箱单位" value="">
+                    <input type="text" class="form-control" name="size" id="size" placeholder="箱单位" value="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="boxprice" class="col-sm-2 control-label">箱价格</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="boxprice" id="boxprice" placeholder="箱价格" value="">
+                    <input type="text" class="form-control" name="boxprice" id="boxprice" placeholder="箱价格" value="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="singleTP" class="col-sm-2 control-label">单瓶商品规格</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="singleTP" id="singleTP" placeholder="单瓶商品规格" value="">
+                    <input type="text" class="form-control" name="singleTP" id="singleTP" placeholder="单瓶商品规格" value="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="singleSize" class="col-sm-2 control-label">单瓶单位</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="singleSize" id="singleSize" placeholder="单瓶单位" value="">
+                    <input type="text" class="form-control" name="singleSize" id="singleSize" placeholder="单瓶单位" value="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="barcode" class="col-sm-2 control-label">条码</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="barcode" id="barcode" placeholder="条码" value="">
+                    <input type="text" class="form-control" name="barcode" id="barcode" placeholder="条码" value="">
                   </div>
                 </div>
                 <div class="form-group">
@@ -242,6 +242,20 @@
              }
            }
          },
+         singleCode: {
+           validators: {
+             notEmpty: {
+               message: '单瓶条码不能为空'
+             }
+           }
+         },
+         suppliers: {
+           validators: {
+             notEmpty: {
+               message: '供货商不能为空'
+             }
+           }
+         },
          images: {
            validators: {
              regexp: {
@@ -278,7 +292,15 @@
           {
             title: $('#title').val(),
             category: $('#category').val(),
+            singleCode: $('#singleCode').val(),
+            suppliers: $('#suppliers').val(),
             price: $('#price').val(),
+            boxnumber: $('#boxnumber').val(),
+            FCL: $('#FCL .active input').val(),
+            size: $('#size').val(),
+            singleTP: $('#singleTP').val(),
+            singleSize: $('#singleSize').val(),
+            barcode: $('#barcode').val(),
             isNew: $('#isNew .active input').val(),
             isHot: $('#isHot .active input').val(),
             images: $('#images').val(),
