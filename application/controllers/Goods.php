@@ -61,7 +61,7 @@ class Goods extends AdminController {
 		$object->set("title", $title);
 		$object->set("singleCode", $singleCode);
 		$object->set("suppliers", $suppliers);
-		$object->set("price", (float)$price);
+		$object->set("price", $price);
 		$object->set("boxnumber", $boxnumber);
 		$object->set("FCL", (bool)$FCL);
 		$object->set("size", $size);
