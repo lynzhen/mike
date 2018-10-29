@@ -7,7 +7,7 @@ class Category_model extends CI_Model {
 	public function findAll() {
 		// 1. 查询所有顶级分类
 		$query = new Query("Category");
-		$query->equalTo('parent', null);
+		$query->equalTo('parent', 12);
 		$categoris = $query->find();
 		echo '所有的一级分类';
 		var_dump($categoris);
