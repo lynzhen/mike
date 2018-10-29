@@ -19,6 +19,8 @@ class Category_model extends CI_Model {
 			$newquerys->equalTo('parent', $parentId);
 			$children = $newquerys->find();		
 			echo '所有的二级分类';
+			var_dump($parentId);
+		
 			var_dump($children);
 			// 不必使用转数组再动态添加成员属性，$category = $category->toJSON();object同样可以实现操作
 			$category->children = $children;
