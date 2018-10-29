@@ -38,6 +38,7 @@ class Goods extends AdminController {
 		$boxnumber = $this->input->post('boxnumber');
 		$FCL = $this->input->post('FCL');
 		$size = $this->input->post('size');
+		$boxprice = $this->input->post('boxprice');
 		$singleTP = $this->input->post('singleTP');
 		$singleSize = $this->input->post('singleSize');
 		$barcode = $this->input->post('barcode');
@@ -65,6 +66,7 @@ class Goods extends AdminController {
 		$object->set("boxnumber", $boxnumber);
 		$object->set("FCL", (bool)$FCL);
 		$object->set("size", $size);
+		$object->set("boxprice", $boxprice);
 		$object->set("singleSize", $singleSize);
 		$object->set("singleTP", $singleTP);
 		$object->set("barcode", $barcode);
