@@ -13,7 +13,7 @@ class Category_model extends CI_Model {
 		echo '所有的一级分类';
 		var_dump($categoris);
 		// 2. sub  迭代的时候
-		if(!empty($categoris)){
+		// if(!empty($categoris)){
 			foreach ($categoris as $category) {
 				$query->equalTo('parent', $category);
 				$children = $query->find();
@@ -23,7 +23,7 @@ class Category_model extends CI_Model {
 	
 			}
 			return $result;
-		}
+		// }
 	
 	}
 
