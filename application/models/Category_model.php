@@ -15,8 +15,9 @@ class Category_model extends CI_Model {
 		// 2. sub  
 		// if(!empty($categoris)){
 		foreach ($categoris as $category) {	
-			$query->equalTo('parent', '5bd68efd44d904005ecee95f');
-			$children = $query->find();			
+			$query->equalTo('parent', $category);
+			$children = $query->find();	
+			var_dump($category->get('objectId'));	
 			echo '所有的二级分类';
 			var_dump($children);
 			// 不必使用转数组再动态添加成员属性，$category = $category->toJSON();object同样可以实现操作
