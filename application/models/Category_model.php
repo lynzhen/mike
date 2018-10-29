@@ -9,6 +9,8 @@ class Category_model extends CI_Model {
 		$query = new Query("Category");
 		$query->equalTo('parent', null);
 		$categoris = $query->find();
+		echo '测试商品分类';
+		var_dump($categoris);
 		// 2. sub
 		foreach ($categoris as $category) {
 			// $query->equalTo('parent', $category);
