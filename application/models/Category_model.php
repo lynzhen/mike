@@ -16,12 +16,12 @@ class Category_model extends CI_Model {
 			// 不必使用转数组再动态添加成员属性，$category = $category->toJSON();object同样可以实现操作
 			$category->children = $children;
 			$result[] = $category;
+			echo '测试商品分类';
+			var_dump($category);
+			// die();
 
 		}
 		return $result;
-		echo '测试商品分类';
-		var_dump($result);
-		die();
 	}
 
 	// 删除分类
