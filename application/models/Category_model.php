@@ -10,18 +10,12 @@ class Category_model extends CI_Model {
 		$query = new Query("Category");
 		$query->equalTo('IsParent', true);
 		$categoris = $query->find();
-		echo '所有的一级分类';
-		var_dump($categoris);
-		$query->equalTo('objectId', '5bd6beaf9f5454006e294f9e');
-		$aaa = $query->find();
-		echo '$aaa';
-		var_dump($aaa);
 		// 2. sub  
 		// if(!empty($categoris)){
 		foreach ($categoris as $category) {	
-			$parent = $category->get('objectId');
-			var_dump($parent);
-			$query->equalTo('parent', $parent);
+			// $parent = $category->get('objectId');
+			// var_dump($parent);
+			$query->equalTo('parent', $category);
 			$children = $query->find();		
 			echo '所有的二级分类';
 			var_dump($children);
