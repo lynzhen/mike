@@ -11,14 +11,14 @@ class Category_model extends CI_Model {
 		$categoris = $query->find();
 		// 2. sub
 		foreach ($categoris as $category) {
-			$query->equalTo('parent', $category);
-			$children = $query->find();
-			// 不必使用转数组再动态添加成员属性，$category = $category->toJSON();object同样可以实现操作
-			$category->children = $children;
-			$result[] = $category;
+			// $query->equalTo('parent', $category);
+			// $children = $query->find();
+			// // 不必使用转数组再动态添加成员属性，$category = $category->toJSON();object同样可以实现操作
+			// $category->children = $children;
+			// $result[] = $category;
 			echo '测试商品分类';
 			var_dump($category);
-			// die();
+			die();
 
 		}
 		return $result;
