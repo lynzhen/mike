@@ -10,6 +10,8 @@ class Category_model extends CI_Model {
 		$query = new Query("Category");
 		$query->equalTo('IsParent', true);
 		$categoris = $query->find();
+		//一级分类
+			var_dump($categoris);
 		// 2. sub  
 		// if(!empty($categoris)){
 		foreach ($categoris as $category) {	
