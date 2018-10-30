@@ -71,7 +71,7 @@ class Shop extends AdminController {
 		$objectId = $this->input->get('objectId');
 		// 分页查询数据
 		$query = new Query("Shop");
-		$goods = $query->get($objectId);
+		$object = $query->get($objectId);
 		$object->set("isPass", true);
 		try {
 			$object->save();
@@ -89,7 +89,7 @@ class Shop extends AdminController {
 		$objectId = $this->input->get('objectId');
 		// 分页查询数据
 		$query = new Query("Shop");
-		$goods = $query->get($objectId);
+		$object = $query->get($objectId);
 		$object->set("isPass", false);
 		try {
 			$object->save();
@@ -107,7 +107,7 @@ class Shop extends AdminController {
 		$objectId = $this->input->get('objectId');
 		// 分页查询数据
 		$query = new Query("Shop");
-		$goods = $query->get($objectId);
+		$object = $query->get($objectId);
 		$object->set("isBlack", true);
 		try {
 			$object->save();
