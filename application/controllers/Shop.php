@@ -69,12 +69,14 @@ class Shop extends AdminController {
 		
 		// 获取get参数
 		$objectId = $this->input->get('objectId');
-		// 分页查询数据
+		// 查询商家数据
 		$query = new Query("Shop");
-		$object = $query->get($objectId);
-		$object->set("isPass", true);
+		$shop = $query->get($objectId);
+		var_dump($shop);
+		// 改变通过标志
+		$shop->set("isPass", true);
 		try {
-			$object->save();
+			$shop->save();
 			$this->echo_json('通过成功');
 		} catch (Exception $ex) {
 			$this->echo_json('通过失败');
@@ -87,12 +89,13 @@ class Shop extends AdminController {
 		
 		// 获取get参数
 		$objectId = $this->input->get('objectId');
-		// 分页查询数据
+		// 查询商家数据
 		$query = new Query("Shop");
-		$object = $query->get($objectId);
-		$object->set("isPass", false);
+		$shop = $query->get($objectId);
+		// 改变通过标志
+		$shop->set("isPass", false);
 		try {
-			$object->save();
+			$shop->save();
 			$this->echo_json('拒绝成功');
 		} catch (Exception $ex) {
 			$this->echo_json('拒绝失败');
@@ -105,12 +108,13 @@ class Shop extends AdminController {
 		
 		// 获取get参数
 		$objectId = $this->input->get('objectId');
-		// 分页查询数据
+		// 查询商家数据
 		$query = new Query("Shop");
-		$object = $query->get($objectId);
-		$object->set("isBlack", true);
+		$shop = $query->get($objectId);
+		// 改变拉黑标志
+		$shop->set("isBlack", true);
 		try {
-			$object->save();
+			$shop->save();
 			$this->echo_json('拉黑成功');
 		} catch (Exception $ex) {
 			$this->echo_json('拉黑失败');
