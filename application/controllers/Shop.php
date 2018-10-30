@@ -24,7 +24,7 @@ class Shop extends AdminController {
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
-		var_dump($result);
+		// var_dump($result);
 		// 分页控件
 		// url路径前缀
 		$config['base_url'] = base_url(uri_string());

@@ -42,9 +42,9 @@
 								<td><?=$item->get('name')?></td>
 								<td><?=$item->get('tel')?></td>
 								<td><?=$item->get('discount')?></td>
-								<td><a type="button" class="btn btn-primary" id='pass' data-id='<?=$item->get('objectId')?>' <?=$item->get('isPass') == true ? 'disabled' : ''?> href=""> <?=$item->get('isPass') == true ? '已通过' : '通过'?></a></td>
-								<td><a type="button" class="btn btn-danger" id='refuse' data-id='<?=$item->get('objectId')?>' style='display: <?=$item->get('isPass') == true ? 'none' : 'block'?>' href="">拒绝</a></td>
-								<td><a type="button" class="btn btn-danger" id='black' data-id='<?=$item->get('objectId')?>' style=' <?=$item->get('isPass') == true ? 'block' : 'none'?>' href="">拉黑</a></td>
+								<td><a type="button" class="btn btn-primary" id='pass' data-id='<?=$item->get('objectId')?>' <?=$item->get('isPass') == true ? 'disabled' : ''?> href="javascript:;"> <?=$item->get('isPass') == true ? '已通过' : '通过'?></a></td>
+								<td><a type="button" class="btn btn-danger" id='refuse' data-id='<?=$item->get('objectId')?>' <?=$item->get('isPass') == true ? 'disabled' : ''?> href="javascript:;">拒绝</a></td>
+								<td><a type="button" class="btn btn-danger" id='black' data-id='<?=$item->get('objectId')?>' style=' <?=$item->get('isPass') == true ? 'block' : 'none'?>' href="javascript:;">拉黑</a></td>
 							</tr>
 						<!-- <?php endforeach;?> -->
 					</tbody>
