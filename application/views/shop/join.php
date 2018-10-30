@@ -2,6 +2,15 @@
 <script src="/bower_components/bs-confirmation/bootstrap-confirmation.js"></script>
 <!-- 引入css -->
 <link rel="stylesheet" type="text/css" href="/assets/css/global.css">
+<!--引入CSS-->
+<link rel="stylesheet" type="text/css" href="/bower_components/fex-webuploader/dist/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/webuploader.css">
+<!--引入JS-->
+<script type="text/javascript" src="/bower_components/fex-webuploader/dist/webuploader.js"></script>
+
+<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- sweet alet -->
 <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
 <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
 
@@ -19,7 +28,7 @@
 			<div class="box-header with-border">
 				<h3 class="box-title"><?=$title?></h3>
 				<div class="box-tools pull-right">
-					<a class="btn btn-sm btn-primary" href="add">添加</a>
+					<!-- <a class="btn btn-sm btn-primary" href="add">添加</a> -->
 				</div><!-- /.box-tools -->
 			</div><!-- /.box-header -->
 			<div class="box-body">
@@ -44,9 +53,9 @@
 								<td><?=$item->get('name')?></td>
 								<td><?=$item->get('tel')?></td>
 								<td><?=$item->get('discount')?></td>
-								<td><a type="button" class="btn btn-primary" id='pass' data-id='<?=$item->get('objectId')?>' <?=$item->get('isPass') == true ? 'disabled' : ''?> href="javascript:;"> <?=$item->get('isPass') == true ? '已通过' : '通过'?></a></td>
-								<td><a type="button" class="btn btn-danger" id='refuse' data-id='<?=$item->get('objectId')?>' <?=$item->get('isPass') == true ? 'disabled' : ''?> href="javascript:;">拒绝</a></td>
-								<td><a type="button" class="btn btn-danger" id='black' data-id='<?=$item->get('objectId')?>' style=' <?=$item->get('isPass') == true ? 'block' : 'none'?>' href="javascript:;">拉黑</a></td>
+								<td><a type="button" class="btn btn-primary" class='pass' data-id='<?=$item->get('objectId')?>' <?=$item->get('isPass') == true ? 'disabled' : ''?> href="javascript:;"> <?=$item->get('isPass') == true ? '已通过' : '通过'?></a></td>
+								<td><a type="button" class="btn btn-danger" class='refuse' data-id='<?=$item->get('objectId')?>' <?=$item->get('isPass') == true ? 'disabled' : ''?> href="javascript:;">拒绝</a></td>
+								<td><a type="button" class="btn btn-danger" class='black' data-id='<?=$item->get('objectId')?>' style=' <?=$item->get('isPass') == true ? 'block' : 'none'?>' href="javascript:;">拉黑</a></td>
 							</tr>
 						<!-- <?php endforeach;?> -->
 					</tbody>
@@ -63,10 +72,39 @@
 	$(function () { 
 		$("[data-toggletoggle='popover']").popover();
 
-		$("#pass").click(function(e){
+		$(".pass").click(function(){
+			console.log('pass');
 			var objectId = $(this).data('id');
 			$.post(
 				'pass',
+				{
+				objectId: objectId,
+				},
+				function (response) {
+				sweetAlert("提示", response.message, "success");
+				}  
+			);
+		})
+
+		$(".refuse").click(function(){
+			console.log('refuse');
+			var objectId = $(this).data('id');
+			$.post(
+				'refuse',
+				{
+				objectId: objectId,
+				},
+				function (response) {
+				sweetAlert("提示", response.message, "success");
+				}  
+			);
+		})
+
+		$(".black").click(function(){
+			console.log('black');
+			var objectId = $(this).data('id');
+			$.post(
+				'black',
 				{
 				objectId: objectId,
 				},
