@@ -30,6 +30,7 @@
 							<th>联系电话</th>
 							<th>通过</th>
 							<th>拒绝</th>
+							<th>折扣</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,8 +40,10 @@
 								<td><?=$item->get('addr')?></td>
 								<td><?=$item->get('name')?></td>
 								<td><?=$item->get('tel')?></td>
-								<td><a type="button" class="btn btn-primary >" href="">通过</a></td>
-								<td><a type="button" class="btn btn-danger >" href="">拒绝</a></td>
+								<td><?=$item->get('discount')?></td>
+								<td><a type="button" class="btn btn-primary" id='pass' data-id='<?=$item->get('objectId')?>' <?=$item->get('isPass') == true ? 'disabled' : ''?> href=""> <?=$item->get('isPass') == true ? '已通过' : '通过'?></a></td>
+								<td><a type="button" class="btn btn-danger" id='refuse' data-id='<?=$item->get('objectId')?>' style='display: <?=$item->get('isPass') == true ? 'none' : 'block'?>' href="">拒绝</a></td>
+								<td><a type="button" class="btn btn-danger" id='black' data-id='<?=$item->get('objectId')?>' style=' <?=$item->get('isPass') == true ? 'block' : 'none'?>' href="">拉黑</a></td>
 							</tr>
 						<!-- <?php endforeach;?> -->
 					</tbody>
@@ -56,5 +59,18 @@
 <script>
 	$(function () { 
 		$("[data-toggletoggle='popover']").popover();
+
+		$("#pass").click(function(e){
+			var objectId = $(this).data('id');
+			$.post(
+				'pass',
+				{
+				objectId: objectId,
+				},
+				function (response) {
+				sweetAlert("提示", response.message, "success");
+				}  
+			);
+		})
 	});
 </script>

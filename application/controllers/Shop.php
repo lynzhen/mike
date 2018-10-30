@@ -18,6 +18,7 @@ class Shop extends AdminController {
 		$pageIndex = $this->input->get('per_page');
 		// 分页查询数据
 		$query = new Query("Shop");
+		$query->equalTo('isBlack',false);
 		$query->_include("category");
 		$query->descend("updatedAt");
 		$query->limit($this->config->item('per_page'));
@@ -61,5 +62,59 @@ class Shop extends AdminController {
 		$data['title'] = "商家黑名单";
 		$this->layout->view('shop/blacklist',$data);
 	}
+
+	// 通过商家入驻申请
+	public function pass(){
+		
+		// 获取get参数
+		$pageIndex = $this->input->get('objectId');
+		// 分页查询数据
+		$query = new Query("Shop");
+		$goods = $query->get($objectId);
+		$object->set("isPass", true);
+		try {
+			$object->save();
+			$this->echo_json('通过成功');
+		} catch (Exception $ex) {
+			$this->echo_json('通过失败');
+		}
+
+	} 
+
+	// 拒绝商家入驻申请
+	public function refuse(){
+		
+		// 获取get参数
+		$pageIndex = $this->input->get('objectId');
+		// 分页查询数据
+		$query = new Query("Shop");
+		$goods = $query->get($objectId);
+		$object->set("isPass", false);
+		try {
+			$object->save();
+			$this->echo_json('拒绝成功');
+		} catch (Exception $ex) {
+			$this->echo_json('拒绝失败');
+		}
+
+	} 
+
+	// 拉黑
+	public function black(){
+		
+		// 获取get参数
+		$pageIndex = $this->input->get('objectId');
+		// 分页查询数据
+		$query = new Query("Shop");
+		$goods = $query->get($objectId);
+		$object->set("isBlack", true);
+		try {
+			$object->save();
+			$this->echo_json('拉黑成功');
+		} catch (Exception $ex) {
+			$this->echo_json('拉黑失败');
+		}
+
+	} 
 
 }
