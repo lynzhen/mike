@@ -68,7 +68,7 @@ class Shop extends AdminController {
 	public function pass(){
 		
 		// 获取get参数
-		$pageIndex = $this->input->get('objectId');
+		$objectId = $this->input->get('objectId');
 		// 分页查询数据
 		$query = new Query("Shop");
 		$goods = $query->get($objectId);
@@ -86,7 +86,7 @@ class Shop extends AdminController {
 	public function refuse(){
 		
 		// 获取get参数
-		$pageIndex = $this->input->get('objectId');
+		$objectId = $this->input->get('objectId');
 		// 分页查询数据
 		$query = new Query("Shop");
 		$goods = $query->get($objectId);
@@ -104,7 +104,7 @@ class Shop extends AdminController {
 	public function black(){
 		
 		// 获取get参数
-		$pageIndex = $this->input->get('objectId');
+		$objectId = $this->input->get('objectId');
 		// 分页查询数据
 		$query = new Query("Shop");
 		$goods = $query->get($objectId);
