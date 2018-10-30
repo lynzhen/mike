@@ -2,6 +2,8 @@
 <script src="/bower_components/bs-confirmation/bootstrap-confirmation.js"></script>
 <!-- 引入css -->
 <link rel="stylesheet" type="text/css" href="/assets/css/global.css">
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
 
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
