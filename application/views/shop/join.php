@@ -75,6 +75,7 @@
 		$(".pass").click(function(){
 			console.log('pass');
 			var objectId = $(this).data('id');
+			console.log(objectId);
 			$.post(
 				'pass',
 				{
@@ -89,6 +90,7 @@
 		$(".refuse").click(function(){
 			console.log('refuse');
 			var objectId = $(this).data('id');
+			console.log(objectId);
 			$.post(
 				'refuse',
 				{
@@ -103,6 +105,7 @@
 		$(".black").click(function(){
 			console.log('black');
 			var objectId = $(this).data('id');
+			console.log(objectId);
 			$.post(
 				'black',
 				{
