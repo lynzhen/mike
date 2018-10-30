@@ -28,9 +28,10 @@
 							<th>商家地址</th>
 							<th>联系名称</th>
 							<th>联系电话</th>
+							<th>折扣</th>
 							<th>通过</th>
 							<th>拒绝</th>
-							<th>折扣</th>
+							<th>拉黑</th>
 						</tr>
 					</thead>
 					<tbody>
