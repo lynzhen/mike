@@ -101,8 +101,8 @@
 	$(function () { 
 		$("[data-toggletoggle='popover']").popover();
 		
-		$('.doSth').click({			
-			var objectId = $(this).attr('data-id');
+		$('.doSth').click(function(){			
+			var objectId = $(this).data('id');
 			var discount = $(this).siblings('.discount').val();
 			var dosth = $('.sel').option.val();
 			console.log(objectId+','+discount+','+dosth);
