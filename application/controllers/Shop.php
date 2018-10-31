@@ -69,7 +69,7 @@ class Shop extends AdminController {
 		
 		// 获取post参数
 		$objectId = $this->input->post('objectId');
-		var_dump($objectId);
+		// var_dump($objectId);
 		// 查询商家数据
 		$query = new Query("Shop");
 		$shop = $query->get($objectId);
