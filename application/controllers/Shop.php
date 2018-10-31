@@ -94,7 +94,7 @@ class Shop extends AdminController {
 		$query = new Query("Shop");
 		$shop = $query->get($objectId);
 		// 改变通过标志
-		$shop->set("isPass", false);
+		$shop->set("isRefuse", true);
 		try {
 			$shop->save();
 			$this->echo_json('拒绝成功');
