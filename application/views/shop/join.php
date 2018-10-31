@@ -82,7 +82,7 @@
 				objectId: objectId,
 				},
 				function (response) {
-				sweetAlert("提示", response.message, "success");
+				sweetAlert("提示", response.message, "success");				
 				}  
 			);
 		})
@@ -115,6 +115,10 @@
 				sweetAlert("提示", response.message, "success");
 				}  
 			);
+		})
+
+		$(document.body).on('click','.confirm',function(){
+			location.reload(true);
 		})
 	});
 </script>
