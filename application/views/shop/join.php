@@ -59,7 +59,7 @@
 										<option class='black' value="black">拉黑</option>
 									</select>
 								</td>
-								<td><button class="btn btn-primary doSth" data-id='<?=$item->get('objectId')?>' >保存</button></td>
+								<td><button class="btn btn-primary doSth" data-id='<?=$item->get('objectId')?>'>保存</button></td>
 							</tr>
 						<!-- <?php endforeach;?> -->
 					</tbody>
