@@ -100,8 +100,8 @@
 		
 		$('.doSth').click(function(){
 			var objectId = $(this).data('id');
-			var discount = $(this).parent('tr').find('.discount').val();
-			var dosth = $(this).siblings('.sel').find("option:selected").val();
+			var discount = $(this).parent('td').siblings().find('.discount').val();
+			var dosth = $(this).parent('td').siblings().find('.sel').find("option:selected").val();
 			console.log(objectId+','+discount+','+dosth);
 			$.post(
 				dosth,
