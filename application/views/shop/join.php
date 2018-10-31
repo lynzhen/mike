@@ -101,10 +101,10 @@
 	$(function () { 
 		$("[data-toggletoggle='popover']").popover();
 		
-		$('.doSth').click(function(){			
+		$('.doSth').click(function(){
 			var objectId = $(this).data('id');
 			var discount = $(this).siblings('.discount').val();
-			var dosth = $('.sel').option.val();
+			var dosth = $(this).siblings('.sel').find("option:selected").val();
 			console.log(objectId+','+discount+','+dosth);
 			$.post(
 				dosth,
@@ -113,7 +113,7 @@
 				},
 				function (response) {
 				sweetAlert("提示", response.message, "success");				
-				}  
+				}
 			);
 		})
 
