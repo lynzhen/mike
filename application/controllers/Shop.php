@@ -67,14 +67,15 @@ class Shop extends AdminController {
 	// 通过商家入驻申请
 	public function pass(){
 		
-		// 获取get参数
+		// 获取post参数
 		$objectId = $this->input->post('objectId');
+		var_dump($objectId);
 		// 查询商家数据
 		$query = new Query("Shop");
 		$shop = $query->get($objectId);
-		var_dump($shop);
 		// 改变通过标志
 		$shop->set("isPass", true);
+
 		try {
 			$shop->save();
 			$this->echo_json('通过成功');
@@ -87,7 +88,7 @@ class Shop extends AdminController {
 	// 拒绝商家入驻申请
 	public function refuse(){
 		
-		// 获取get参数
+		// 获取post参数
 		$objectId = $this->input->post('objectId');
 		// 查询商家数据
 		$query = new Query("Shop");
@@ -106,7 +107,7 @@ class Shop extends AdminController {
 	// 拉黑
 	public function black(){
 		
-		// 获取get参数
+		// 获取post参数
 		$objectId = $this->input->post('objectId');
 		// 查询商家数据
 		$query = new Query("Shop");
