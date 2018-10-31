@@ -55,7 +55,7 @@
 								<td>									
 									<select name="" class='sel'>
 										<option class='pass' value="pass" <?=$item->get('isPass') == true  || $item->get('isRefuse') == true ? 'disabled' : ''?> <?=$item->get('isPass') == true ? 'selected' : ''?> value="pass"><?=$item->get('isPass') == true ? '已通过' : '通过'?></option>
-										<option class='refuse' value="refuse" <?=$item->get('isPass') == true || $item->get('isRefuse') == true ? 'disabled' : ''?> ><?=$item->get('isRefuse') == true ? '已拒绝' : '拒绝'?></option>
+										<option class='refuse' value="refuse" <?=$item->get('isPass') == true || $item->get('isRefuse') == true ? 'disabled' : ''?> <?=$item->get('isRefuse') == true ? 'selected' : ''?> ><?=$item->get('isRefuse') == true ? '已拒绝' : '拒绝'?></option>
 										<option class='black' value="black">拉黑</option>
 									</select>
 								</td>
@@ -72,7 +72,7 @@
 						height: 28px;
 						display: inline-block;
 						line-height: 28px;
-						width: 120px;
+						width: 80px;
 						outline: 0;
 						padding: 0 4px;
 					}
@@ -100,9 +100,10 @@
 		
 		$('.doSth').click(function(){
 			var objectId = $(this).data('id');
-			var discount = $(this).parent('td').siblings().find('.discount').val();
-			var dosth = $(this).parent('td').siblings().find('.sel').find("option:selected").val();
-			console.log(objectId+','+discount+','+dosth);
+			var thatTd = $(this).parent('td').siblings();
+			var discount = thatTd.find('.discount').val();
+			var dosth = thatTd.find('.sel').find("option:selected").val();
+			// console.log(objectId+','+discount+','+dosth);
 			$.post(
 				dosth,
 				{
@@ -113,51 +114,6 @@
 				}
 			);
 		})
-
-		// $(".pass").click(function(){
-		// 	console.log('pass');
-		// 	var objectId = $(this).data('id');
-		// 	console.log(objectId);
-		// 	$.post(
-		// 		'pass',
-		// 		{
-		// 		objectId: objectId,
-		// 		},
-		// 		function (response) {
-		// 		sweetAlert("提示", response.message, "success");				
-		// 		}  
-		// 	);
-		// })
-
-		// $(".refuse").click(function(){
-		// 	console.log('refuse');
-		// 	var objectId = $(this).data('id');
-		// 	console.log(objectId);
-		// 	$.post(
-		// 		'refuse',
-		// 		{
-		// 		objectId: objectId,
-		// 		},
-		// 		function (response) {
-		// 		sweetAlert("提示", response.message, "success");
-		// 		}  
-		// 	);
-		// })
-
-		// $(".black").click(function(){
-		// 	console.log('black');
-		// 	var objectId = $(this).data('id');
-		// 	console.log(objectId);
-		// 	$.post(
-		// 		'black',
-		// 		{
-		// 		objectId: objectId,
-		// 		},
-		// 		function (response) {
-		// 		sweetAlert("提示", response.message, "success");
-		// 		}  
-		// 	);
-		// })
 
 		$(document.body).on('click','.confirm',function(){
 			location.reload(true);
