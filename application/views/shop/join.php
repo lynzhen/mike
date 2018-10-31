@@ -40,9 +40,7 @@
 							<th>联系名称</th>
 							<th>联系电话</th>
 							<th>折扣</th>
-							<th>通过</th>
-							<th>拒绝</th>
-							<th>拉黑</th>
+							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,13 +51,44 @@
 								<td><?=$item->get('name')?></td>
 								<td><?=$item->get('tel')?></td>
 								<td><?=$item->get('discount')?></td>
-								<td><button class="btn btn-primary pass" data-id='<?=$item->get('objectId')?>' <?=$item->get('isPass') == true ? 'disabled' : ''?> ><?=$item->get('isPass') == true ? '已通过' : '通过'?></button></td>
-								<td><button class="btn btn-danger refuse" data-id='<?=$item->get('objectId')?>' <?=$item->get('isPass') == true ? 'disabled' : ''?> >拒绝</button></td>
-								<td><button class="btn btn-danger black" data-id='<?=$item->get('objectId')?>'>拉黑</button></td>
+								<td>
+									<input type="text" class="discount" value='<?=$item->get('discount')?>'/>
+									<select name="" class='sel'>
+										<option class='pass' value="pass" <?=$item->get('isPass') == true ? 'disabled' : ''?> value="pass"><?=$item->get('isPass') == true ? '已通过' : '通过'?></option>
+										<option class='refuse' value="refuse" <?=$item->get('isPass') == true ? 'disabled' : ''?> >拒绝</option>
+										<option class='black' value="black">拉黑</option>
+									</select>
+									<button class="btn btn-primary doSth" data-id='<?=$item->get('objectId')?>' >保存</button>
+								</td>
+								
+
+
 							</tr>
 						<!-- <?php endforeach;?> -->
 					</tbody>
 				</table>
+				<style>
+					.discount{
+						border: 0;
+						border: 1px solid #999;
+						border-radius: 3px;
+						height: 28px;
+						display: inline-block;
+						line-height: 28px;
+						width: 150px;
+						outline: 0;
+						padding: 0 4px;
+					}
+					.sel{
+						height: 28px;
+						border-radius: 3px;
+						width: 70px;
+						outline: 0;
+					}
+					.sel option{
+						font-size:14px;
+					}
+				</style>
 			</div><!-- /.box-body -->
 			<div class="box-footer">
 			<?=$pagination;?>
@@ -71,13 +100,14 @@
 <script>
 	$(function () { 
 		$("[data-toggletoggle='popover']").popover();
-
-		$(".pass").click(function(){
-			console.log('pass');
+		
+		$('.doSth').click({			
 			var objectId = $(this).data('id');
-			console.log(objectId);
+			var discount = $(this).siblings('.discount').val();
+			var dosth = $('.sel').option.val();
+			console.log(objectId+','+discount+','+dosth);
 			$.post(
-				'pass',
+				dosth,
 				{
 				objectId: objectId,
 				},
@@ -87,35 +117,50 @@
 			);
 		})
 
-		$(".refuse").click(function(){
-			console.log('refuse');
-			var objectId = $(this).data('id');
-			console.log(objectId);
-			$.post(
-				'refuse',
-				{
-				objectId: objectId,
-				},
-				function (response) {
-				sweetAlert("提示", response.message, "success");
-				}  
-			);
-		})
+		// $(".pass").click(function(){
+		// 	console.log('pass');
+		// 	var objectId = $(this).data('id');
+		// 	console.log(objectId);
+		// 	$.post(
+		// 		'pass',
+		// 		{
+		// 		objectId: objectId,
+		// 		},
+		// 		function (response) {
+		// 		sweetAlert("提示", response.message, "success");				
+		// 		}  
+		// 	);
+		// })
 
-		$(".black").click(function(){
-			console.log('black');
-			var objectId = $(this).data('id');
-			console.log(objectId);
-			$.post(
-				'black',
-				{
-				objectId: objectId,
-				},
-				function (response) {
-				sweetAlert("提示", response.message, "success");
-				}  
-			);
-		})
+		// $(".refuse").click(function(){
+		// 	console.log('refuse');
+		// 	var objectId = $(this).data('id');
+		// 	console.log(objectId);
+		// 	$.post(
+		// 		'refuse',
+		// 		{
+		// 		objectId: objectId,
+		// 		},
+		// 		function (response) {
+		// 		sweetAlert("提示", response.message, "success");
+		// 		}  
+		// 	);
+		// })
+
+		// $(".black").click(function(){
+		// 	console.log('black');
+		// 	var objectId = $(this).data('id');
+		// 	console.log(objectId);
+		// 	$.post(
+		// 		'black',
+		// 		{
+		// 		objectId: objectId,
+		// 		},
+		// 		function (response) {
+		// 		sweetAlert("提示", response.message, "success");
+		// 		}  
+		// 	);
+		// })
 
 		$(document.body).on('click','.confirm',function(){
 			location.reload(true);
