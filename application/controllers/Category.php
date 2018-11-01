@@ -100,16 +100,19 @@ class Category extends AdminController {
 		$data['redirect'] = 'index';
 		try {
 			$object->save();
-			$data['msg'] = '保存成功';
-			$data['level'] = 'info';
-			$this->layout->view('category/msg', $data);
+			$this->echo_json('保存成功');
+			// $data['msg'] = '保存成功';
+			// $data['level'] = 'info';
+			// $this->layout->view('category/msg', $data);
 		} catch (Exception $ex) {
-			$data['msg'] = '操作失败';
-			$data['level'] = 'warning';
-			var_dump($ex);
-		} finally {
-			$this->layout->view('category/msg', $data);
-		}
+			$this->echo_json('保存失败');
+			// $data['msg'] = '操作失败';
+			// $data['level'] = 'warning';
+			// var_dump($ex);
+		} 
+		// finally {
+		// 	$this->layout->view('category/msg', $data);
+		// }
 	}
 
 	// 删除分类

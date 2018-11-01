@@ -6,6 +6,7 @@ $(function () {
       alert('请上传分类图');
       e.preventDefault();
     }
+    
   });
 
 });

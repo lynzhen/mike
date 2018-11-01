@@ -89,4 +89,48 @@
   </section>
   <!-- /.content -->
 </div>
-<script src="/assets/js/category/edit.js"></script>
+<!-- <script src="/assets/js/category/edit.js"></script> -->
+<script type="text/javascript">
+  $(function () { 
+
+    var avatar = <?=json_encode($editingCategory->get('avatar'))?>;//分类图
+    var banner = <?=json_encode($editingCategory->get('banner'))?>;//横幅图
+
+    $('select').select2({
+    });
+    $('form').submit(function (e) {
+      // 渲染回#images控件，用于post传值
+      var avatar_control_value = JSON.parse($('#avatar').val());
+      var new_avatar = images_control_value.concat(avatar);
+      $('#avatar').val(JSON.stringify(new_avatar));
+
+      // 渲染回#detail控件，用于post传值
+      var banner_control_value = JSON.parse($('#banner').val());
+      var new_banner = detail_control_value.concat(banner);
+      $('#banner').val(JSON.stringify(new_banner));
+
+      if ($('#avatar').val() == '') {
+        alert('请上传分类图');
+        e.preventDefault();
+      }
+      $.post({
+        'save',
+        {
+          title:$("#title").val(),
+          category:$("#category").val(),
+          index:$("#index").val(),
+          banner:$("#banner").val(),
+          avatar:$("#avatar").val(),
+        },
+        function (response) {
+           sweetAlert("提示", response.message, "success");
+        }
+      })
+      
+    });
+
+		$(document.body).on('click','.confirm',function(){
+			location.reload(true);
+		})
+  });
+</script>
