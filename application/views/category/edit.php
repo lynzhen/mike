@@ -2,6 +2,9 @@
 <link rel="stylesheet" href="/bower_components/AdminLTE/plugins/select2/select2.min.css">
 <!-- Select2 -->
 <script src="/bower_components/AdminLTE/plugins/select2/select2.full.min.js"></script>
+<!-- sweet alet -->
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
 <style type="text/css">
   .avatar {
     width: 100px;
@@ -120,10 +123,10 @@
           category:$("#category").val(),
           index:$("#index").val(),
           banner:$("#banner").val(),
-          avatar:$("#avatar").val(),
+          avatar:$("#avatar").val()
         },
         function (response) {
-           sweetAlert("提示", response.message, "success");
+          sweetAlert("提示", response.message, "success");
         }
       })
       
