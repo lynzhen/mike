@@ -116,7 +116,7 @@
         alert('请上传分类图');
         e.preventDefault();
       }
-      $.post({
+      $.post(
         'save',
         {
           title:$("#title").val(),
@@ -126,9 +126,10 @@
           avatar:$("#avatar").val()
         },
         function (response) {
+          console.log(response);
           sweetAlert("提示", response.message, "success");
         }
-      })
+      )
       
     });
 
