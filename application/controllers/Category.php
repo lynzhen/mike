@@ -97,17 +97,18 @@ class Category extends AdminController {
 			$object->set("banner", $banner);
 		}
 		// 提示信息 
-		$data['redirect'] = 'index';
+		$data['redirect'] = 'add';
+		var_dump();
 		try {
 			$object->save();
-			$this->echo_json('保存成功');
-			// $data['msg'] = '保存成功';
-			// $data['level'] = 'info';
+			// $this->echo_json('保存成功');
+			$data['msg'] = '保存成功';
+			$data['level'] = 'info';
 			// $this->layout->view('category/msg', $data);
 		} catch (Exception $ex) {
-			$this->echo_json('保存失败');
-			// $data['msg'] = '操作失败';
-			// $data['level'] = 'warning';
+			// $this->echo_json('保存失败');
+			$data['msg'] = '操作失败';
+			$data['level'] = 'warning';
 			// var_dump($ex);
 		} 
 		// finally {
