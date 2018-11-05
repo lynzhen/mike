@@ -126,15 +126,19 @@
             console.log(dataArr);
             
             var thstr = '';
-
-            $.each(dataArr,function(key,item){
+            $.each(dataArr[0],function(key,item){
               thstr += '<th>'+key+'</th>';
             })
-
             console.log(thstr);
-            // for(var i = 0;i<dataArr.length;i++){
-              
-            // }
+            $(".thead").html(thstr);
+
+            var tdstr = '';
+            for(var i = 0;i<dataArr.length;i++){
+              $.each(dataArr[i],function(key,item){
+                tdstr += '<td>'+item+'</td>';
+              })
+            }
+            console.log(tdstr);
             document.getElementById("datalist").innerHTML= JSON.stringify( XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]) );
         };
         if(rABS) {
