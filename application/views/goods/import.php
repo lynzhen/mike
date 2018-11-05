@@ -44,7 +44,7 @@
               </div>              
               <div id="datalist">
                 <div id="list"></div>
-                <table id="data-table">
+                <table id="data-table" class='table table-hover table-striped table-bordered'>
                   <thead class="thead"></thead>
                   <tbody class="tbody"></tbody>
                 </table>
@@ -135,9 +135,11 @@
 
             var tdstr = '';
             for(var i = 0;i<dataArr.length;i++){
+              tdstr += '<tr>';
               $.each(dataArr[i],function(key,item){
                 tdstr += '<td>'+item+'</td>';
               })
+              tdstr += '</tr>';
             }
             console.log(tdstr);
             $("#data-table tbody").html(tdstr);
