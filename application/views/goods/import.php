@@ -41,9 +41,14 @@
                   <input type="file" class="import" name="import" onchange="importf(this)">选择文件
                 </div>
                 <div class="filename"></div>            
+              </div>              
+              <div id="datalist">
+                <table id="data-table">
+                  <thead class="thead"></thead>
+                  <tbody class="tbody"></tbody>
+                </table>
               </div>
             </div>
-            <div id="datalist"></div>
           </div>
           <div class="box-footer">
             <button type="submit" id="submit" class="btn btn-primary">保存</button>
@@ -117,7 +122,17 @@
             }
             //wb.SheetNames[0]是获取Sheets中第一个Sheet的名字
             //wb.Sheets[Sheet名]获取第一个Sheet的数据
-            console.log(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
+            var dataArr = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+            console.log(dataArr);
+            // var thArr = [];
+            var thstr = '';
+            dataArr[0].forEach(funciton(key,value){
+              thstr += '<th>'+key+'</th>';
+            })
+            console.log(thstr);
+            // for(var i = 0;i<dataArr.length;i++){
+              
+            // }
             document.getElementById("datalist").innerHTML= JSON.stringify( XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]) );
         };
         if(rABS) {
