@@ -124,11 +124,13 @@
             //wb.Sheets[Sheet名]获取第一个Sheet的数据
             var dataArr = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
             console.log(dataArr);
-            // var thArr = [];
+            
             var thstr = '';
-            dataArr[0].forEach(funciton(key,value){
+
+            $.each(dataArr,function(key,item){
               thstr += '<th>'+key+'</th>';
             })
+
             console.log(thstr);
             // for(var i = 0;i<dataArr.length;i++){
               
