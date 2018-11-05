@@ -132,24 +132,27 @@
             //wb.Sheets[Sheet名]获取第一个Sheet的数据
             var dataArr = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
             console.log(dataArr);
-            console.log(JSON.stringify(dataArr));
+            // console.log(JSON.stringify(dataArr));
             
             var thstr = '';
             $.each(dataArr[0],function(key,item){
               thstr += '<th>'+key+'</th>';
             })
-            console.log(thstr);
+            // console.log(thstr);
             $("#data-table thead tr").html(thstr);
 
+            var dataObj = {};
             var tdstr = '';
             for(var i = 0;i<dataArr.length;i++){
               tdstr += '<tr>';
               $.each(dataArr[i],function(key,item){
                 tdstr += '<td>'+item+'</td>';
+                dataObj[i].push(item);
               })
               tdstr += '</tr>';
             }
-            console.log(tdstr);
+            // console.log(tdstr);
+            console.log(dataObj);
             $("#data-table tbody").html(tdstr);
         };
         if(rABS) {
