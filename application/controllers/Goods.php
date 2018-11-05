@@ -11,6 +11,13 @@ class Goods extends AdminController {
 		$this->load->model('Category_model', 'category_model');
 	}
 
+	public function import() {
+		// 获取顶级分类
+		// $data['categories'] = $this->category_model->findAll();
+		$data['title'] = '导入商品';
+		$this->layout->view('goods/import', $data);
+	}
+
 	public function add() {
 		// 获取顶级分类
 		$data['categories'] = $this->category_model->findAll();

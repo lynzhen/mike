@@ -17,6 +17,7 @@
 			<div class="box-header with-border">
 				<h3 class="box-title"><?=$title?></h3>
 				<div class="box-tools pull-right">
+					<a class="btn btn-sm btn-primary" href="import">导入表格</a>
 					<a class="btn btn-sm btn-primary" href="add">添加</a>
 				</div><!-- /.box-tools -->
 			</div><!-- /.box-header -->
