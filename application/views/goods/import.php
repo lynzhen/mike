@@ -43,6 +43,7 @@
                 <div class="filename"></div>            
               </div>              
               <div id="datalist">
+                <div id="list"></div>
                 <table id="data-table">
                   <thead class="thead"></thead>
                   <tbody class="tbody"></tbody>
@@ -130,7 +131,7 @@
               thstr += '<th>'+key+'</th>';
             })
             console.log(thstr);
-            $(".thead").html(thstr);
+            $("#data-table thead").html(thstr);
 
             var tdstr = '';
             for(var i = 0;i<dataArr.length;i++){
@@ -139,7 +140,8 @@
               })
             }
             console.log(tdstr);
-            document.getElementById("datalist").innerHTML= JSON.stringify( XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]) );
+            $("#data-table tbody").html(tdstr);
+            document.getElementById("list").innerHTML= JSON.stringify( XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]) );
         };
         if(rABS) {
             reader.readAsArrayBuffer(f);
