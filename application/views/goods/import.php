@@ -45,8 +45,8 @@
               <div id="datalist">
                 <div id="list"></div>
                 <table id="data-table" class='table table-hover table-striped table-bordered'>
-                  <thead class="thead"></thead>
-                  <tbody class="tbody"></tbody>
+                  <thead><tr></tr></thead>
+                  <tbody></tbody>
                 </table>
               </div>
             </div>
@@ -93,6 +93,10 @@
   </section>
   <script src="http://oss.sheetjs.com/js-xlsx/xlsx.full.min.js"></script>        
   <script>
+    function getFileName(o){
+      var pos=o.lastIndexOf("\\");
+      return o.substring(pos+1);  
+    }
     /*
     FileReader共有4种读取方法：
     1.readAsArrayBuffer(file)：将文件读取为ArrayBuffer。
@@ -104,10 +108,13 @@
     var rABS = false; //是否将文件读取为二进制字符串
 
     function importf(obj) {//导入
-        $('.filename').text($('.import').val());//return;
         if(!obj.files) {
             return;
         }
+        // 获取文件的名字
+        var filename = getFileName($('.import').val());
+        $('.filename').text(filename);
+
         var f = obj.files[0];
         var reader = new FileReader();
         reader.onload = function(e) {
@@ -125,13 +132,14 @@
             //wb.Sheets[Sheet名]获取第一个Sheet的数据
             var dataArr = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
             console.log(dataArr);
+            console.log(JSON.stringify(dataArr));
             
             var thstr = '';
             $.each(dataArr[0],function(key,item){
               thstr += '<th>'+key+'</th>';
             })
             console.log(thstr);
-            $("#data-table thead").html(thstr);
+            $("#data-table thead tr").html(thstr);
 
             var tdstr = '';
             for(var i = 0;i<dataArr.length;i++){
@@ -143,7 +151,6 @@
             }
             console.log(tdstr);
             $("#data-table tbody").html(tdstr);
-            document.getElementById("list").innerHTML= JSON.stringify( XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]) );
         };
         if(rABS) {
             reader.readAsArrayBuffer(f);
