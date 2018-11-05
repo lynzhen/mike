@@ -72,6 +72,15 @@
             width: 80px;
             height: 32px;
           }
+          .filename{
+            display: inline-block;
+            line-height: 32px;
+            font-size: 16px;
+            color: #666;
+          }
+          #datalist{
+            padding:10px;
+          }
         </style>
       </div>
     </div>
@@ -84,12 +93,12 @@
     2.readAsBinaryString(file)：将文件读取为二进制字符串
     3.readAsDataURL(file)：将文件读取为Data URL
     4.readAsText(file, [encoding])：将文件读取为文本，encoding缺省值为'UTF-8'
-                  */
+    */
     var wb;//读取完成的数据
     var rABS = false; //是否将文件读取为二进制字符串
 
     function importf(obj) {//导入
-        $('#filename').text($('.import').val());//return;
+        $('.filename').text($('.import').val());//return;
         if(!obj.files) {
             return;
         }
@@ -108,6 +117,7 @@
             }
             //wb.SheetNames[0]是获取Sheets中第一个Sheet的名字
             //wb.Sheets[Sheet名]获取第一个Sheet的数据
+            console.log(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
             document.getElementById("datalist").innerHTML= JSON.stringify( XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]) );
         };
         if(rABS) {
