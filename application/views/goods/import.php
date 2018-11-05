@@ -145,6 +145,7 @@
             var tdstr = '';
             for(var i = 0;i<dataArr.length;i++){
               tdstr += '<tr>';
+              dataObj[i]=[];
               $.each(dataArr[i],function(key,item){
                 tdstr += '<td>'+item+'</td>';
                 dataObj[i].push(item);
