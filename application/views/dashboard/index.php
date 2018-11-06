@@ -41,7 +41,7 @@
             <div class="inner">
               <h3>150</h3>
 
-              <p>New Orders芈客采购平台</p>
+              <p>芈客采购平台</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>

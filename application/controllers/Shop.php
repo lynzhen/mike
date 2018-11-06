@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/AdminController.php';
 
-use \LeanCloud\Object;
+use \LeanCloud\LeanObject;
 use \LeanCloud\Query;
 use \LeanCloud\File;
 

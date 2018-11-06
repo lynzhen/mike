@@ -39,7 +39,7 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav" style="margin-left: 400px;">
 	        <li class="active"><a href="javascript:;">首页<span class="sr-only">(current)</span></a></li>
-	        <li><a id="service" href="http://www.it577.net">关于我们</a></li>
+	        <li><a id="service" href="http://mike.leanapp.cn/manager/login">关于我们</a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -54,7 +54,7 @@
 	</div>
 	<hr class="line"/>
 	<footer>
-		<div class="text-center">&copy;2014-2017 <a href="http://blog.it577.net/" target="_blank">灵犀网络</a> 版权所有</div>
+		<div class="text-center">&copy;2014-2018 <a href="http://mike.leanapp.cn/manager/login" target="_blank">灵犀网络</a> 版权所有</div>
 	</footer>
 	<script>
 		$(function () { 

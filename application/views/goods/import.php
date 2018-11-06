@@ -41,6 +41,13 @@
                   <input type="file" class="import" name="import" onchange="importf(this)">选择文件
                 </div>
                 <div class="filename"></div>            
+              </div>              
+              <div id="datalist">
+                <div id="list"></div>
+                <table id="data-table" class='table table-hover table-striped table-bordered'>
+                  <thead><tr></tr></thead>
+                  <tbody></tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -48,14 +55,7 @@
             <button type="submit" id="submit" class="btn btn-primary">保存</button>
           </div>
           <!-- /.box-footer -->
-        </form>              
-        <div id="datalist">
-          <div id="list"></div>
-          <table id="data-table" class='table table-hover table-striped table-bordered'>
-            <thead><tr></tr></thead>
-            <tbody></tbody>
-          </table>
-        </div>
+        </form>
         <style>
           .importBtn{
             position:relative;
@@ -130,13 +130,10 @@
             }
             //wb.SheetNames[0]是获取Sheets中第一个Sheet的名字
             //wb.Sheets[Sheet名]获取第一个Sheet的数据
-
-            // 获取Excel表里的json格式数据
             var dataArr = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
             console.log(dataArr);
             // console.log(JSON.stringify(dataArr));
             
-            // 创建表头
             var thstr = '';
             $.each(dataArr[0],function(key,item){
               thstr += '<th>'+key+'</th>';
@@ -144,7 +141,6 @@
             // console.log(thstr);
             $("#data-table thead tr").html(thstr);
 
-            // 创建tbody
             var dataObj = {};
             var tdstr = '';
             for(var i = 0;i<dataArr.length;i++){

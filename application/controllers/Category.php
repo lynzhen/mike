@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/AdminController.php';
 
-use \LeanCloud\Object;
+use \LeanCloud\LeanObject;
 use \LeanCloud\Query;
 use \LeanCloud\File;
 
@@ -74,7 +74,7 @@ class Category extends AdminController {
 			// banner图
 		}
 		// save to leanCloud
-		$object = new Object("Category");
+		$object = new LeanObject("Category");
 		$editingId = $this->input->post('editingId');
 		// 默认是新建一个Category对象，如果存在$editingId，则读取
 		if (isset($editingId)) {

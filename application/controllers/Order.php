@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/AdminController.php';
 
-use \LeanCloud\Object;
+use \LeanCloud\LeanObject;
 use \LeanCloud\Query;
 use \LeanCloud\File;
 
@@ -35,7 +35,7 @@ class Order extends AdminController {
 	public function deal() {
 		$objectId = $this->input->get('objectId');
 		$status = $this->input->get('status');
-		$order = Object::create('Order', $objectId);
+		$order = LeanObject::create('Order', $objectId);
 		$order->set('status', (int)$status);
 		$order->save();
 		$data['msg'] = '操作成功';

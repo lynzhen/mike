@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/AdminController.php';
 
-use \LeanCloud\Object;
+use \LeanCloud\LeanObject;
 use \LeanCloud\Query;
 use \LeanCloud\File;
 
@@ -58,11 +58,11 @@ class Goods extends AdminController {
 		// var_dump($avatar);
 		// die();
 		// save to leanCloud
-		$object = new Object("Goods");
+		$object = new LeanObject("Goods");
 		$objectId = $this->input->post('objectId'); 
 		if (isset($objectId)) {
 			// 编辑产品
-			$object = Object::create('Goods', $objectId);
+			$object = LeanObject::create('Goods', $objectId);
 			$data['redirect'] = 'index';
 			$data['msg'] = '修改成功';
 		}
@@ -79,7 +79,7 @@ class Goods extends AdminController {
 		$object->set("barcode", $barcode);
 		$object->set("avatar", $avatar);
 		// 将category转为LeanCloud对象
-		$object->set("category", Object::create('Category', $category));
+		$object->set("category", LeanObject::create('Category', $category));
 		$object->set("isHot", (bool)$isHot);
 		$object->set("isNew", (bool)$isNew);
 		$object->set("images", json_decode($images));
@@ -147,7 +147,7 @@ class Goods extends AdminController {
 	// 删除商品
 	public function delete() {
 		$objectId = $this->input->get('objectId');
-		$goods = Object::create('Goods', $objectId);
+		$goods = LeanObject::create('Goods', $objectId);
 		$goods->destroy();
 		$data['msg'] = '删除成功';
 		$data['level'] = 'info';
