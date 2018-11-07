@@ -323,6 +323,7 @@
             </a>
             <ul class="treeview-menu">
               <li class="<?=uri_string() == 'shop/join' ? 'active' : ''?>"><a href="../shop/join"><i class="fa fa-list-ul"></i> 商家入驻</a></li>
+              <li class="<?=uri_string() == 'shop/address' ? 'active' : ''?>"><a href="../shop/address"><i class="fa fa-sitemap"></i> 商家地址审核</a></li>
               <li class="<?=uri_string() == 'shop/blacklist' ? 'active' : ''?>"><a href="../shop/blacklist"><i class="fa fa-sitemap"></i> 商家黑名单</a></li>
             </ul>
           </li>

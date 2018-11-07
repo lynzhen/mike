@@ -123,4 +123,32 @@ class Shop extends AdminController {
 
 	} 
 
+	// 收货地址审核
+	public function address(){
+		
+		// 获取get参数
+		$pageIndex = $this->input->get('per_page');
+		// 分页查询数据
+		$query = new Query("Address");
+		$query->_include("user");
+		$query->_include("shop");
+		$query->descend("updatedAt");
+		$query->limit($this->config->item('per_page'));
+		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
+		$result = $query->find();
+		// 分页控件
+		// url路径前缀
+		$config['base_url'] = base_url(uri_string());
+		// 总条数
+		$config['total_rows'] = (new Query("Address"))->count();
+		// 初始化
+		$this->pagination->initialize($config); 
+		$data['pagination'] = $this->pagination->create_links();
+		// 渲染
+		$data['result'] = $result;
+		$data['title'] = "商家地址审核";
+		$this->layout->view('shop/address',$data);
+
+	}
+
 }
