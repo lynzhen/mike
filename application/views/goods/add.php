@@ -287,6 +287,7 @@
           return;
         }
        console.log('valid');
+       var 
        $.post(
           'save',
           {
@@ -294,7 +295,7 @@
             category: $('#category').val(),
             singleCode: $('#singleCode').val(),
             suppliers: $('#suppliers').val(),
-            price: floatval($('#price').val()),
+            price: parseFloat($('#price').val()),
             boxnumber: $('#boxnumber').val(),
             FCL: $('#FCL .active input').val(),
             size: $('#size').val(),
