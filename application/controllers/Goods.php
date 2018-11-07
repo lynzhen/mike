@@ -42,6 +42,7 @@ class Goods extends AdminController {
 		$singleCode = $this->input->post('singleCode');
 		$suppliers = $this->input->post('suppliers');
 		$price = $this->input->post('price');
+		$theprice = floatval($price);
 		var_dump($price);die();
 
 		$boxnumber = $this->input->post('boxnumber');
@@ -71,7 +72,7 @@ class Goods extends AdminController {
 		$object->set("title", $title);
 		$object->set("singleCode", $singleCode);
 		$object->set("suppliers", $suppliers);
-		$object->set("price", $price);
+		$object->set("price", $theprice);
 		$object->set("boxnumber", $boxnumber);
 		$object->set("FCL", (bool)$FCL);
 		$object->set("size", $size);

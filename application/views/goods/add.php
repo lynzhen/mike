@@ -287,10 +287,10 @@
           return;
         }
       //  console.log('valid');
-       var theprice = $("#price").val();
-       console.log(typeof(theprice));
-       var floatprice = parseFloat($('#price').val());
-       console.log(typeof(floatprice));
+      //  var theprice = $("#price").val();
+      //  console.log(typeof(theprice));
+      //  var floatprice = parseFloat($('#price').val());
+      //  console.log(typeof(floatprice));
       //  var 
        $.post(
           'save',
