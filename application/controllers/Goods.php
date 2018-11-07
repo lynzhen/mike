@@ -43,7 +43,8 @@ class Goods extends AdminController {
 		$suppliers = $this->input->post('suppliers');
 		$price = $this->input->post('price');
 		$theprice = floatval($price);
-		var_dump($theprice);die();
+		// var_dump($theprice);
+		// die();
 
 		$boxnumber = $this->input->post('boxnumber');
 		$FCL = $this->input->post('FCL');
