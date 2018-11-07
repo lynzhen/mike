@@ -294,7 +294,7 @@
             category: $('#category').val(),
             singleCode: $('#singleCode').val(),
             suppliers: $('#suppliers').val(),
-            price: $('#price').val(),
+            price: parseFloat($('#price').val()),
             boxnumber: $('#boxnumber').val(),
             FCL: $('#FCL .active input').val(),
             size: $('#size').val(),
