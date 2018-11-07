@@ -8,14 +8,15 @@ use LeanCloud\File;
 use LeanCloud\Query;
 use LeanCloud\CloudException;
 use LeanCloud\Storage\SessionStorage;
+use PHPUnit\Framework\TestCase;
 
-class UserTest extends PHPUnit_Framework_TestCase {
+class UserTest extends TestCase {
     public static function setUpBeforeClass() {
         Client::initialize(
-            getenv("LC_APP_ID"),
-            getenv("LC_APP_KEY"),
-            getenv("LC_APP_MASTER_KEY"));
-        Client::useRegion(getenv("LC_API_REGION"));
+            getenv("LEANCLOUD_APP_ID"),
+            getenv("LEANCLOUD_APP_KEY"),
+            getenv("LEANCLOUD_APP_MASTER_KEY"));
+
         Client::setStorage(new SessionStorage());
 
         // Try to make a default user so we can login

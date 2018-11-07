@@ -8,12 +8,12 @@ use LeanCloud\Engine\Cloud;
 use LeanCloud\Storage\CookieStorage;
 
 Client::initialize(
-    getenv("LC_APP_ID"),
-    getenv("LC_APP_KEY"),
-    getenv("LC_APP_MASTER_KEY")
+    getenv("LEANCLOUD_APP_ID"),
+    getenv("LEANCLOUD_APP_KEY"),
+    getenv("LEANCLOUD_APP_MASTER_KEY")
 );
 Client::setStorage(new CookieStorage());
-Client::useRegion(getenv("LC_API_REGION"));
+
 
 // define a function
 Cloud::define("hello", function() {
@@ -58,7 +58,6 @@ Cloud::onVerified("sms", function($user){
 
 Cloud::beforeSave("TestObject", function($obj, $user) {
     $obj->set("__testKey", 42);
-    return $obj;
 });
 
 Cloud::afterSave("TestObject", function($obj, $user) {

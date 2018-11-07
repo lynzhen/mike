@@ -3,13 +3,14 @@
 namespace LeanCloud;
 
 use LeanCloud\Bytes;
-use LeanCloud\Object;
+use LeanCloud\LeanObject;
 use LeanCloud\ACL;
 use LeanCloud\File;
 use LeanCloud\User;
 use LeanCloud\Operation\IOperation;
 use LeanCloud\Storage\IStorage;
 use LeanCloud\Storage\SessionStorage;
+use LeanCloud\AppRouter;
 
 /**
  * Client interfacing with LeanCloud REST API
@@ -23,27 +24,7 @@ class Client {
     /**
      * Client version
      */
-    const VERSION = '0.5.4';
-
-    /**
-     * API Endpoints for Regions
-     *
-     * @var array
-     */
-    private static $api = array(
-        "CN" => "https://api.leancloud.cn",
-        "US" => "https://us-api.leancloud.cn",
-        "E1" => "https://e1-api.leancloud.cn",
-    );
-
-    /**
-     * API Region
-     *
-     * Default to CN
-     *
-     * @var string
-     */
-    private static $apiRegion = "CN";
+    const VERSION = '0.8.0';
 
     /**
      * API Version string
@@ -81,6 +62,13 @@ class Client {
      * @var string
      */
     private static $appMasterKey;
+
+    /**
+     *  Server url
+     *
+     * @var string
+     */
+    private static $serverUrl;
 
     /**
      * Use master key or not
@@ -141,6 +129,7 @@ class Client {
             self::$storage = new SessionStorage();
         }
 
+        self::useProduction(getenv("LEANCLOUD_APP_ENV") == "production");
         User::registerClass();
         Role::registerClass();
     }
@@ -172,16 +161,13 @@ class Client {
     /**
      * Set API region
      *
-     * Available regions are "CN", "US", "E1".
+     * See `LeanCloud\Region` for available regions.
      *
-     * @param string $region
+     * @param mixed $region
      */
     public static function useRegion($region) {
-        $region = strtoupper($region);
-        if (!isset(self::$api[$region])) {
-            throw new \RuntimeException("Invalid API region: {$region}.");
-        }
-        self::$apiRegion = $region;
+        self::assertInitialized();
+        AppRouter::getInstance($this->appId)->setRegion($region);
     }
 
     /**
@@ -214,15 +200,34 @@ class Client {
     }
 
     /**
+     * Set server url
+     *
+     * Explicitly set server url with which this client will communicate.
+     * Url shall be in the form of: `https://api.leancloud.cn` .
+     *
+     * @param string $url
+     */
+    public static function setServerUrl($url) {
+        self::$serverUrl = rtrim($url, "/");
+    }
+
+    /**
      * Get API Endpoint
      *
-     * Build the API endpoint, the returned endpoint will include
-     * version string. For example: https://api.leancloud.cn/1.1 .
+     * The returned endpoint will include version string.
+     * For example: https://api.leancloud.cn/1.1 .
      *
      * @return string
      */
     public static function getAPIEndPoint() {
-        return self::$api[self::$apiRegion] . "/"  . self::$apiVersion;
+        if ($url = self::$serverUrl) {
+            return $url . "/" . self::$apiVersion;
+        } else if ($url = getenv("LEANCLOUD_API_SERVER")) {
+            return $url . "/" . self::$apiVersion;
+        } else {
+            $host = AppRouter::getInstance(self::$appId)->getRoute(AppRouter::API_SERVER_KEY);
+            return "https://{$host}/" . self::$apiVersion;
+        }
     }
 
     /**
@@ -543,12 +548,12 @@ class Client {
     /**
      * Recursively encode value as JSON representation
      *
-     * By default Object will be encoded as pointer, though
+     * By default LeanObject will be encoded as pointer, though
      * `$encoder` could be provided to encode to customized type, such
      * as full `__type` annotated json object. The $encoder must be
-     * name of instance method of Object.
+     * name of instance method of object.
      *
-     * To vaoid infinite loop in the case of circular Object
+     * To avoid infinite loop in the case of circular object
      * references, previously seen objects (`$seen`) are encoded
      * in pointer, even a customized encoder was provided.
      *
@@ -577,7 +582,7 @@ class Client {
                    ($value instanceof \DateTimeImmutable)) {
             return array("__type" => "Date",
                          "iso"    => self::formatDate($value));
-        } else if ($value instanceof Object) {
+        } else if ($value instanceof LeanObject) {
             if ($encoder && $value->hasData() && !in_array($value, $seen)) {
                 $seen[] = $value;
                 return call_user_func(array($value, $encoder), $seen);
@@ -613,7 +618,8 @@ class Client {
         $utc = clone $date;
         $utc->setTimezone(new \DateTimezone("UTC"));
         $iso = $utc->format("Y-m-d\TH:i:s.u");
-        // chops 3 zeros of microseconds to comply with cloud date format
+        // Milliseconds precision is required for server to correctly parse time,
+        // thus we have to chop off last 3 microseconds to milliseconds.
         $iso = substr($iso, 0, 23) . "Z";
         return $iso;
     }
@@ -645,7 +651,9 @@ class Client {
 
         if ($type === "Date") {
             // return time in default time zone
-            return new \DateTime($value["iso"]);
+            $date = new \DateTime($value["iso"]);
+            $date->setTimezone(new \DateTimeZone(date_default_timezone_get()));
+            return $date;
         }
         if ($type === "Bytes") {
             return Bytes::createFromBase64Data($value["base64"]);
@@ -660,7 +668,7 @@ class Client {
         }
         if ($type === "Pointer" || $type === "Object") {
             $id  = isset($value["objectId"]) ? $value["objectId"] : null;
-            $obj = Object::create($value["className"], $id);
+            $obj = LeanObject::create($value["className"], $id);
             unset($value["__type"]);
             unset($value["className"]);
             if (!empty($value)) {

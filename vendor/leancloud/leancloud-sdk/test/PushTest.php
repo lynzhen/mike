@@ -3,15 +3,16 @@
 use LeanCloud\Client;
 use LeanCloud\Query;
 use LeanCloud\Push;
+use PHPUnit\Framework\TestCase;
 
-class PushTest extends PHPUnit_Framework_TestCase {
+class PushTest extends TestCase {
 
     public function setUp() {
         Client::initialize(
-            getenv("LC_APP_ID"),
-            getenv("LC_APP_KEY"),
-            getenv("LC_APP_MASTER_KEY"));
-        Client::useRegion(getenv("LC_API_REGION"));
+            getenv("LEANCLOUD_APP_ID"),
+            getenv("LEANCLOUD_APP_KEY"),
+            getenv("LEANCLOUD_APP_MASTER_KEY"));
+
         Client::useMasterKey(false);
     }
 
@@ -97,7 +98,8 @@ class PushTest extends PHPUnit_Framework_TestCase {
         $time = new DateTime();
         $push->setPushTime($time);
         $out = $push->encode();
-        $this->assertEquals($time, new DateTime($out["push_time"]));
+        $time2 = new DateTime($out["push_time"]);
+        $this->assertEquals($time->getTimestamp(), $time2->getTimestamp());
     }
 
     public function testSetExpirationInterval() {
@@ -116,7 +118,8 @@ class PushTest extends PHPUnit_Framework_TestCase {
         $date = new DateTime();
         $push->setExpirationTime($date);
         $out = $push->encode();
-        $this->assertEquals($date, new DateTime($out["expiration_time"]));
+        $date2 = new DateTime($out["expiration_time"]);
+        $this->assertEquals($date->getTimestamp(), $date2->getTimestamp());
     }
 
     public function testSetWhere() {
