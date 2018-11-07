@@ -287,7 +287,7 @@
           return;
         }
        console.log('valid');
-       var 
+      //  var 
        $.post(
           'save',
           {
