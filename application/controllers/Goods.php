@@ -42,6 +42,8 @@ class Goods extends AdminController {
 		$singleCode = $this->input->post('singleCode');
 		$suppliers = $this->input->post('suppliers');
 		$price = $this->input->post('price');
+		var_dump($price);die();
+
 		$boxnumber = $this->input->post('boxnumber');
 		$FCL = $this->input->post('FCL');
 		$size = $this->input->post('size');

@@ -286,7 +286,11 @@
           sweetAlert("提示", "请上传描述图", "error");
           return;
         }
-       console.log('valid');
+      //  console.log('valid');
+       var theprice = $("#price").val();
+       console.log(typeof(theprice));
+       var floatprice = parseFloat($('#price').val());
+       console.log(typeof(floatprice));
       //  var 
        $.post(
           'save',
