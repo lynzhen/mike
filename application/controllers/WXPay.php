@@ -15,7 +15,7 @@ class WXPay extends BaseController {
 		$input->SetOut_trade_no($this->input->post('tradeNo'));
 		// 		费用应该是由小程序端传给服务端的，在用户下单时告知服务端应付金额，demo中取值是1，即1分钱
 		$input->SetTotal_fee($this->input->post('totalFee'));
-		$input->SetNotify_url("https://leancloudmike.leanapp.cn/WXPay/notify");
+		$input->SetNotify_url("https://mike.leanapp.cn/WXPay/notify");
 		$input->SetTrade_type("JSAPI");
 		// 		由小程序端传给服务端
 		$input->SetOpenid($this->input->post('openid'));
