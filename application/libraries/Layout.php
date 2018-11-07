@@ -6,7 +6,7 @@ class Layout {
     var $obj; 
     var $layout; 
     
-    function Layout($layout = "layout_main") { 
+    function Layouts($layout = "layout_main") { 
         $this->obj =& get_instance(); 
         $this->layout = $layout; 
     } 
