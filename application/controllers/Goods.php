@@ -29,7 +29,7 @@ class Goods extends AdminController {
 		// 获取顶级分类
 		$data['categories'] = $this->category_model->findAll();
 		$objectId = $this->input->get('objectId');
-		$query = new Query('Goods');
+		$query = new Query('Mike_Goods');
 		$goods = $query->get($objectId);
 		$data['goods'] = $goods;
 		$this->layout->view('goods/edit', $data);
@@ -62,11 +62,11 @@ class Goods extends AdminController {
 		// var_dump($avatar);
 		// die();
 		// save to leanCloud
-		$object = new LeanObject("Goods");
+		$object = new LeanObject("Mike_Goods");
 		$objectId = $this->input->post('objectId'); 
 		if (isset($objectId)) {
 			// 编辑产品
-			$object = LeanObject::create('Goods', $objectId);
+			$object = LeanObject::create('Mike_Goods', $objectId);
 			$data['redirect'] = 'index';
 			$data['msg'] = '修改成功';
 		}
@@ -128,8 +128,8 @@ class Goods extends AdminController {
 		// 获取get参数
 		$pageIndex = $this->input->get('per_page');
 		// 分页查询数据
-		$query = new Query("Goods");
-		$query->_include("category");
+		$query = new Query("Mike_HotSale");
+		// $query->_include("category");
 		$query->descend("updatedAt");
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
@@ -138,7 +138,7 @@ class Goods extends AdminController {
 		// url路径前缀
 		$config['base_url'] = base_url(uri_string());
 		// 总条数
-		$config['total_rows'] = (new Query("Goods"))->count();
+		$config['total_rows'] = (new Query("Mike_HotSale"))->count();
 		// 初始化
 		$this->pagination->initialize($config); 
 		$data['pagination'] = $this->pagination->create_links();
@@ -151,7 +151,7 @@ class Goods extends AdminController {
 	// 删除商品
 	public function delete() {
 		$objectId = $this->input->get('objectId');
-		$goods = LeanObject::create('Goods', $objectId);
+		$goods = LeanObject::create('Mike_Goods', $objectId);
 		$goods->destroy();
 		$data['msg'] = '删除成功';
 		$data['level'] = 'info';

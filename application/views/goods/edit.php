@@ -36,121 +36,66 @@
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题" value="<?=$goods->get('title')?>">
+                    <input type="text" class="form-control" name="title" id="title" value="<?=$goods->get('MC')?>">
+                  </div>
+                </div>                
+                <div class="form-group">
+                  <label for="singleCode" class="col-sm-2 control-label">长名称</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="longtitle" id="longtitle" value="<?=$goods->get('LongMc')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">分类</label>
+                  <label for="suppliers" class="col-sm-2 control-label">商品编号</label>
                   <div class="col-sm-8">
-                    <select class="form-control select2" style="width: 100%;" name="category" id="category">
-                      <option></option>
-                      <?php foreach ($categories as $category):?>
-                        <optgroup label="<?=$category->get('title')?>">
-                          <?php foreach ($category->children as $child):?>
-                            <option value="<?=$child->get('objectId')?>" <?=$goods->get('category')->get('objectId') == $child->get('objectId') ? 'selected' : ''?>><?=$child->get('title')?></option>
-                          <?php endforeach;?>
-                        </optgroup>
-                      <?php endforeach;?>
-                    </select>
-                  </div>
-                </div>
-                <!-- <div class="form-group">
-                  <label for="price" class="col-sm-2 control-label">价格</label>
-                  <div class="col-sm-8">
-                    <input type="number" class="form-control" name="price" id="price" placeholder="0.0" value="<?=$goods->get('price')?>">
-                  </div>
-                </div> -->
+                    <input type="text" class="form-control" name="spno" id="spno" value="<?=$goods->get('spno')?>">
+                  </di
                 <div class="form-group">
-                  <label for="singleCode" class="col-sm-2 control-label">单瓶条码</label>
+                  <label for="suppliers" class="col-sm-2 control-label">商品规格</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="singleCode" id="singleCode" placeholder="单瓶条码" value="<?=$goods->get('singleCode')?>">
+                    <input type="text" class="form-control" name="spgg" id="spgg" value="<?=$goods->get('SPGG')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="suppliers" class="col-sm-2 control-label">供货商名称</label>
+                  <label for="price" class="col-sm-2 control-label">单位</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="suppliers" id="suppliers" placeholder="供货商名称" value="<?=$goods->get('suppliers')?>">
+                    <input type="text" class="form-control" name="dw" id="dw" value="<?=$goods->get('BZDW')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="price" class="col-sm-2 control-label">进货价</label>
+                  <label for="boxnumber" class="col-sm-2 control-label">零售价</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="price" id="price" placeholder="进货价" value="<?=$goods->get('price')?>">
+                    <input type="text" class="form-control" name="price" id="price" value="<?=$goods->get('LSJ')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="boxnumber" class="col-sm-2 control-label">箱入数</label>
+                  <label for="size" class="col-sm-2 control-label">库存</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="boxnumber" id="boxnumber" placeholder="箱入数" value="<?=$goods->get('boxnumber')?>">
+                    <input type="text" class="form-control" name="dssl" id="dssl" value="<?=$goods->get('DSSL')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="FCL" class="col-sm-2 control-label">必须整箱订货</label>
+                  <label for="boxprice" class="col-sm-2 control-label">批发价</label>
                   <div class="col-sm-8">
-                    <div class="btn-group" id="FCL" data-toggle="buttons">
-                      <label class="btn btn-default <?=$goods->get('FCL') == true ? 'active' : ''?>">
-                        <input type="radio" name="FCL" value="1" id="option1" autocomplete="off" checked> 是
-                      </label>
-                      <label class="btn btn-default <?=$goods->get('FCL') == false ? 'active' : ''?>">
-                        <input type="radio" name="FCL" value="0" id="option3" autocomplete="off"> 否
-                      </label>
-                    </div>
+                    <input type="text" class="form-control" name="pfj" id="pfj" value="<?=$goods->get('PFJ')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="size" class="col-sm-2 control-label">箱单位</label>
+                  <label for="singleTP" class="col-sm-2 control-label">条码</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="size" id="size" placeholder="箱单位" value="<?=$goods->get('size')?>">
+                    <input type="text" class="form-control" name="bz" id="bz" value="<?=$goods->get('bz')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="boxprice" class="col-sm-2 control-label">箱价格</label>
+                  <label for="singleSize" class="col-sm-2 control-label">供货商号</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="boxprice" id="boxprice" placeholder="箱价格" value="<?=$goods->get('boxprice')?>">
+                    <input type="text" class="form-control" name="mrcs" id="mrcs" value="<?=$goods->get('Mrcs')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="singleTP" class="col-sm-2 control-label">单瓶商品规格</label>
+                  <label for="barcode" class="col-sm-2 control-label">柜台存货数</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="singleTP" id="singleTP" placeholder="单瓶商品规格" value="<?=$goods->get('singleTP')?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="singleSize" class="col-sm-2 control-label">单瓶单位</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" name="singleSize" id="singleSize" placeholder="单瓶单位" value="<?=$goods->get('singleSize')?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="barcode" class="col-sm-2 control-label">条码</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" name="barcode" id="barcode" placeholder="条码" value="<?=$goods->get('barcode')?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="isHot" class="col-sm-2 control-label">推荐</label>
-                  <div class="col-sm-8">
-                    <div class="btn-group" id="isHot" data-toggle="buttons">
-                      <label class="btn btn-default <?=$goods->get('isHot') == true ? 'active' : ''?>">
-                        <input type="radio" name="isHot" value="1" autocomplete="off"> 推荐
-                      </label>
-                      <label class="btn btn-default <?=$goods->get('isHot') == false ? 'active' : ''?>">
-                        <input type="radio" name="isHot" value="0" autocomplete="off"> 不推荐
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="isNew" class="col-sm-2 control-label">新品</label>
-                  <div class="col-sm-8">
-                    <div class="btn-group" id="isNew" data-toggle="buttons">
-                      <label class="btn btn-default  <?=$goods->get('isNew') == true ? 'active' : ''?>">
-                        <input type="radio" name="isNew" value="1" autocomplete="off"> 新品
-                      </label>
-                      <label class="btn btn-default <?=$goods->get('isNew') == false ? 'active' : ''?>">
-                        <input type="radio" name="isNew" value="0" autocomplete="off"> 非新品
-                      </label>
-                    </div>
+                    <input type="text" class="form-control" name="kcsl" id="kcsl" value="<?=$goods->get('KCSL')?>">
                   </div>
                 </div>
                 <!-- upload images -->
@@ -286,19 +231,19 @@
         {
           objectId: $('#objectId').val(),
           title: $('#title').val(),
-          category: $('#category').val(),
-          singleCode: $('#singleCode').val(),
-          suppliers: $('#suppliers').val(),
-          price: $('#price').val(),
-          boxnumber: $('#boxnumber').val(),
-          FCL: $('#FCL .active input').val(),
-          size: $('#size').val(),
-          boxprice: $('#boxprice').val(),
-          singleTP: $('#singleTP').val(),
-          singleSize: $('#singleSize').val(),
-          barcode: $('#barcode').val(),
-          isNew: $('#isNew .active input').val(),
-          isHot: $('#isHot .active input').val(),
+          longtitle: $('#longtitle').val(),
+          spgg: $('#spgg').val(),
+          spno: $('#spno').val(),
+          bzdw: $('#bzdw').val(),
+          lsj: $('#lsj').val(),
+          dssl: $('#dssl').val(),
+          pfj: $('#pfj').val(),
+          bz: $('#bz').val(),
+          mrcs: $('#mrcs').val(),
+          kcsl: $('#kcsl').val(),
+          jhj: $('#jhj').val(),
+          // isNew: $('#isNew .active input').val(),
+          // isHot: $('#isHot .active input').val(),
           images: $('#images').val(),
           detail: $('#detail').val()
         },
