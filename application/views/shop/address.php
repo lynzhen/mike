@@ -36,8 +36,8 @@
 					<tbody>
 						<!-- <?php foreach($result as $item):?> -->
 							<tr>
-								<td><?=$item->get('shopname')?></td>
-								<td><?=$item->get('provice')?><?=$item->get('city')?><?=$item->get('town')?><?=$item->get('region')?></td>
+								<td><?=$item->get('nickName')?></td>
+								<td><?=$item->get('province')?><?=$item->get('city')?><?=$item->get('town')?><?=$item->get('region')?></td>
 								<td><?=$item->get('detail')?></td>
 								<td><?=$item->get('realname')?></td>
 								<td><?=$item->get('mobile')?></td>
