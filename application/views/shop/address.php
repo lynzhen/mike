@@ -29,6 +29,7 @@
 							<th>详细收货地址</th>
 							<th>商家联系人</th>
 							<th>联系电话</th>
+							<th>提交时间</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -40,6 +41,7 @@
 								<td><?=$item->get('detail')?></td>
 								<td><?=$item->get('realname')?></td>
 								<td><?=$item->get('mobile')?></td>
+								<td><?=$item->get('updateAt')?></td>
 								<td><button type="button" class="btn btn-primary >" href="">通过</button></td>
 							</tr>
 						<!-- <?php endforeach;?> -->

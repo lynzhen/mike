@@ -50,6 +50,7 @@ class Shop extends AdminController {
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
+		var_dump($result);
 		// 分页控件
 		// url路径前缀
 		$config['base_url'] = base_url(uri_string());
@@ -131,7 +132,7 @@ class Shop extends AdminController {
 		// 分页查询数据
 		$query = new Query("Address");
 		$query->_include("user");
-		$query->_include("shop");
+		// $query->_include("shop");
 		$query->descend("updatedAt");
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
