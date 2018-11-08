@@ -133,7 +133,7 @@ class Shop extends AdminController {
 		$query->_include("user");
 		$result = $query->find();
 		var_dump($result);
-		var_dump($result[objectId]);
+		var_dump($result[0][objecId]);
 		die();
 		// $query->_include("shop");
 		$query->descend("updatedAt");
