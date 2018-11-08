@@ -49,7 +49,8 @@
                   <label for="suppliers" class="col-sm-2 control-label">商品编号</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="spno" id="spno" value="<?=$goods->get('spno')?>">
-                  </di
+                  </div>
+                </div>
                 <div class="form-group">
                   <label for="suppliers" class="col-sm-2 control-label">商品规格</label>
                   <div class="col-sm-8">
