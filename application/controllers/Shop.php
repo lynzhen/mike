@@ -132,15 +132,12 @@ class Shop extends AdminController {
 		$query = new Query("Address");
 		$query->_include("user");
 		$result = $query->find();
-		var_dump($result);
-		var_dump($result[0][objecId]);
-		die();
 		// $query->_include("shop");
 		$query->descend("updatedAt");
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
-		var_dump($result);die();
+		// var_dump($result);die();
 		// 分页控件
 		// url路径前缀
 		$config['base_url'] = base_url(uri_string());

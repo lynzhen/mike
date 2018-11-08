@@ -27,17 +27,18 @@
 						<tr>
 							<th>缩略图</th>
 							<th>名称</th>
-							<th>分类</th>
-							<th>单瓶条码</th>
-							<th>供货商名称</th>
-							<th>进货价</th>
-							<th>箱入数</th>
-							<th>必须整箱</th>
-							<th>箱单位</th>
-							<th>箱价格</th>
-							<th>单瓶商品规格</th>
+							<th>长名称</th>
+							<th>分类号</th>
+							<th>商品规格</th>
+							<th>商品编号</th>
 							<th>单位</th>
+							<th>零售价</th>
+							<th>库存</th>
+							<th>批发价</th>
 							<th>条码</th>
+							<th>供货商号</th>
+							<th>柜台存货数</th>
+							<th>进货价</th>
 							<th>修改</th>
 							<th>删除</th>
 						</tr>
@@ -46,20 +47,21 @@
 						<?php foreach($result as $item):?>
 							<tr>
 								<td><img width="40" height="40" src="<?=$item->get('avatar')?>" class="popover-show" data-container="body" data-placement="bottom" data-toggle="popover" data-html="true" data-trigger="hover focus click" data-content="<img src='<?=$item->get('avatar')?>' />" /></td>
-								<td><?=$item->get('title')?></td>
-								<td><?=$item->get('category') == NULL ? '' : $item->get('category')->get('title')?></td>
-								<td><?=$item->get('singleCode')?></td>
-								<td><?=$item->get('suppliers')?></td>
-								<td><?=$item->get('price')?></td>
-								<td><?=$item->get('boxnumber')?></td>
-								<td><?=$item->get('FCL') == true ? '否' : '是' ?></td>
-								<td><?=$item->get('size')?></td>
-								<td><?=$item->get('boxprice')?></td>
-								<td><?=$item->get('singleTP')?></td>
-								<td><?=$item->get('singleSize')?></td>
-								<td><?=$item->get('barcode')?></td>
-								<td><a type="button" class="btn btn-primary <?=$item->get('isLock') == true ? ' disabled' : ''?>" href="edit?objectId=<?=$item->get('objectId')?>">修改</a></td>
-								<td><a type="button" class="btn btn-danger delete <?=$item->get('isLock') == true ? ' disabled' : ''?>" href="delete?objectId=<?=$item->get('objectId')?>">删除</a></td>
+								<td><?=$item->get('MC')?></td>
+								<td><?=$item->get('LongMc')?></td>
+								<td><?=$item->get('FLNO')?></td>
+								<td><?=$item->get('SPGG')?></td>
+								<td><?=$item->get('spno')?></td>
+								<td><?=$item->get('BZDW')?></td>
+								<td><?=$item->get('LSJ')?></td>
+								<td><?=$item->get('DSSL')?></td>
+								<td><?=$item->get('PFJ')?></td>
+								<td><?=$item->get('bz')?></td>
+								<td><?=$item->get('Mrcs')?></td>
+								<td><?=$item->get('KCSL')?></td>
+								<td><?=$item->get('JHJ')?></td>
+								<td><a type="button" class="btn btn-primary" href="edit?objectId=<?=$item->get('objectId')?>">修改</a></td>
+								<td><a type="button" class="btn btn-danger delete" href="delete?objectId=<?=$item->get('objectId')?>">删除</a></td>
 							</tr>
 						<?php endforeach;?>
 					</tbody>
