@@ -26,18 +26,11 @@
 						<tr>
 							<th>缩略图</th>
 							<th>名称</th>
-							<th>长名称</th>
-							<th>分类号</th>
 							<th>商品规格</th>
 							<th>商品编号</th>
 							<th>单位</th>
 							<th>零售价</th>
-							<th>库存</th>
-							<th>批发价</th>
 							<th>条码</th>
-							<th>供货商号</th>
-							<th>柜台存货数</th>
-							<th>进货价</th>
 							<th>修改</th>
 							<th>删除</th>
 						</tr>
@@ -46,19 +39,12 @@
 						<?php foreach($result as $item):?>
 							<tr>
 								<td><img width="40" height="40" src="<?=$item->get('avatar')?>" class="popover-show" data-container="body" data-placement="bottom" data-toggle="popover" data-html="true" data-trigger="hover focus click" data-content="<img src='<?=$item->get('avatar')?>' />" /></td>
-								<td><?=$item->get('MC')?></td>
-								<td><?=$item->get('LongMc')?></td>
-								<td><?=$item->get('FLNO')?></td>
-								<td><?=$item->get('SPGG')?></td>
+								<td><?=$item->get('ms')?></td>
+								<td><?=$item->get('spgg')?></td>
 								<td><?=$item->get('spno')?></td>
-								<td><?=$item->get('BZDW')?></td>
-								<td><?=$item->get('LSJ')?></td>
-								<td><?=$item->get('DSSL')?></td>
-								<td><?=$item->get('PFJ')?></td>
+								<td><?=$item->get('dw')?></td>
+								<td><?=$item->get('dysl')?></td>
 								<td><?=$item->get('bz')?></td>
-								<td><?=$item->get('Mrcs')?></td>
-								<td><?=$item->get('KCSL')?></td>
-								<td><?=$item->get('JHJ')?></td>
 								<td><a type="button" class="btn btn-primary" href="edit?objectId=<?=$item->get('objectId')?>">修改</a></td>
 								<td><a type="button" class="btn btn-danger delete" href="delete?objectId=<?=$item->get('objectId')?>">删除</a></td>
 							</tr>
