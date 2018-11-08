@@ -131,6 +131,10 @@ class Shop extends AdminController {
 		// 分页查询数据
 		$query = new Query("Address");
 		$query->_include("user");
+		$result = $query->find();
+		var_dump($result);
+		var_dump($result[objectId]);
+		die();
 		// $query->_include("shop");
 		$query->descend("updatedAt");
 		$query->limit($this->config->item('per_page'));
