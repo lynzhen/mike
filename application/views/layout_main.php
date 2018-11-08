@@ -301,7 +301,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
           <li class="header">系统菜单</li>
-          <li class="<?=strpos(uri_string(), 'goods') !== false || strpos(uri_string(), 'category') !== false ? 'active' : ''?> treeview">
+          <li class="<?=strpos(uri_string(), 'goods') !== false || strpos(uri_string(), 'goods') !== false ? 'active' : ''?> treeview">
             <a href="#">
               <i class="fa fa-dashboard"></i> <span>商品管理</span>
               <span class="pull-right-container">
@@ -314,7 +314,7 @@
               <li class="<?=uri_string() == 'goods/hot' ? 'active' : ''?>"><a href="../category/index"><i class="fa fa-sitemap"></i> 商品分类</a></li>
             </ul>
           </li>
-          <li class="<?=strpos(uri_string(), 'shop') !== false || strpos(uri_string(), 'category') !== false ? 'active' : ''?> treeview">
+          <li class="<?=strpos(uri_string(), 'shop') !== false || strpos(uri_string(), 'shop') !== false ? 'active' : ''?> treeview">
             <a href="#">
               <i class="fa fa-dashboard"></i> <span>商家管理</span>
               <span class="pull-right-container">
@@ -327,7 +327,18 @@
               <li class="<?=uri_string() == 'shop/blacklist' ? 'active' : ''?>"><a href="../shop/blacklist"><i class="fa fa-sitemap"></i> 商家黑名单</a></li>
             </ul>
           </li>
-          <li class="<?=strpos(uri_string(), 'power') !== false || strpos(uri_string(), 'category') !== false ? 'active' : ''?> treeview">
+          <li class="<?=strpos(uri_string(), 'mikeshop') !== false || strpos(uri_string(), 'mikeshop') !== false ? 'active' : ''?> treeview">
+            <a href="#">
+              <i class="fa fa-dashboard"></i> <span>芈客门店</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="<?=uri_string() == 'mikeshop/index' ? 'active' : ''?>"><a href="../mikeshop/index"><i class="fa fa-list-ul"></i> 门店列表</a></li>
+            </ul>
+          </li>
+          <li class="<?=strpos(uri_string(), 'power') !== false || strpos(uri_string(), 'power') !== false ? 'active' : ''?> treeview">
             <a href="#">
               <i class="fa fa-dashboard"></i> <span>权限管理</span>
               <span class="pull-right-container">
@@ -340,7 +351,7 @@
               <li class="<?=uri_string() == 'power/staff' ? 'active' : ''?>"><a href="../power/staff"><i class="fa fa-sitemap"></i> 人员管理</a></li>
             </ul>
           </li>
-          <li class="<?=strpos(uri_string(), 'report') !== false || strpos(uri_string(), 'category') !== false ? 'active' : ''?> treeview">
+          <li class="<?=strpos(uri_string(), 'report') !== false || strpos(uri_string(), 'report') !== false ? 'active' : ''?> treeview">
             <a href="#">
               <i class="fa fa-dashboard"></i> <span>报表管理</span>
               <span class="pull-right-container">
@@ -353,7 +364,7 @@
               <li class="<?=uri_string() == 'report/stock' ? 'active' : ''?>"><a href="../report/stock"><i class="fa fa-sitemap"></i> 库存报表</a></li>
             </ul>
           </li>
-          <li class="<?=strpos(uri_string(), 'warehouse') !== false || strpos(uri_string(), 'category') !== false ? 'active' : ''?> treeview">
+          <li class="<?=strpos(uri_string(), 'warehouse') !== false || strpos(uri_string(), 'warehouse') !== false ? 'active' : ''?> treeview">
             <a href="#">
               <i class="fa fa-dashboard"></i> <span>仓库管理</span>
               <span class="pull-right-container">
