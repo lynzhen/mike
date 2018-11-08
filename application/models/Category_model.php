@@ -11,6 +11,7 @@ class Category_model extends CI_Model {
 		$categoris = $query->find();
 		// 2. sub
 		foreach ($categoris as $category) {
+			var_dump($category[id]);
 			$query->equalTo('fid', $category);
 			$children = $query->find();
 			// 不必使用转数组再动态添加成员属性，$category = $category->toJSON();object同样可以实现操作
