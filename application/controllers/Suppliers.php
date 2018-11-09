@@ -50,7 +50,7 @@ class Suppliers extends AdminController {
 		// 渲染
 		$data['suppliers'] = $suppliers;
 		$data['title'] = "门店列表";
-		$this->layout->view('mikeshop/edit',$data);
+		$this->layout->view('suppliers/edit',$data);
 	} 
 
 	// 保存门店信息
