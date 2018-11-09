@@ -163,14 +163,11 @@ class Shop extends AdminController {
 				if($getuser === NULL){
 
 				}else{
-					var_dump($getuser->get('_data'));
-					var_dump($getuser->get('objectId'));
-					// $shopuser = .objectId;
-					// echo $userid .','.$shopuser;
-					// if($userid == $shopuser){
-					// 	$shopname = $shopobj->get('shopname');
-					// 	array_push($shopArr,$shopname);
-					// }
+					$shopuser = $getuser->get('objectId');
+					if($userid == $shopuser){
+						$shopname = $shopobj->get('shopname');
+						array_push($shopArr,$shopname);
+					}
 				}
 			}
 		}
