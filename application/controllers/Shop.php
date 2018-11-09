@@ -171,14 +171,15 @@ class Shop extends AdminController {
 				}
 			}
 		}
-		echo 'Shop数组';
-		var_dump($shopArr);
+		// echo 'Shop数组';
+		// var_dump($shopArr);
 
 
-		// $querys = new Query("Address");
-		// $results = $querys->find();
+		// foreach ($result as $value) {
+			
+		// }
 
-		// var_dump($result);die();
+		var_dump($result);
 		// 分页控件
 		// url路径前缀
 		$config['base_url'] = base_url(uri_string());
