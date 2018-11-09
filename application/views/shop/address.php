@@ -36,7 +36,7 @@
 					<tbody>
 						<!-- <?php foreach($result as $item):?> -->
 							<tr>
-								<td><?=$item->get('user')?></td>
+								<td><?=$item->get('')?></td>
 								<td><?=$item->get('province')?><?=$item->get('city')?><?=$item->get('town')?><?=$item->get('region')?></td>
 								<td><?=$item->get('detail')?></td>
 								<td><?=$item->get('realname')?></td>
