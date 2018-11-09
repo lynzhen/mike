@@ -336,6 +336,18 @@
             </a>
             <ul class="treeview-menu">
               <li class="<?=uri_string() == 'mikeshop/index' ? 'active' : ''?>"><a href="../mikeshop/index"><i class="fa fa-list-ul"></i> 门店列表</a></li>
+              <li class="<?=uri_string() == 'mikeshop/suppliers' ? 'active' : ''?>"><a href="../mikeshop/suppliers"><i class="fa fa-list-ul"></i> 供应商列表</a></li>
+            </ul>
+          </li>
+          <li class="<?=strpos(uri_string(), 'suppliers') !== false || strpos(uri_string(), 'suppliers') !== false ? 'active' : ''?> treeview">
+            <a href="#">
+              <i class="fa fa-dashboard"></i> <span>供应商</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="<?=uri_string() == 'suppliers/index' ? 'active' : ''?>"><a href="../suppliers/index"><i class="fa fa-list-ul"></i> 供应商列表</a></li>
             </ul>
           </li>
           <li class="<?=strpos(uri_string(), 'power') !== false || strpos(uri_string(), 'power') !== false ? 'active' : ''?> treeview">

@@ -15,7 +15,7 @@
   <section class="content-header">
     <ol class="breadcrumb">
       <li><a href="../dashboard/index"><i class="fa fa-dashboard"></i> 首页</a></li>
-      <li class="active">门店管理</li>
+      <li class="active">供应商管理</li>
     </ol>
   </section>
   <!-- Main content -->
@@ -34,21 +34,51 @@
                 <!-- objectId for goods id -->
                 <input type="hidden" name="objectId" value="<?=$mikeshop->get('objectId')?>" id="objectId">
                 <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">门店名称</label>
+                  <label for="title" class="col-sm-2 control-label">供应商编号</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="mc" id="mc" value="<?=$mikeshop->get('mc')?>">
+                    <input type="text" class="form-control" name="cno" id="cno" value="<?=$mikeshop->get('cno')?>">
                   </div>
                 </div>                
                 <div class="form-group">
-                  <label for="singleCode" class="col-sm-2 control-label">门店地址</label>
+                  <label for="singleCode" class="col-sm-2 control-label">供应商名称</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="address" id="address" value="<?=$mikeshop->get('address')?>">
+                    <input type="text" class="form-control" name="mc" id="mc" value="<?=$mikeshop->get('mc')?>">
+                  </div>
+                </div>            
+                <div class="form-group">
+                  <label for="singleCode" class="col-sm-2 control-label">名称缩写</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="bzbz1" id="bzbz1" value="<?=$mikeshop->get('bzbz1')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="suppliers" class="col-sm-2 control-label">门店编码</label>
+                  <label for="suppliers" class="col-sm-2 control-label">供应商分组</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="zcpsc" id="zcpsc" value="<?=$mikeshop->get('zcpsc')?>">
+                    <input type="text" class="form-control" name="groupabc" id="groupabc" value="<?=$mikeshop->get('groupabc')?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="suppliers" class="col-sm-2 control-label">联系人</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="lxr" id="lxr" value="<?=$mikeshop->get('lxr')?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="suppliers" class="col-sm-2 control-label">联系人电话</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="lxrdh" id="lxrdh" value="<?=$mikeshop->get('lxrdh')?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="suppliers" class="col-sm-2 control-label">支付天数</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="payoutday" id="payoutday" value="<?=$mikeshop->get('payoutday')?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="suppliers" class="col-sm-2 control-label">日期限制</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="qhddaylimit" id="qhddaylimit" value="<?=$mikeshop->get('qhddaylimit')?>">
                   </div>
                 </div>
                 <!-- /upload -->
@@ -70,8 +100,13 @@
         {
           objectId: $('#objectId').val(),
           mc: $('#mc').val(),
-          address: $('#address').val(),
-          zcpsc: $('#zcpsc').val()
+          bzbz1: $('#bzbz1').val(),
+          zcpsc: $('#zcpsc').val(),
+          groupabc: $('#groupabc').val(),
+          lxr: $('#lxr').val(),
+          lxrdh: $('#lxrdh').val(),
+          payoutday: $('#payoutday').val(),
+          qhddaylimit: $('#qhddaylimit').val()
         },
         function (response) {
            sweetAlert("提示", response.message, "success");

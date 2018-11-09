@@ -35,18 +35,30 @@
 				<table class="table table-hover table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>门店名称</th>
-							<th>门店地址</th>
-							<th>门店编码</th>
+							<th>供应商编号</th>
+							<th>供应商名称</th>
+							<th>名称缩写</th>
+							<th>供应商分组</th>
+							<th>联系人</th>
+							<th>联系人电话</th>
+							<th>进货总金额</th>
+							<th>支付天数</th>
+							<th>日期限制</th>
 							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody>
 						<!-- <?php foreach($result as $item):?> -->
 							<tr>
+								<td><?=$item->get('cno')?></td>
 								<td><?=$item->get('mc')?></td>
-								<td><?=$item->get('address')?></td>
-								<td><?=$item->get('zspsc')?></td>
+								<td><?=$item->get('bzbz1')?></td>
+								<td><?=$item->get('groupabc')?></td>
+								<td><?=$item->get('lxr')?></td>
+								<td><?=$item->get('lxrdh')?></td>
+								<td><?=$item->get('toalwjje')?></td>
+								<td><?=$item->get('payoutday')?></td>
+								<td><?=$item->get('qhddaylimit')?></td>
 								<td><a class="btn btn-primary" href='edit?id=<?=$item->get('objectId')?>'>编辑</a></td>
 							</tr>
 						<!-- <?php endforeach;?> -->
@@ -63,7 +75,7 @@
 <script>
 	$(function () { 
 		$("[data-toggletoggle='popover']").popover();
-		
+
 
 		$(document.body).on('click','.confirm',function(){
 			location.reload(true);
