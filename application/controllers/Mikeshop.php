@@ -15,26 +15,25 @@ class Mikeshop extends AdminController {
 	public function index(){
 		
 		// 获取get参数
-		// $pageIndex = $this->input->get('per_page');
+		$pageIndex = $this->input->get('per_page');
 		// 分页查询数据
 		$query = new Query("Mike_Shop");
 		$query->descend("updatedAt");
-		// $query->limit($this->config->item('per_page'));
-		// $query->skip($this->config->item('per_page') * ($pageIndex - 1));
+		$query->limit($this->config->item('per_page'));
+		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
 		var_dump($result);
 		// 分页控件
-		// // url路径前缀
-		// $config['base_url'] = base_url(uri_string());
-		// // 总条数
-		// $config['total_rows'] = (new Query("Mike_Shop"))->count();
-		// // 初始化
-		// $this->pagination->initialize($config); 
-		// $data['pagination'] = $this->pagination->create_links();
+		// url路径前缀
+		$config['base_url'] = base_url(uri_string());
+		// 总条数
+		$config['total_rows'] = (new Query("Mike_Shop"))->count();
+		// 初始化
+		$this->pagination->initialize($config); 
+		$data['pagination'] = $this->pagination->create_links();
 		// 渲染
 		$data['result'] = $result;
 		$data['title'] = "门店列表";
-		// $this->layout->view('shop/address',$data);
 		$this->layout->view('mikeshop/index',$data);
 	} 
 

@@ -54,7 +54,7 @@
 				</table>
 			</div><!-- /.box-body -->
 			<div class="box-footer">
-			<?=$pagination;?>
+			<!-- <?=$pagination;?> -->
 			</div><!-- box-footer -->
 		</div><!-- /.box -->
 	</section>
