@@ -152,15 +152,16 @@ class Shop extends AdminController {
 		$queryshop->_include('user');
 		$shopresult = $queryshop->find();
 		// 查询结果数组
-		var_dump($shopresult);
+		// var_dump($shopresult);
 
 		// 定义一个装shopname的空数组
 		$shopArr = [];
 		foreach ( $userArr as $user) {
 			$userid = $user->get('objectId');
 			foreach ($shopresult as $shopobj) {
+				var_dump($shopobj);
 				$shopuser = $shopobj->get('user');
-				if($userid == $shopuser){					
+				if($userid == $shopuser){
 					$shopname = $shopobj->get('shopname');
 					array_push($shopArr,$shopname);
 				}
