@@ -159,12 +159,14 @@ class Shop extends AdminController {
 		foreach ( $userArr as $user) {
 			$userid = $user->get('objectId');
 			foreach ($shopresult as $shopobj) {
-				$shopuser = $shopobj->get('user').objectId;
-				echo $userid .','.$shopuser;
-				if($userid == $shopuser){
-					$shopname = $shopobj->get('shopname');
-					array_push($shopArr,$shopname);
-				}
+				$getuser = $shopobj->get('user');
+				var_dump($getuser);
+				// $shopuser = .objectId;
+				// echo $userid .','.$shopuser;
+				// if($userid == $shopuser){
+				// 	$shopname = $shopobj->get('shopname');
+				// 	array_push($shopArr,$shopname);
+				// }
 			}
 		}
 		echo 'Shop数组';
