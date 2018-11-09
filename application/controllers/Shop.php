@@ -150,7 +150,8 @@ class Shop extends AdminController {
 		$shopArr = [];
 		foreach ( $userArr as $user) {
 			$queryshop = new Query('Shop');
-			$shopname = $queryshop->get('$user');
+			$userid = $user->get('objectId');
+			$shopname = $queryshop->_include('user');
 			array_push($shopArr,$shopname);
 		}
 		echo 'Shop数组';
