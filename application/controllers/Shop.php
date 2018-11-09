@@ -177,7 +177,7 @@ class Shop extends AdminController {
 
 		for($i=0;$i<count($shopArr);$i++){
 			$result[$i]->set('shopname',$shopArr[$i]);
-			var_dump($result[$i]->get('shopname'));
+			// var_dump($result[$i]->get('shopname'));
 		}
 
 		var_dump($result);

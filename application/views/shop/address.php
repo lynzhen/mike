@@ -42,7 +42,7 @@
 								<td><?=$item->get('realname')?></td>
 								<td><?=$item->get('mobile')?></td>
 								<td><?=$item->get('updateAt')?></td>
-								<td><button type="button" class="btn btn-primary >" href="">通过</button></td>
+								<td><button type="button" data-type="<?=$item->get('objectId')?>" class="btn btn-primary doSth>">通过</button></td>
 							</tr>
 						<!-- <?php endforeach;?> -->
 					</tbody>
@@ -58,5 +58,9 @@
 <script>
 	$(function () { 
 		$("[data-toggletoggle='popover']").popover();
+
+		$(".doSth").click(function(){
+			var objectId = $(this).data('type');
+		})
 	});
 </script>
