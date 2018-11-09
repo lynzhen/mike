@@ -159,8 +159,8 @@ class Shop extends AdminController {
 		foreach ( $userArr as $user) {
 			$userid = $user->get('objectId');
 			foreach ($shopresult as $shopobj) {
-				var_dump($shopobj);
-				$shopuser = $shopobj->get('user');
+				$shopuser = $shopobj->get('user')->get('objectId');
+				echo $userid .','.$shopuser;
 				if($userid == $shopuser){
 					$shopname = $shopobj->get('shopname');
 					array_push($shopArr,$shopname);
