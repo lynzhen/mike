@@ -56,7 +56,7 @@
 								<td><?=$item->get('groupabc')?></td>
 								<td><?=$item->get('lxr')?></td>
 								<td><?=$item->get('lxrdh')?></td>
-								<td><?=$item->get('toalwjje')?></td>
+								<td><?=$item->get('totalwjje')?></td>
 								<td><?=$item->get('payoutday')?></td>
 								<td><?=$item->get('qhddaylimit')?></td>
 								<td><a class="btn btn-primary" href='edit?id=<?=$item->get('objectId')?>'>编辑</a></td>

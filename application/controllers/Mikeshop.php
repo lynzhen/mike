@@ -80,8 +80,5 @@ class Mikeshop extends AdminController {
 		}
 	} 
 
-	// 保存门店信息
-	public function suppliers(){		
-		
 
 }

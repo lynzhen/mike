@@ -32,53 +32,53 @@
             <div class="box-body">
               <form id="edit-form" class="form-horizontal" action="save" method="post">
                 <!-- objectId for goods id -->
-                <input type="hidden" name="objectId" value="<?=$mikeshop->get('objectId')?>" id="objectId">
+                <input type="hidden" name="objectId" value="<?=$suppliers->get('objectId')?>" id="objectId">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">供应商编号</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="cno" id="cno" value="<?=$mikeshop->get('cno')?>">
+                    <input type="text" class="form-control" name="cno" id="cno" value="<?=$suppliers->get('cno')?>">
                   </div>
                 </div>                
                 <div class="form-group">
                   <label for="singleCode" class="col-sm-2 control-label">供应商名称</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="mc" id="mc" value="<?=$mikeshop->get('mc')?>">
+                    <input type="text" class="form-control" name="mc" id="mc" value="<?=$suppliers->get('mc')?>">
                   </div>
                 </div>            
                 <div class="form-group">
                   <label for="singleCode" class="col-sm-2 control-label">名称缩写</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="bzbz1" id="bzbz1" value="<?=$mikeshop->get('bzbz1')?>">
+                    <input type="text" class="form-control" name="bzbz1" id="bzbz1" value="<?=$suppliers->get('bzbz1')?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="suppliers" class="col-sm-2 control-label">供应商分组</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="groupabc" id="groupabc" value="<?=$mikeshop->get('groupabc')?>">
+                    <input type="text" class="form-control" name="groupabc" id="groupabc" value="<?=$suppliers->get('groupabc')?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="suppliers" class="col-sm-2 control-label">联系人</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="lxr" id="lxr" value="<?=$mikeshop->get('lxr')?>">
+                    <input type="text" class="form-control" name="lxr" id="lxr" value="<?=$suppliers->get('lxr')?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="suppliers" class="col-sm-2 control-label">联系人电话</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="lxrdh" id="lxrdh" value="<?=$mikeshop->get('lxrdh')?>">
+                    <input type="text" class="form-control" name="lxrdh" id="lxrdh" value="<?=$suppliers->get('lxrdh')?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="suppliers" class="col-sm-2 control-label">支付天数</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="payoutday" id="payoutday" value="<?=$mikeshop->get('payoutday')?>">
+                    <input type="text" class="form-control" name="payoutday" id="payoutday" value="<?=$suppliers->get('payoutday')?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="suppliers" class="col-sm-2 control-label">日期限制</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="qhddaylimit" id="qhddaylimit" value="<?=$mikeshop->get('qhddaylimit')?>">
+                    <input type="text" class="form-control" name="qhddaylimit" id="qhddaylimit" value="<?=$suppliers->get('qhddaylimit')?>">
                   </div>
                 </div>
                 <!-- /upload -->

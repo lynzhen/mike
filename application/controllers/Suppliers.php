@@ -44,11 +44,11 @@ class Suppliers extends AdminController {
 		$id = $this->input->get('id');
 		// 分页查询数据
 		$query = new Query("Mike_suppliers");
-		$mikeshop = $query->get($id);
+		$suppliers = $query->get($id);
 		// $result = $query->find();
 		// var_dump($result);
 		// 渲染
-		$data['mikeshop'] = $mikeshop;
+		$data['suppliers'] = $suppliers;
 		$data['title'] = "门店列表";
 		$this->layout->view('mikeshop/edit',$data);
 	} 
