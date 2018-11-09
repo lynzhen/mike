@@ -175,9 +175,10 @@ class Shop extends AdminController {
 		// var_dump($shopArr);
 
 
-		// foreach ($result as $value) {
-			
-		// }
+		for($i=0;$i<$shopArr.length;$i++){
+			$result[$i]->set('shopname',$shopArr[$i]);
+			var_dump($result[$i]->get('shopname'));
+		}
 
 		var_dump($result);
 		// 分页控件
