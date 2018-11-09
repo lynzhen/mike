@@ -138,22 +138,33 @@ class Shop extends AdminController {
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
 
+		// 查询出地址表中的每一个user
 		$userArr = [];
 		foreach ($result as $item) {
 			$val = $item->get('user');
-			echo '每个user';
-			var_dump($val);
 			array_push($userArr,$val);
 		}
-		echo 'user数组';
-		var_dump($userArr);
+		// 生成user数组
+		// var_dump($userArr);
+
+		// 查询shop表中的所有数据
+		$queryshop = new Query('Shop');
+		$queryshop->_include('user');
+		$shopresult = $queryshop->find();
+		// 查询结果数组
+		var_dump($shopresult);
+
+		// 定义一个装shopname的空数组
 		$shopArr = [];
 		foreach ( $userArr as $user) {
-			$queryshop = new Query('Shop');
 			$userid = $user->get('objectId');
-			$shopobj = $queryshop->_include('user');
-			$shopname = $shopobj->get('shopname');
-			array_push($shopArr,$shopname);
+			foreach ($shopresult as $shopobj) {
+				$shopuser = $shopobj->get('user');
+				if($userid == $shopuser){					
+					$shopname = $shopobj->get('shopname');
+					array_push($shopArr,$shopname);
+				}
+			}
 		}
 		echo 'Shop数组';
 		var_dump($shopArr);
