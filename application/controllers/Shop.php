@@ -137,6 +137,29 @@ class Shop extends AdminController {
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
+
+		$userArr = [];
+		foreach ($result as $item) {
+			$val = $item->get('user');
+			echo '每个user';
+			var_dump($val);
+			array_push($userArr,$val);
+		}
+		echo 'user数组';
+		var_dump($userArr);
+		$shopArr = [];
+		foreach ( $userArr as $user) {
+			$queryshop = new Query('Shop');
+			$shopname = $queryshop->get('$user');
+			array_push($shopArr,$shopname);
+		}
+		echo 'Shop数组';
+		var_dump($shopArr);
+
+
+		// $querys = new Query("Address");
+		// $results = $querys->find();
+
 		// var_dump($result);die();
 		// 分页控件
 		// url路径前缀
