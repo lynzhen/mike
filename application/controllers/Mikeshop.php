@@ -15,14 +15,14 @@ class Shop extends AdminController {
 	public function index(){
 		
 		// 获取get参数
-		$pageIndex = $this->input->get('per_page');
+		// $pageIndex = $this->input->get('per_page');
 		// 分页查询数据
 		$query = new Query("Mike_Shop");
 		$query->descend("updatedAt");
 		// $query->limit($this->config->item('per_page'));
 		// $query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
-		// var_dump($result);
+		var_dump($result);
 		// 分页控件
 		// // url路径前缀
 		// $config['base_url'] = base_url(uri_string());
