@@ -6,6 +6,10 @@
 <!-- Select2 -->
 <link rel="stylesheet" href="/bower_components/AdminLTE/plugins/select2/select2.min.css">
 <script src="/bower_components/AdminLTE/plugins/select2/select2.full.min.js"></script>
+<!-- 表单验证 -->
+<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.min.js"></script>
+<link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
 <!-- sweet alet -->
 <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
 <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
@@ -204,7 +208,9 @@
   </section>
   <script type="text/javascript">
     var origin_images = <?=json_encode($goods->get('images'))?>;
-    var origin_detail = <?=json_encode($goods->get('detail'))?>;
+    var origin_detail = <?=json_encode($goods->get('detail'))?>;   
+
+
     $('.mask').click(function () {
       // 当前图片url路径
       var url = $(this).parent().find('img').attr('src');
@@ -216,7 +222,69 @@
       $(this).parent().remove();
     });
 
-    $('#edit-form').submit(function (e) {
+    $('#edit-form').submit(function (e) {  
+      $('#edit-form').bootstrapValidator({
+          // live: 'disabled',
+          message: '输入不正确',
+          feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+          },
+          spno: {
+            title: {
+            validators: {
+              notEmpty: {
+                message: '商品编号不能为空'
+              }
+            }
+          },
+          price: {
+            validators: {
+              notEmpty: {
+                message: '价格不能为空'
+              }
+            }
+          },
+          bz: {
+            validators: {
+              notEmpty: {
+                message: '商品条码不能为空'
+              }
+            }
+          },
+          singleCode: {
+            validators: {
+              notEmpty: {
+                message: '单瓶条码不能为空'
+              }
+            }
+          },
+          mrcs: {
+            validators: {
+              notEmpty: {
+                message: '供货商不能为空'
+              }
+            }
+          },
+          images: {
+            validators: {
+              regexp: {
+                  regexp: /^\[.+\]$/,
+                  message: '请上传产品图'
+              }
+            }
+          },
+          detail: {
+            validators: {
+              regexp: {
+                  regexp: /^\[.+\]$/,
+                  message: '请上传描述图'
+              }
+            }
+          }
+        }
+      });
       // 渲染回#images控件，用于post传值
       var images_control_value = JSON.parse($('#images').val());
       var new_images = images_control_value.concat(origin_images);
@@ -227,6 +295,7 @@
       var new_detail = detail_control_value.concat(origin_detail);
       $('#detail').val(JSON.stringify(new_detail));
       e.preventDefault();
+
       $.post(
         'save',
         {
@@ -252,6 +321,7 @@
            sweetAlert("提示", response.message, "success");
         }  
       );
+
     });
   </script>
   <!-- /.content -->

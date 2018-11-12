@@ -33,131 +33,111 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
-              <form id="edit-form" class="form-horizontal" action="save" method="post">
+            <form id="edit-form" class="form-horizontal" action="save" method="post">
+                <!-- objectId for goods id -->
+                <input type="hidden" name="objectId" value="<?=$goods->get('objectId')?>" id="objectId">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题" value="">
+                    <input type="text" class="form-control" name="title" id="title" value="<?=$goods->get('MC')?>">
+                  </div>
+                </div>                
+                <div class="form-group">
+                  <label for="singleCode" class="col-sm-2 control-label">长名称</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="longtitle" id="longtitle" value="<?=$goods->get('LongMc')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="category" class="col-sm-2 control-label">分类</label>
+                  <label for="suppliers" class="col-sm-2 control-label">商品编号</label>
                   <div class="col-sm-8">
-                    <select class="form-control select2" style="width: 100%;" name="category" id="category">
-                      <option></option>
-                      <?php foreach ($categories as $category):?>
-                        <optgroup label="<?=$category->get('title')?>">
-                          <?php foreach ($category->children as $child):?>
-                            <option value="<?=$child->get('objectId')?>"><?=$child->get('title')?></option>
-                          <?php endforeach;?>
-                        </optgroup>
-                      <?php endforeach;?>
-                    </select>
-                  </div>
-                </div>
-                <!-- <div class="form-group">
-                  <label for="price" class="col-sm-2 control-label">价格</label>
-                  <div class="col-sm-8">
-                    <input type="number" class="form-control" name="price" id="price" placeholder="0.0" step="0.01" value="">
-                  </div>
-                </div> -->
-                <div class="form-group">
-                  <label for="singleCode" class="col-sm-2 control-label">单瓶条码</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" name="singleCode" id="singleCode" placeholder="单瓶条码" value="">
+                    <input type="text" class="form-control" name="spno" id="spno" value="<?=$goods->get('spno')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="suppliers" class="col-sm-2 control-label">供货商名称</label>
+                  <label for="suppliers" class="col-sm-2 control-label">商品规格</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="suppliers" id="suppliers" placeholder="供货商名称" value="">
+                    <input type="text" class="form-control" name="spgg" id="spgg" value="<?=$goods->get('SPGG')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="price" class="col-sm-2 control-label">进货价</label>
+                  <label for="price" class="col-sm-2 control-label">单位</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="price" id="price" placeholder="进货价" value="">
+                    <input type="text" class="form-control" name="dw" id="dw" value="<?=$goods->get('BZDW')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="boxnumber" class="col-sm-2 control-label">箱入数</label>
+                  <label for="boxnumber" class="col-sm-2 control-label">零售价</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="boxnumber" id="boxnumber" placeholder="箱入数" value="">
+                    <input type="text" class="form-control" name="price" id="price" value="<?=$goods->get('LSJ')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="FCL" class="col-sm-2 control-label">必须整箱订货</label>
+                  <label for="size" class="col-sm-2 control-label">库存</label>
                   <div class="col-sm-8">
-                    <div class="btn-group" id="FCL" data-toggle="buttons">
-                      <label class="btn btn-default active">
-                        <input type="radio" name="FCL" value="1" id="option1" autocomplete="off" checked> 是
-                      </label>
-                      <label class="btn btn-default">
-                        <input type="radio" name="FCL" value="0" id="option3" autocomplete="off"> 否
-                      </label>
-                    </div>
+                    <input type="text" class="form-control" name="dssl" id="dssl" value="<?=$goods->get('DSSL')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="size" class="col-sm-2 control-label">箱单位</label>
+                  <label for="boxprice" class="col-sm-2 control-label">批发价</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="size" id="size" placeholder="箱单位" value="">
+                    <input type="text" class="form-control" name="pfj" id="pfj" value="<?=$goods->get('PFJ')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="boxprice" class="col-sm-2 control-label">箱价格</label>
+                  <label for="singleTP" class="col-sm-2 control-label">条码</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="boxprice" id="boxprice" placeholder="箱价格" value="">
+                    <input type="text" class="form-control" name="bz" id="bz" value="<?=$goods->get('bz')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="singleTP" class="col-sm-2 control-label">单瓶商品规格</label>
+                  <label for="singleSize" class="col-sm-2 control-label">供货商号</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="singleTP" id="singleTP" placeholder="单瓶商品规格" value="">
+                    <input type="text" class="form-control" name="mrcs" id="mrcs" value="<?=$goods->get('Mrcs')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="singleSize" class="col-sm-2 control-label">单瓶单位</label>
+                  <label for="barcode" class="col-sm-2 control-label">柜台存货数</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="singleSize" id="singleSize" placeholder="单瓶单位" value="">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="barcode" class="col-sm-2 control-label">条码</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" name="barcode" id="barcode" placeholder="条码" value="">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="isHot" class="col-sm-2 control-label">推荐</label>
-                  <div class="col-sm-8">
-                    <div class="btn-group" id="isHot" data-toggle="buttons">
-                      <label class="btn btn-default active">
-                        <input type="radio" name="isHot" value="1" id="option1" autocomplete="off" checked> 推荐
-                      </label>
-                      <label class="btn btn-default">
-                        <input type="radio" name="isHot" value="0" id="option3" autocomplete="off"> 不推荐
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="isNew" class="col-sm-2 control-label">新品</label>
-                  <div class="col-sm-8">
-                    <div class="btn-group" id="isNew" data-toggle="buttons">
-                      <label class="btn btn-default active">
-                        <input type="radio" name="isNew" value="1" autocomplete="off"> 新品
-                      </label>
-                      <label class="btn btn-default">
-                        <input type="radio" name="isNew" value="0" autocomplete="off"> 非新品
-                      </label>
-                    </div>
+                    <input type="text" class="form-control" name="kcsl" id="kcsl" value="<?=$goods->get('KCSL')?>">
                   </div>
                 </div>
                 <!-- upload images -->
                 <div class="form-group">
-                  <label for="images" class="col-sm-2 control-label">产品图</label>
+                  <label for="fileList" class="col-sm-2 control-label">产品图</label>
+                  <style type="text/css">
+                    .image {
+                      width: 100%;
+                    }
+                    .mask {
+                      position: absolute;
+                      width: 100%;
+                      height: 15%;
+                      background: #eee;
+                      opacity: 0.8;
+                      bottom: 0;
+                      left: 0;
+                    }
+                    .fa-block {
+                      display: block;
+                      margin-top: 2px;
+                    }
+                    .gallery {
+                      border: 1px solid #eee;
+                      border-radius: 3px;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                    }
+                  </style>
                   <div class="col-sm-8">
+                    <div class="row">
+                        <?php foreach ($goods->get('images') as $image):?>
+                          <div class="col-md-3 gallery">
+                              <img class="image" src="<?=$image?>" />
+                              <div class="mask" data-type="images"><i class="fa fa-2x fa-block fa-trash-o text-center"></i></div>
+                          </div>
+                        <?php endforeach;?>
+                    </div>
                     <div id="uploader-demo">
                       <!--用来存放item-->
                       <div id="imagesList" class="uploader-list"></div>
@@ -172,8 +152,25 @@
                 </div>
                 <!-- upload detail -->
                 <div class="form-group">
-                  <label for="detail" class="col-sm-2 control-label">描述图</label>
+                  <label for="fileList" class="col-sm-2 control-label">描述图</label>
                   <div class="col-sm-8">
+                    <!-- 原描述图 -->
+                    <div class="row">
+                        <?php foreach ($goods->get('detail') as $image):?>
+                          <div class="col-md-3 gallery">
+                              <img class="image" src="<?=$image?>" />
+                              <div class="mask" data-type="detail"><i class="fa fa-2x fa-block fa-trash-o text-center"></i></div>
+                          </div>
+                        <?php endforeach;?>
+                    </div>
+                    <div id="uploader-demo">
+                      <!--用来存放item-->
+                      <div id="imagesList" class="uploader-list"></div>
+                      <div class="btns">
+                        <div id="imagesPicker">选择图片</div>
+                          <!-- <button id="ctlBtn" type="button" class="hidden btn btn-default">开始上传</button> -->
+                      </div>
+                    </div>
                     <div id="uploader">
                       <div class="queueList">
                         <div id="dndArea" class="placeholder">
@@ -274,7 +271,7 @@
          }
        }
       });
-      ;
+      
       var bootstrapValidator = $("#edit-form").data('bootstrapValidator');
       bootstrapValidator.validate();
       if(bootstrapValidator.isValid()) {
