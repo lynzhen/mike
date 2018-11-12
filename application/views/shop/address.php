@@ -41,7 +41,7 @@
 								<td><?=$item->get('detail')?></td>
 								<td><?=$item->get('realname')?></td>
 								<td><?=$item->get('mobile')?></td>
-								<td><?=$item->get('updatedAt').date?></td>
+								<td><?=$item->get('updatedA')?></td>
 								<td><button type="button" data-type="<?=$item->get('objectId')?>" class="btn btn-primary doSth>">通过</button></td>
 							</tr>
 						<!-- <?php endforeach;?> -->
