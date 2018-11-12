@@ -33,7 +33,7 @@
 					<tbody>
 						<?php foreach($result as $item):?>
 							<tr>
-								<td><img width="40" height="40" src="<?=$item->get('url')?>" class="popover-show" data-container="body" data-placement="bottom" data-toggle="popover" data-html="true" data-trigger="hover focus click" data-content="<img src='<?=$item->get('avatar')?>' />" /></td>
+								<td><img width="40" height="40" src="<?=$item->get('image')->get('url')?>" class="popover-show" data-container="body" data-placement="bottom" data-toggle="popover" data-html="true" data-trigger="hover focus click" data-content="<img src='<?=$item->get('avatar')?>' />" /></td>
 								<td><?=$item->get('title')?></td>
 								<td><?=$item->get('paixu')?></td>
 								<td><a type="button" class="btn btn-primary" href="edit?objectId=<?=$item->get('objectId')?>">修改</a></td>

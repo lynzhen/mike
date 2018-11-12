@@ -20,9 +20,9 @@ class Program extends AdminController {
 		$arrUrl = [];
 		foreach ($result as $value) {
 			var_dump($value);
-			// $url = $value->get('image')->get('url');
-			// var_dump($url);
-			// array_push($arrUrl,$url);
+			$url = $value->get('image')->get('url');
+			var_dump($url);
+			array_push($arrUrl,$url);
 		}
 		$result['url'] = $arrUrl;
 		var_dump($result);
@@ -63,66 +63,16 @@ class Program extends AdminController {
 		}
 	}
 
-	// 商品列表-adminlte
-	public function index() {
-		// 获取get参数
-		$pageIndex = $this->input->get('per_page');
-		// 分页查询数据
-		$query = new Query("Mike_Goods");
-		// $query->_include("category");
-		$query->descend("updatedAt");
-		$query->limit($this->config->item('per_page'));
-		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
-		$result = $query->find();
-		// 分页控件
-		// url路径前缀
-		$config['base_url'] = base_url(uri_string());
-		// 总条数
-		$config['total_rows'] = (new Query("Mike_Goods"))->count();
-		// 初始化
-		$this->pagination->initialize($config); 
-		$data['pagination'] = $this->pagination->create_links();
-		// 渲染
-		$data['result'] = $result;
-		$data['title'] = '商品列表';
-		$this->layout->view('goods/index', $data);
-	}
-
-	// 商品热销-adminlte
-	public function hot() {
-		// 获取get参数
-		$pageIndex = $this->input->get('per_page');
-		// 分页查询数据
-		$query = new Query("Mike_HotSale");
-		// $query->_include("category");
-		$query->descend("updatedAt");
-		$query->limit($this->config->item('per_page'));
-		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
-		$result = $query->find();
-		// 分页控件
-		// url路径前缀
-		$config['base_url'] = base_url(uri_string());
-		// 总条数
-		$config['total_rows'] = (new Query("Mike_HotSale"))->count();
-		// 初始化
-		$this->pagination->initialize($config); 
-		$data['pagination'] = $this->pagination->create_links();
-		// 渲染
-		$data['result'] = $result;
-		$data['title'] = '商品热销';
-		$this->layout->view('goods/hot', $data);
-	}
-
 	// 删除商品
-	public function delete() {
-		$objectId = $this->input->get('objectId');
-		$goods = LeanObject::create('Mike_Goods', $objectId);
-		$goods->destroy();
-		$data['msg'] = '删除成功';
-		$data['level'] = 'info';
-		$data['redirect'] = 'index';
-		$this->layout->view('goods/msg', $data);
-	}
+	// public function delete() {
+	// 	$objectId = $this->input->get('objectId');
+	// 	$goods = LeanObject::create('Mike_Goods', $objectId);
+	// 	$goods->destroy();
+	// 	$data['msg'] = '删除成功';
+	// 	$data['level'] = 'info';
+	// 	$data['redirect'] = 'index';
+	// 	$this->layout->view('goods/msg', $data);
+	// }
 
 
 	
