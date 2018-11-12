@@ -57,7 +57,7 @@ class Goods extends AdminController {
 		$spgg = $this->input->post('spgg');
 		$spno = $this->input->post('spno');
 		$bzdw = $this->input->post('bzdw');
-		$lsj = floatval($lsj);
+		$lsj = floatval($this->input->post('lsj'));
 		$dssl = $this->input->post('dssl');
 		$pfj = $this->input->post('pfj');
 		$bz = $this->input->post('bz');
@@ -79,17 +79,17 @@ class Goods extends AdminController {
 		}
 		$object->set("title", $title);
 		$object->set("singleCode", $longtitle);
-		$object->set("suppliers", $spgg);
-		$object->set("price", $spno);
-		$object->set("boxnumber", $bzdw);
+		$object->set("spgg", $spgg);
+		$object->set("spno", $spno);
+		$object->set("bzdw", $bzdw);
 		// $object->set("FCL", (bool)$FCL);
-		$object->set("size", $lsj);
-		$object->set("boxprice", $dssl);
-		$object->set("singleSize", $pfj);
-		$object->set("singleTP", $bz);
-		$object->set("barcode", $mrcs);
-		$object->set("singleTP", $kcsl);
-		$object->set("barcode", $jhj);
+		$object->set("lsj", $lsj);
+		$object->set("dssl", $dssl);
+		$object->set("pfj", $pfj);
+		$object->set("bz", $bz);
+		$object->set("mrcs", $mrcs);
+		$object->set("kcsl", $kcsl);
+		$object->set("jhj", $jhj);
 		$object->set("avatar", $avatar);
 		// 将category转为LeanCloud对象
 		// $object->set("isHot", (bool)$isHot);
