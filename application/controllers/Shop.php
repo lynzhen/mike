@@ -186,7 +186,7 @@ class Shop extends AdminController {
 				$result[$i]->set('updatetime',$datetime);
 			}
 		}
-		var_dump($result);
+		// var_dump($result);
 		
 		// 分页控件
 		// url路径前缀
