@@ -38,15 +38,15 @@
                 <!-- objectId for goods id -->
                 <input type="hidden" name="objectId" value="<?=$goods->get('objectId')?>" id="objectId">
                 <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">标题</label>
+                  <label for="title" class="col-sm-2 control-label">名称</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" value="<?=$goods->get('MC')?>">
+                    <input type="text" class="form-control" name="mc" id="mc" value="<?=$goods->get('MC')?>">
                   </div>
                 </div>                
                 <div class="form-group">
                   <label for="singleCode" class="col-sm-2 control-label">长名称</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="longtitle" id="longtitle" value="<?=$goods->get('LongMc')?>">
+                    <input type="text" class="form-control" name="longmc" id="longmc" value="<?=$goods->get('LongMc')?>">
                   </div>
                 </div>             
                 <div class="form-group">
@@ -56,27 +56,27 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="suppliers" class="col-sm-2 control-label">商品编号</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" name="spno" id="spno" value="<?=$goods->get('spno')?>">
-                  </div>
-                </div>
-                <div class="form-group">
                   <label for="suppliers" class="col-sm-2 control-label">商品规格</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="spgg" id="spgg" value="<?=$goods->get('SPGG')?>">
                   </div>
                 </div>
                 <div class="form-group">
+                  <label for="suppliers" class="col-sm-2 control-label">商品编号</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="spno" id="spno" value="<?=$goods->get('spno')?>">
+                  </div>
+                </div>
+                <div class="form-group">
                   <label for="price" class="col-sm-2 control-label">单位</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="dw" id="dw" value="<?=$goods->get('BZDW')?>">
+                    <input type="text" class="form-control" name="bzdw" id="bzdw" value="<?=$goods->get('BZDW')?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="boxnumber" class="col-sm-2 control-label">零售价</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="price" id="price" value="<?=$goods->get('LSJ')?>">
+                    <input type="text" class="form-control" name="lsj" id="lsj" value="<?=$goods->get('LSJ')?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -107,6 +107,12 @@
                   <label for="barcode" class="col-sm-2 control-label">柜台存货数</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="kcsl" id="kcsl" value="<?=$goods->get('KCSL')?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="barcode" class="col-sm-2 control-label">进货价</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="jhj" id="jhj" value="<?=$goods->get('KCSL')?>">
                   </div>
                 </div>
                 <!-- upload images -->
@@ -242,46 +248,67 @@
       e.preventDefault();
 
       $('#edit-form').bootstrapValidator({
-          // live: 'disabled',
-          message: '输入不正确',
-          feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-          },
-          spno: {
-            title: {
+        // live: 'disabled',
+        message: '输入不正确',
+        feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+          mc: {
             validators: {
               notEmpty: {
-                message: '商品编号不能为空'
+                message: '商品名称不能为空'
               }
             }
           },
-          price: {
+          flno: {
             validators: {
               notEmpty: {
-                message: '价格不能为空'
+                message: '分类号不能为空'
+              }
+            }
+          },
+          spgg: {
+            validators: {
+              notEmpty: {
+                message: '商品规格不能为空'
+              }
+            }
+          },
+          bw: {
+            validators: {
+              notEmpty: {
+                message: '商品单位不能为空'
+              }
+            }
+          },
+          lsj: {
+            validators: {
+              notEmpty: {
+                message: '零售价不能为空'
+              }
+            }
+          },
+          pfj: {
+            validators: {
+              notEmpty: {
+                message: '批发价不能为空'
               }
             }
           },
           bz: {
             validators: {
               notEmpty: {
-                message: '商品条码不能为空'
+                message: '条码不能为空'
               }
             }
           },
-          singleCode: {
+          jhj: {
             validators: {
               notEmpty: {
-                message: '单瓶条码不能为空'
-              }
-            }
-          },
-          mrcs: {
-            validators: {
-              notEmpty: {
-                message: '供货商不能为空'
+                message: '进货价不能为空'
               }
             }
           },
@@ -320,8 +347,8 @@
           'save',
           {
             objectId: $('#objectId').val(),
-            title: $('#title').val(),
-            longtitle: $('#longtitle').val(),
+            mc: $('#mc').val(),
+            longmc: $('#longmc').val(),
             flno: $('#flno').val(),
             spgg: $('#spgg').val(),
             spno: $('#spno').val(),

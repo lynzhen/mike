@@ -37,13 +37,13 @@
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">名称</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="名称" value="">
+                    <input type="text" class="form-control" name="mc" id="mc" placeholder="名称" value="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="category" class="col-sm-2 control-label">长名称</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="longtitle" id="longtitle" placeholder="长名称" value="">
+                    <input type="text" class="form-control" name="longmc" id="longmc" placeholder="长名称" value="">
                   </div>
                 </div> 
                 <div class="form-group">
@@ -67,13 +67,13 @@
                 <div class="form-group">
                   <label for="boxnumber" class="col-sm-2 control-label">单位</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="dw" id="dw" placeholder="单位" value="">
+                    <input type="text" class="form-control" name="bzdw" id="bzdw" placeholder="单位" value="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="size" class="col-sm-2 control-label">零售价</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="price" id="price" placeholder="零售价" value="">
+                    <input type="text" class="form-control" name="lsj" id="lsj" placeholder="零售价" value="">
                   </div>
                 </div>
                 <div class="form-group">
@@ -104,6 +104,12 @@
                   <label for="barcode" class="col-sm-2 control-label">柜台存货数</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="kcsl" id="kcsl" placeholder="柜台存货数" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="barcode" class="col-sm-2 control-label">进货价</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="jhj" id="jhj" placeholder="进货价" value="">
                   </div>
                 </div>
                 <!-- <div class="form-group">
@@ -198,59 +204,80 @@
            invalid: 'glyphicon glyphicon-remove',
            validating: 'glyphicon glyphicon-refresh'
          },
-         fields: {
-          title: {
-           validators: {
-             notEmpty: {
-               message: '标题不能为空'
-             }
-           }
-         },
-         price: {
-           validators: {
-             notEmpty: {
-               message: '价格不能为空'
-             }
-           }
-         },
-         category: {
-           validators: {
-             notEmpty: {
-               message: '分类不能为空'
-             }
-           }
-         },
-         singleCode: {
-           validators: {
-             notEmpty: {
-               message: '单瓶条码不能为空'
-             }
-           }
-         },
-         suppliers: {
-           validators: {
-             notEmpty: {
-               message: '供货商不能为空'
-             }
-           }
-         },
-         images: {
-           validators: {
-             regexp: {
-                 regexp: /^\[.+\]$/,
-                 message: '请上传产品图'
-             }
-           }
-         },
-         detail: {
-           validators: {
-             regexp: {
-                 regexp: /^\[.+\]$/,
-                 message: '请上传描述图'
-             }
-           }
-         }
-       }
+        fields: {
+          mc: {
+            validators: {
+              notEmpty: {
+                message: '商品名称不能为空'
+              }
+            }
+          },
+          flno: {
+            validators: {
+              notEmpty: {
+                message: '分类号不能为空'
+              }
+            }
+          },
+          spgg: {
+            validators: {
+              notEmpty: {
+                message: '商品规格不能为空'
+              }
+            }
+          },
+          bw: {
+            validators: {
+              notEmpty: {
+                message: '商品单位不能为空'
+              }
+            }
+          },
+          lsj: {
+            validators: {
+              notEmpty: {
+                message: '零售价不能为空'
+              }
+            }
+          },
+          pfj: {
+            validators: {
+              notEmpty: {
+                message: '批发价不能为空'
+              }
+            }
+          },
+          bz: {
+            validators: {
+              notEmpty: {
+                message: '条码不能为空'
+              }
+            }
+          },
+          jhj: {
+            validators: {
+              notEmpty: {
+                message: '进货价不能为空'
+              }
+            }
+          },
+          images: {
+            validators: {
+              regexp: {
+                  regexp: /^\[.+\]$/,
+                  message: '请上传产品图'
+              }
+            }
+          },
+          detail: {
+            validators: {
+              regexp: {
+                  regexp: /^\[.+\]$/,
+                  message: '请上传描述图'
+              }
+            }
+          }
+        }
       });
       
       var bootstrapValidator = $("#edit-form").data('bootstrapValidator');
@@ -273,19 +300,21 @@
        $.post(
           'save',
           {
-            title: $('#title').val(),
-            category: $('#category').val(),
-            singleCode: $('#singleCode').val(),
-            suppliers: $('#suppliers').val(),
-            price: parseFloat($('#price').val()),
-            boxnumber: $('#boxnumber').val(),
-            FCL: $('#FCL .active input').val(),
-            size: $('#size').val(),
-            singleTP: $('#singleTP').val(),
-            singleSize: $('#singleSize').val(),
-            barcode: $('#barcode').val(),
-            isNew: $('#isNew .active input').val(),
-            isHot: $('#isHot .active input').val(),
+            mc: $('#mc').val(),
+            longmc: $('#longmc').val(),
+            flno: $('#flno').val(),
+            spgg: $('#spgg').val(),
+            spno: $('#spno').val(),
+            bzdw: $('#dw').val(),
+            lsj: $('#lsj').val(),
+            dssl: $('#dssl').val(),
+            pfj: $('#pfj').val(),
+            bz: $('#bz').val(),
+            mrcs: $('#mrcs').val(),
+            kcsl: $('#kcsl').val(),
+            jhj: $('#jhj').val(),
+            // isNew: $('#isNew .active input').val(),
+            // isHot: $('#isHot .active input').val(),
             images: $('#images').val(),
             detail: $('#detail').val()
           },
@@ -293,8 +322,8 @@
             sweetAlert("提示", response.message, "success");
             if (response.success) {
               $('#edit-form').data('bootstrapValidator').resetForm();
-              $('#title').val("");
-              $('#price').val("");
+              $('#mc').val("");
+              $('#lsj').val("");
               $('#images').val("[]");
               $('#detail').val("[]");
             }

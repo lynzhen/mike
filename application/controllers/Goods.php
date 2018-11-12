@@ -81,9 +81,9 @@ class Goods extends AdminController {
 			$data['redirect'] = 'index';
 			$data['msg'] = '修改成功';
 		}
-		$object->set("title", $title);
+		$object->set("MC", $title);
 		$object->set("LongMc", $longtitle);
-		$object->set("FLNO", $longtitle);
+		$object->set("FLNO", $flno);
 		$object->set("SPGG", $spgg);
 		$object->set("spno", $spno);
 		$object->set("BZDW", $bzdw);
