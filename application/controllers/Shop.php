@@ -185,7 +185,7 @@ class Shop extends AdminController {
 			foreach ($date as $item) {
 				var_dump($item);
 				for($i=0;$i<count($result);$i++){
-					$result[$i]->set('updatedAt',$item);
+					$result[$i]->set('updatetime',$item);
 				}
 			}
 		}
