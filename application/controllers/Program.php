@@ -5,58 +5,38 @@ use \LeanCloud\LeanObject;
 use \LeanCloud\Query;
 use \LeanCloud\File;
 
-class Goods extends AdminController {
+class Program extends AdminController {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('Category_model', 'category_model');
 	}
 
-	public function import() {
-		// 获取顶级分类
-		// $data['categories'] = $this->category_model->findAll();
-		$data['title'] = '导入商品';
-		$this->layout->view('goods/import', $data);
+	public function banner() {
+		
+		$query = new Query("Banner");
+		$query->descend("paixu");
+		$result = $query->find();
+
+		$arrUrl = [];
+		foreach ($result as $value) {
+			var_dump($value);
+			// $url = $value->get('image')->get('url');
+			// var_dump($url);
+			// array_push($arrUrl,$url);
+		}
+		$result['url'] = $arrUrl;
+		var_dump($result);
+		
+		$data['result'] = $result;
+		$data['title'] = '轮播图';
+		$this->layout->view('program/banner', $data);
 	}
 
-	public function add() {
-		// 获取顶级分类
-		$data['categories'] = $this->category_model->findAll();
-		$data['title'] = '添加商品';
-		$this->layout->view('goods/add', $data);
-	}
-
-	public function edit() {
-		// 获取顶级分类
-		$data['categories'] = $this->category_model->findAll();
-		$objectId = $this->input->get('objectId');
-		$query = new Query('Mike_Goods');
-		$goods = $query->get($objectId);
-		$data['goods'] = $goods;
-		$this->layout->view('goods/edit', $data);
-	}
 	
 	public function save() {
 		  
 		// 获取参数
 		$images = $this->input->post('images');
-		$detail = $this->input->post('detail');
-
-		$title = $this->input->post('title');
-		$longtitle = $this->input->post('longtitle');
-		$flno = $this->input->post('flno');
-		$spgg = $this->input->post('spgg');
-		$spno = $this->input->post('spno');
-		$bzdw = $this->input->post('bzdw');
-		$lsj = $this->input->post('lsj');
-		$dssl = $this->input->post('dssl');
-		$pfj = $this->input->post('pfj');
-		$bz = $this->input->post('bz');
-		$mrcs = $this->input->post('mrcs');
-		$kcsl = $this->input->post('kcsl');
-		$jhj = $this->input->post('jhj');
-
-		// 主图是第一个产品图
-		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
 
 		// save to leanCloud
 		$object = new LeanObject("Mike_Goods");
@@ -67,24 +47,10 @@ class Goods extends AdminController {
 			$data['redirect'] = 'index';
 			$data['msg'] = '修改成功';
 		}
-		$object->set("MC", $title);
-		$object->set("LongMc", $longtitle);
-		$object->set("FLNO", $flno);
-		$object->set("SPGG", $spgg);
-		$object->set("spno", $spno);
-		$object->set("BZDW", $bzdw);
-		// $object->set("FCL", (bool)$FCL);
-		$object->set("LSJ", $lsj);
-		$object->set("DSSL", $dssl);
-		$object->set("PFJ", $pfj);
-		$object->set("bz", $bz);
-		$object->set("Mrcs", $mrcs);
 		$object->set("KCSL", $kcsl);
 		$object->set("JHJ", $jhj);
 		$object->set("avatar", $avatar);
 		// 将category转为LeanCloud对象
-		// $object->set("isHot", (bool)$isHot);
-		// $object->set("isNew", (bool)$isNew);
 		$object->set("images", json_decode($images));
 		$object->set("detail", json_decode($detail));
 
