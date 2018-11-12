@@ -2,6 +2,18 @@
 <script src="/bower_components/bs-confirmation/bootstrap-confirmation.js"></script>
 <!-- 引入css -->
 <link rel="stylesheet" type="text/css" href="/assets/css/global.css">
+<!--引入CSS-->
+<link rel="stylesheet" type="text/css" href="/bower_components/fex-webuploader/dist/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/webuploader.css">
+<!--引入JS-->
+<script type="text/javascript" src="/bower_components/fex-webuploader/dist/webuploader.js"></script>
+
+<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- sweet alet -->
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+
 
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -43,10 +55,13 @@
 								<td><?=$item->get('realname')?></td>
 								<td><?=$item->get('mobile')?></td>
 								<td><?=$item->get('updatetime')?></td>
-								<td>
-									<button type="button" data-obId="<?=$item->get('objectId')?>" data-type="addrPass" class="btn btn-primary doSth">通过</button>
-									<button type="button" data-obId="<?=$item->get('objectId')?>" data-type="addrRefuse" class="btn btn-danger doSth">驳回</button>
+								<td>																	
+									<select name="" class='sel'>
+										<option class='pass' value="addrPass" <?=$item->get('isPass') == true  || $item->get('isRefuse') == true ? 'disabled' : ''?> <?=$item->get('isPass') == true ? 'selected' : ''?> value="pass"><?=$item->get('isPass') == true ? '已通过' : '通过'?></option>
+										<option class='refuse' value="addrRefuse" <?=$item->get('isPass') == true || $item->get('isRefuse') == true ? 'disabled' : ''?> <?=$item->get('isRefuse') == true ? 'selected' : ''?> ><?=$item->get('isRefuse') == true ? '已拒绝' : '拒绝'?></option>
+									</select>
 								</td>
+								<td><td><button class="btn btn-primary doSth" data-id='<?=$item->get('objectId')?>'>保存</button></td></td>
 							</tr>
 						<!-- <?php endforeach;?> -->
 					</tbody>
@@ -63,17 +78,21 @@
 	$(function () { 
 		$("[data-toggletoggle='popover']").popover();
 
-		$(".doSth").click(function(){
-			var type = $(this).data('type');
-			var objectId = $(this).data('obId');
+		
+		$('.doSth').click(function(){
+			var objectId = $(this).data('id');
+			var thatTd = $(this).parent('td').siblings();
+			var discount = thatTd.find('.discount').val();
+			var dosth = thatTd.find('.sel').find("option:selected").val();
+			// console.log(objectId+','+discount+','+dosth);
 			$.post(
-				type,
+				dosth,
 				{
-					objectId: objectId
+				objectId: objectId,
 				},
 				function (response) {
-					sweetAlert("提示", response.message, "success");
-				}  
+					sweetAlert("提示", response.message, "success");				
+				}
 			);
 		})
 	});
