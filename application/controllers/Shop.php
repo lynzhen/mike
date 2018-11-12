@@ -184,7 +184,7 @@ class Shop extends AdminController {
 			var_dump($value->get('updatedAt'));
 			$date = $value->get('updatedAt');
 			foreach ($date as $item) {
-				var_dump($item->get('date'));
+				var_dump($item);
 			}
 		}
 		
