@@ -174,7 +174,6 @@ class Shop extends AdminController {
 		// echo 'Shop数组';
 		// var_dump($shopArr);
 
-
 		for($i=0;$i<count($shopArr);$i++){
 			$result[$i]->set('shopname',$shopArr[$i]);
 			// var_dump($result[$i]->get('shopname'));
@@ -185,8 +184,12 @@ class Shop extends AdminController {
 			$date = $value->get('updatedAt');
 			foreach ($date as $item) {
 				var_dump($item);
+				for($i=0;$i<count($result);$i++){
+					$result[$i]->set('updatedAt',$item);
+				}
 			}
 		}
+		var_dump($result);
 		
 		// 分页控件
 		// url路径前缀
