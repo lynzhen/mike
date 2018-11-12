@@ -131,6 +131,7 @@ class Shop extends AdminController {
 		// 分页查询数据
 		$query = new Query("Address");
 		$query->_include("user");
+		$query->equalTo("isRefuse",false);
 		$result = $query->find();
 		// $query->_include("shop");
 		$query->descend("updatedAt");
@@ -201,6 +202,36 @@ class Shop extends AdminController {
 		$data['title'] = "商家地址审核";
 		$this->layout->view('shop/address',$data);
 
+	}
+	public function addrPass(){
+		// 获取post参数
+		$objectId = $this->input->post('objectId');
+		// 查询商家数据
+		$query = new Query("Address");
+		$addr = $query->get($objectId);
+		// 改变拉黑标志
+		$addr->set("isPass", true);
+		try {
+			$addr->save();
+			$this->echo_json('审核通过成功');
+		} catch (Exception $ex) {
+			$this->echo_json('审核通过失败');
+		}
+	}
+	public function addrRefuse(){
+		// 获取post参数
+		$objectId = $this->input->post('objectId');
+		// 查询商家数据
+		$query = new Query("Address");
+		$addr = $query->get($objectId);
+		// 改变拉黑标志
+		$addr->set("isRefuse", true);
+		try {
+			$addr->save();
+			$this->echo_json('驳回成功');
+		} catch (Exception $ex) {
+			$this->echo_json('驳回失败');
+		}
 	}
 
 }

@@ -31,6 +31,7 @@
 							<th>联系电话</th>
 							<th>提交时间</th>
 							<th>操作</th>
+							<th>保存</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -42,7 +43,10 @@
 								<td><?=$item->get('realname')?></td>
 								<td><?=$item->get('mobile')?></td>
 								<td><?=$item->get('updatetime')?></td>
-								<td><button type="button" data-type="<?=$item->get('objectId')?>" class="btn btn-primary doSth>">通过</button></td>
+								<td>
+									<button type="button" data-obId="<?=$item->get('objectId')?>" data-type="addrPass" class="btn btn-primary doSth">通过</button>
+									<button type="button" data-obId="<?=$item->get('objectId')?>" data-type="addrRefuse" class="btn btn-danger doSth">驳回</button>
+								</td>
 							</tr>
 						<!-- <?php endforeach;?> -->
 					</tbody>
@@ -60,7 +64,17 @@
 		$("[data-toggletoggle='popover']").popover();
 
 		$(".doSth").click(function(){
-			var objectId = $(this).data('type');
+			var type = $(this).data('type');
+			var objectId = $(this).data('obId');
+			$.post(
+				type,
+				{
+					objectId: objectId
+				},
+				function (response) {
+					sweetAlert("提示", response.message, "success");
+				}  
+			);
 		})
 	});
 </script>
