@@ -10,22 +10,15 @@ class Program extends AdminController {
 		parent::__construct();
 		$this->load->model('Category_model', 'category_model');
 	}
+	public function index(){
+
+	}
 
 	public function banner() {
 		
 		$query = new Query("Banner");
 		$query->descend("paixu");
 		$result = $query->find();
-
-		$arrUrl = [];
-		foreach ($result as $value) {
-			var_dump($value);
-			$url = $value->get('image')->get('url');
-			var_dump($url);
-			array_push($arrUrl,$url);
-		}
-		$result['url'] = $arrUrl;
-		var_dump($result);
 		
 		$data['result'] = $result;
 		$data['title'] = '轮播图';
