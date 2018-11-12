@@ -36,31 +36,38 @@ class Goods extends AdminController {
 	}
 	
 	public function save() {
+
+		// objectId: $('#objectId').val(),
+        //   title: $('#title').val(),
+        //   longtitle: $('#longtitle').val(),
+        //   spgg: $('#spgg').val(),
+        //   spno: $('#spno').val(),
+        //   bzdw: $('#bzdw').val(),
+        //   lsj: $('#lsj').val(),
+        //   dssl: $('#dssl').val(),
+        //   pfj: $('#pfj').val(),
+        //   bz: $('#bz').val(),
+        //   mrcs: $('#mrcs').val(),
+        //   kcsl: $('#kcsl').val(),
+		//   jhj: $('#jhj').val(),
+		  
 		// 获取参数
 		$title = $this->input->post('title');
-		$category = $this->input->post('category');
-		$singleCode = $this->input->post('singleCode');
-		$suppliers = $this->input->post('suppliers');
-		$price = $this->input->post('price');
-		$theprice = floatval($price);
-		// var_dump($theprice);
-		// die();
+		$longtitle = $this->input->post('longtitle');
+		$spgg = $this->input->post('spgg');
+		$spno = $this->input->post('spno');
+		$bzdw = $this->input->post('bzdw');
+		$lsj = floatval($lsj);
+		$dssl = $this->input->post('dssl');
+		$pfj = $this->input->post('pfj');
+		$bz = $this->input->post('bz');
+		$mrcs = $this->input->post('mrcs');
+		$kcsl = $this->input->post('kcsl');
+		$jhj = floatval($jhj);
 
-		$boxnumber = $this->input->post('boxnumber');
-		$FCL = $this->input->post('FCL');
-		$size = $this->input->post('size');
-		$boxprice = $this->input->post('boxprice');
-		$singleTP = $this->input->post('singleTP');
-		$singleSize = $this->input->post('singleSize');
-		$barcode = $this->input->post('barcode');
-		$isHot = $this->input->post('isHot');
-		$isNew = $this->input->post('isNew');
-		$images = $this->input->post('images');
-		$detail = $this->input->post('detail');
 		// 主图是第一个产品图
 		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
-		// var_dump($avatar);
-		// die();
+
 		// save to leanCloud
 		$object = new LeanObject("Mike_Goods");
 		$objectId = $this->input->post('objectId'); 
@@ -71,21 +78,22 @@ class Goods extends AdminController {
 			$data['msg'] = '修改成功';
 		}
 		$object->set("title", $title);
-		$object->set("singleCode", $singleCode);
-		$object->set("suppliers", $suppliers);
-		$object->set("price", $theprice);
-		$object->set("boxnumber", $boxnumber);
-		$object->set("FCL", (bool)$FCL);
-		$object->set("size", $size);
-		$object->set("boxprice", $boxprice);
-		$object->set("singleSize", $singleSize);
-		$object->set("singleTP", $singleTP);
-		$object->set("barcode", $barcode);
+		$object->set("singleCode", $longtitle);
+		$object->set("suppliers", $spgg);
+		$object->set("price", $spno);
+		$object->set("boxnumber", $bzdw);
+		// $object->set("FCL", (bool)$FCL);
+		$object->set("size", $lsj);
+		$object->set("boxprice", $dssl);
+		$object->set("singleSize", $pfj);
+		$object->set("singleTP", $bz);
+		$object->set("barcode", $mrcs);
+		$object->set("singleTP", $kcsl);
+		$object->set("barcode", $jhj);
 		$object->set("avatar", $avatar);
 		// 将category转为LeanCloud对象
-		$object->set("category", LeanObject::create('Category', $category));
-		$object->set("isHot", (bool)$isHot);
-		$object->set("isNew", (bool)$isNew);
+		// $object->set("isHot", (bool)$isHot);
+		// $object->set("isNew", (bool)$isNew);
 		$object->set("images", json_decode($images));
 		$object->set("detail", json_decode($detail));
 
