@@ -63,7 +63,7 @@ class Goods extends AdminController {
 		$bz = $this->input->post('bz');
 		$mrcs = $this->input->post('mrcs');
 		$kcsl = $this->input->post('kcsl');
-		$jhj = floatval($jhj);
+		$jhj = floatval($this->input->post('jhj'));
 
 		// 主图是第一个产品图
 		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
