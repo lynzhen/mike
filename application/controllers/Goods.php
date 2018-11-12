@@ -54,6 +54,7 @@ class Goods extends AdminController {
 		// 获取参数
 		$title = $this->input->post('title');
 		$longtitle = $this->input->post('longtitle');
+		$flno = $this->input->post('flno');
 		$spgg = $this->input->post('spgg');
 		$spno = $this->input->post('spno');
 		$bzdw = $this->input->post('bzdw');
@@ -78,18 +79,19 @@ class Goods extends AdminController {
 			$data['msg'] = '修改成功';
 		}
 		$object->set("title", $title);
-		$object->set("singleCode", $longtitle);
-		$object->set("spgg", $spgg);
+		$object->set("LongMc", $longtitle);
+		$object->set("FLNO", $longtitle);
+		$object->set("SPGG", $spgg);
 		$object->set("spno", $spno);
-		$object->set("bzdw", $bzdw);
+		$object->set("BZDW", $bzdw);
 		// $object->set("FCL", (bool)$FCL);
-		$object->set("lsj", $lsj);
-		$object->set("dssl", $dssl);
-		$object->set("pfj", $pfj);
+		$object->set("LSJ", $lsj);
+		$object->set("DSSL", $dssl);
+		$object->set("PFJ", $pfj);
 		$object->set("bz", $bz);
-		$object->set("mrcs", $mrcs);
-		$object->set("kcsl", $kcsl);
-		$object->set("jhj", $jhj);
+		$object->set("Mrcs", $mrcs);
+		$object->set("KCSL", $kcsl);
+		$object->set("JHJ", $jhj);
 		$object->set("avatar", $avatar);
 		// 将category转为LeanCloud对象
 		// $object->set("isHot", (bool)$isHot);

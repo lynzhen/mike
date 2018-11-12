@@ -48,6 +48,12 @@
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="longtitle" id="longtitle" value="<?=$goods->get('LongMc')?>">
                   </div>
+                </div>             
+                <div class="form-group">
+                  <label for="singleCode" class="col-sm-2 control-label">分类号</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="flno" id="flno" value="<?=$goods->get('FLNO')?>">
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="suppliers" class="col-sm-2 control-label">商品编号</label>
@@ -222,7 +228,19 @@
       $(this).parent().remove();
     });
 
-    $('#edit-form').submit(function (e) {  
+    $('#edit-form').submit(function (e) {
+
+      // 渲染回#images控件，用于post传值
+      var images_control_value = JSON.parse($('#images').val());
+      var new_images = images_control_value.concat(origin_images);
+      $('#images').val(JSON.stringify(new_images));
+
+      // 渲染回#detail控件，用于post传值
+      var detail_control_value = JSON.parse($('#detail').val());
+      var new_detail = detail_control_value.concat(origin_detail);
+      $('#detail').val(JSON.stringify(new_detail));
+      e.preventDefault();
+
       $('#edit-form').bootstrapValidator({
           // live: 'disabled',
           message: '输入不正确',
@@ -285,16 +303,6 @@
           }
         }
       });
-      // 渲染回#images控件，用于post传值
-      var images_control_value = JSON.parse($('#images').val());
-      var new_images = images_control_value.concat(origin_images);
-      $('#images').val(JSON.stringify(new_images));
-
-      // 渲染回#detail控件，用于post传值
-      var detail_control_value = JSON.parse($('#detail').val());
-      var new_detail = detail_control_value.concat(origin_detail);
-      $('#detail').val(JSON.stringify(new_detail));
-      e.preventDefault();
 
       $.post(
         'save',
@@ -302,6 +310,7 @@
           objectId: $('#objectId').val(),
           title: $('#title').val(),
           longtitle: $('#longtitle').val(),
+          flno: $('#flno').val(),
           spgg: $('#spgg').val(),
           spno: $('#spno').val(),
           bzdw: $('#bzdw').val(),
