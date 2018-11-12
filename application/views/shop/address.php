@@ -61,11 +61,33 @@
 										<option class='refuse' value="addrRefuse" <?=$item->get('isPass') == true || $item->get('isRefuse') == true ? 'disabled' : ''?> <?=$item->get('isRefuse') == true ? 'selected' : ''?> ><?=$item->get('isRefuse') == true ? '已拒绝' : '拒绝'?></option>
 									</select>
 								</td>
-								<td><td><button class="btn btn-primary doSth" data-id='<?=$item->get('objectId')?>'>保存</button></td></td>
+								<td><button class="btn btn-primary doSth" data-id='<?=$item->get('objectId')?>'>保存</button></td>
 							</tr>
 						<!-- <?php endforeach;?> -->
 					</tbody>
 				</table>
+				<style>
+					.discount{
+						border: 0;
+						border: 1px solid #999;
+						border-radius: 3px;
+						height: 28px;
+						display: inline-block;
+						line-height: 28px;
+						width: 80px;
+						outline: 0;
+						padding: 0 4px;
+					}
+					.sel{
+						height: 28px;
+						border-radius: 3px;
+						width: 70px;
+						outline: 0;
+					}
+					.sel option{
+						font-size:14px;
+					}
+				</style>
 			</div><!-- /.box-body -->
 			<div class="box-footer">
 			<?=$pagination;?>
