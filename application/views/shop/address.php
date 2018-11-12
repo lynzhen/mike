@@ -67,17 +67,6 @@
 					</tbody>
 				</table>
 				<style>
-					.discount{
-						border: 0;
-						border: 1px solid #999;
-						border-radius: 3px;
-						height: 28px;
-						display: inline-block;
-						line-height: 28px;
-						width: 80px;
-						outline: 0;
-						padding: 0 4px;
-					}
 					.sel{
 						height: 28px;
 						border-radius: 3px;
