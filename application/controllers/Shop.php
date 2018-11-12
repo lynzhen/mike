@@ -180,9 +180,10 @@ class Shop extends AdminController {
 			// var_dump($result[$i]->get('shopname'));
 		}
 
-		// foreach ($result as $key => $value) {
-		// 	var_dump($value->get('updatedAt'));
-		// }
+		foreach ($result as $key => $value) {
+			var_dump($value->get('updatedAt')['date']);
+			// var_dump($value->get('updatedAt').date);
+		}
 		
 		// 分页控件
 		// url路径前缀
