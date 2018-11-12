@@ -304,32 +304,45 @@
         }
       });
 
-      $.post(
-        'save',
-        {
-          objectId: $('#objectId').val(),
-          title: $('#title').val(),
-          longtitle: $('#longtitle').val(),
-          flno: $('#flno').val(),
-          spgg: $('#spgg').val(),
-          spno: $('#spno').val(),
-          bzdw: $('#bzdw').val(),
-          lsj: $('#lsj').val(),
-          dssl: $('#dssl').val(),
-          pfj: $('#pfj').val(),
-          bz: $('#bz').val(),
-          mrcs: $('#mrcs').val(),
-          kcsl: $('#kcsl').val(),
-          jhj: $('#jhj').val(),
-          // isNew: $('#isNew .active input').val(),
-          // isHot: $('#isHot .active input').val(),
-          images: $('#images').val(),
-          detail: $('#detail').val()
-        },
-        function (response) {
-           sweetAlert("提示", response.message, "success");
-        }  
-      );
+      var bootstrapValidator = $("#edit-form").data('bootstrapValidator');
+      bootstrapValidator.validate();
+      if(bootstrapValidator.isValid()) {
+        if ($('#images').val() == '[]') {
+          sweetAlert("提示", "请上传产品图", "error");
+          return;
+        }
+        if ($('#detail').val() == '[]') {
+          sweetAlert("提示", "请上传描述图", "error");
+          return;
+        }
+
+        $.post(
+          'save',
+          {
+            objectId: $('#objectId').val(),
+            title: $('#title').val(),
+            longtitle: $('#longtitle').val(),
+            flno: $('#flno').val(),
+            spgg: $('#spgg').val(),
+            spno: $('#spno').val(),
+            bzdw: $('#bzdw').val(),
+            lsj: $('#lsj').val(),
+            dssl: $('#dssl').val(),
+            pfj: $('#pfj').val(),
+            bz: $('#bz').val(),
+            mrcs: $('#mrcs').val(),
+            kcsl: $('#kcsl').val(),
+            jhj: $('#jhj').val(),
+            // isNew: $('#isNew .active input').val(),
+            // isHot: $('#isHot .active input').val(),
+            images: $('#images').val(),
+            detail: $('#detail').val()
+          },
+          function (response) {
+            sweetAlert("提示", response.message, "success");
+          }  
+        );
+      }
 
     });
   </script>

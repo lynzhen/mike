@@ -252,7 +252,7 @@
          }
        }
       });
-      ;
+      
       var bootstrapValidator = $("#edit-form").data('bootstrapValidator');
       bootstrapValidator.validate();
       if(bootstrapValidator.isValid()) {

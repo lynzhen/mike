@@ -54,20 +54,20 @@ class Goods extends AdminController {
 		// 获取参数
 		$images = $this->input->post('images');
 		$detail = $this->input->post('detail');
-		
+
 		$title = $this->input->post('title');
 		$longtitle = $this->input->post('longtitle');
 		$flno = $this->input->post('flno');
 		$spgg = $this->input->post('spgg');
 		$spno = $this->input->post('spno');
 		$bzdw = $this->input->post('bzdw');
-		$lsj = floatval($this->input->post('lsj'));
+		$lsj = $this->input->post('lsj');
 		$dssl = $this->input->post('dssl');
 		$pfj = $this->input->post('pfj');
 		$bz = $this->input->post('bz');
 		$mrcs = $this->input->post('mrcs');
 		$kcsl = $this->input->post('kcsl');
-		$jhj = floatval($this->input->post('jhj'));
+		$jhj = $this->input->post('jhj');
 
 		// 主图是第一个产品图
 		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
