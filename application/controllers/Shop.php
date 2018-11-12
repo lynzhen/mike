@@ -182,15 +182,15 @@ class Shop extends AdminController {
 		foreach ($result as  $value) {			
 			$date = $value->get('updatedAt');
 			var_dump($date);
-			foreach ($date as $key => $item) {
-				var_dump($key);
-			}
-			// foreach ($date as $item) {
-				// var_dump($date['date']);
+			// foreach ($date as $key => $item) {
+			// 	var_dump($key);
+			// }
+			foreach ($date as $item) {
+				var_dump($date['date']);
 				// for($i=0;$i<count($result);$i++){
 				// 	$result[$i]->set('updatetime',$item);
 				// }
-			// }
+			}
 		}
 		var_dump($result);
 		
