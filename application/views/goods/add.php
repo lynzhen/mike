@@ -45,8 +45,7 @@
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="longtitle" id="longtitle" placeholder="长名称" value="">
                   </div>
-                </div>
-                </div> -->
+                </div> 
                 <div class="form-group">
                   <label for="singleCode" class="col-sm-2 control-label">分类号</label>
                   <div class="col-sm-8">

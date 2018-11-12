@@ -52,6 +52,9 @@ class Goods extends AdminController {
 		//   jhj: $('#jhj').val(),
 		  
 		// 获取参数
+		$images = $this->input->post('images');
+		$detail = $this->input->post('detail');
+		
 		$title = $this->input->post('title');
 		$longtitle = $this->input->post('longtitle');
 		$flno = $this->input->post('flno');
