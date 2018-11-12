@@ -180,7 +180,7 @@ class Shop extends AdminController {
 			// var_dump($result[$i]->get('shopname'));
 		}
 
-		var_dump($result);
+		// var_dump($result);
 		// 分页控件
 		// url路径前缀
 		$config['base_url'] = base_url(uri_string());
