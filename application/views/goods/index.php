@@ -55,7 +55,7 @@
 								<td><?=$item->get('BZDW')?></td>
 								<td><?=$item->get('LSJ')?></td>
 								<td><?=$item->get('DSSL')?></td>
-								<td><?=$item->get('PFJ')?></td>
+								<td><?=$item->get('JHJ')?></td>
 								<td><?=$item->get('bz')?></td>
 								<td><?=$item->get('Mrcs')?></td>
 								<td><?=$item->get('KCSL')?></td>
