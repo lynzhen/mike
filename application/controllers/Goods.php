@@ -41,8 +41,8 @@ class Goods extends AdminController {
 		$images = $this->input->post('images');
 		$detail = $this->input->post('detail');
 
-		$title = $this->input->post('title');
-		$longtitle = $this->input->post('longtitle');
+		$mc = $this->input->post('mc');
+		$longmc = $this->input->post('longmc');
 		$flno = $this->input->post('flno');
 		$spgg = $this->input->post('spgg');
 		$spno = $this->input->post('spno');
@@ -67,8 +67,8 @@ class Goods extends AdminController {
 			$data['redirect'] = 'index';
 			$data['msg'] = '修改成功';
 		}
-		$object->set("MC", $title);
-		$object->set("LongMc", $longtitle);
+		$object->set("MC", $mc);
+		$object->set("LongMc", $longmc);
 		$object->set("FLNO", $flno);
 		$object->set("SPGG", $spgg);
 		$object->set("spno", $spno);
