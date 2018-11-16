@@ -108,6 +108,14 @@ class Goods extends AdminController {
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
+
+		$querylists = new Query("Mike_Goods");
+		$querylists->select("FLNO");
+		$lists = $query->find();
+		$list  = $todo->get("FLNO");
+		var_dump($list);
+
+
 		// 分页控件
 		// url路径前缀
 		$config['base_url'] = base_url(uri_string());
