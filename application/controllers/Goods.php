@@ -108,14 +108,14 @@ class Goods extends AdminController {
 
 		$querys->select("FLNO");
 		$lists = $querys->find();
-		// var_dump($lists);
+		var_dump($lists);
 		$listArr = [];
 		forEach($lists as $item) {
 			$list = $item->get("FLNO");
 			array_push($listArr,$list);
 		}
 		$trueArr = array_unique($listArr);
-		// var_dump(array_unique($listArr));
+		var_dump($trueArr);
 
 		
 		$query = new Query("Mike_Goods");
