@@ -106,7 +106,7 @@ class Goods extends AdminController {
 		$querys = new Query("Mike_Goods");
 		$querys->descend("FLNO");
 		$results = $querys->find();
-		var_dump($results);die();
+		// var_dump($results);die();
 
 		$querys->select("FLNO");
 		$lists = $querys->find();
@@ -115,15 +115,15 @@ class Goods extends AdminController {
 			$list = $item->get("FLNO");
 			array_push($listArr,$list);
 		}
-		var_dump($listArr);
+		// var_dump($listArr);
 		$trueArr = array_unique($listArr);
-		var_dump($trueArr);
+		// var_dump($trueArr);
 
 		
 		$query = new Query("Mike_Goods");
 		// 分页查询数据
 		// $query->_include("category");
-		$query->descend("updatedAt");
+		$query->ascend("FLNO");
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
