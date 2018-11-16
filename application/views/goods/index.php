@@ -31,7 +31,7 @@
 							<th>分类号
 							 <?php foreach($list as $item):?>
                                     <select name="" id="">
-                                        <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
+                                        <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
                                     </select>
                                 <?php endforeach;?>
 							</th>
