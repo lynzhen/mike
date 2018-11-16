@@ -105,8 +105,8 @@ class Goods extends AdminController {
 
 		$query = new Query("Mike_Goods");
 
-		$query->select("FLNO");
-		$lists = $query->find();
+		$querys->select("FLNO");
+		$lists = $querys->find();
 		// var_dump($lists);
 		$listArr = [];
 		forEach($lists as $item) {
@@ -115,6 +115,8 @@ class Goods extends AdminController {
 		}
 		// var_dump(array_unique($listArr));
 
+		
+		$query = new Query("Mike_Goods");
 		// 分页查询数据
 		// $query->_include("category");
 		$query->descend("updatedAt");
