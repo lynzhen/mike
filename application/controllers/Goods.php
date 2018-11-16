@@ -113,7 +113,7 @@ class Goods extends AdminController {
 			$list = $item->get("FLNO");
 			array_push($listArr,$list);
 		}
-		var_dump(array_unique($listArr));
+		// var_dump(array_unique($listArr));
 
 		// 分页查询数据
 		// $query->_include("category");
@@ -130,7 +130,7 @@ class Goods extends AdminController {
 		// 初始化
 		$this->pagination->initialize($config); 
 
-		$data['list'] = $list;
+		$data['list'] = $listArr;
 		$data['pagination'] = $this->pagination->create_links();
 		// 渲染
 		$data['result'] = $result;
