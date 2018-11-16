@@ -22,18 +22,26 @@
 				</div><!-- /.box-tools -->
 			</div><!-- /.box-header -->
 			<div class="box-body">
+			<style>
+				.flist{
+					border:0;
+					outline:0;
+					width:100%;
+				}
+			</style>
 				<table class="table table-hover table-striped table-bordered">
 					<thead>
 						<tr>
 							<th>缩略图</th>
 							<th>名称</th>
 							<th>长名称</th>
-							<th>分类号
-                                    <select name="" id="">
-							 <?php foreach($list as $item):?>
-                                        <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
-                                <?php endforeach;?>
-                                    </select>
+							<th>
+							<select class="flist" name="" id="">
+								<option disabled value="">分类号</option>
+								<?php foreach($list as $item):?>
+									<option value="<?php echo $item; ?>"><?php echo $item; ?></option>
+								<?php endforeach;?>
+							</select>
 							</th>
 							<th>商品规格</th>
 							<th>商品编号</th>

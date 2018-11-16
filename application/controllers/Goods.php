@@ -103,7 +103,7 @@ class Goods extends AdminController {
 		$pageIndex = $this->input->get('per_page');
 		$flno = $this->input->get('flno');
 
-		$query = new Query("Mike_Goods");
+		$querys = new Query("Mike_Goods");
 
 		$querys->select("FLNO");
 		$lists = $querys->find();
