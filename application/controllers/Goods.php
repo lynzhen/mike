@@ -105,6 +105,8 @@ class Goods extends AdminController {
 
 		$querys = new Query("Mike_Goods");
 		$querys->descend("FLNO");
+		$results = $querys->find();
+		var_dump($results);die();
 
 		$querys->select("FLNO");
 		$lists = $querys->find();
