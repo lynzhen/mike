@@ -180,6 +180,7 @@ class Goods extends AdminController {
 		
 		// $data['pagination'] = $this->pagination->create_links();
 		// 渲染
+		$data['list'] = $trueArr;
 		$data['result'] = $result;
 		$data['title'] = '商品列表';
 		$this->layout->view('goods/flist', $data);
