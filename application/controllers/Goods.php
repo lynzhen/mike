@@ -101,20 +101,21 @@ class Goods extends AdminController {
 	public function index() {
 		// 获取get参数
 		$pageIndex = $this->input->get('per_page');
-		// 分页查询数据
+		$flno = $this->input->get('flno');
+
 		$query = new Query("Mike_Goods");
+
+		$query->select("FLNO");
+		$lists = $query->find();
+		$list  = $lists->get("FLNO");
+		var_dump($list);
+
+		// 分页查询数据
 		// $query->_include("category");
 		$query->descend("updatedAt");
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
-
-		$querylists = new Query("Mike_Goods");
-		$querylists->select("FLNO");
-		$lists = $query->find();
-		$list  = $todo->get("FLNO");
-		var_dump($list);
-
 
 		// 分页控件
 		// url路径前缀
@@ -123,11 +124,14 @@ class Goods extends AdminController {
 		$config['total_rows'] = (new Query("Mike_Goods"))->count();
 		// 初始化
 		$this->pagination->initialize($config); 
+
+		$data['list'] = $list;
 		$data['pagination'] = $this->pagination->create_links();
 		// 渲染
 		$data['result'] = $result;
 		$data['title'] = '商品列表';
 		$this->layout->view('goods/index', $data);
+		
 	}
 
 	// 商品热销-adminlte
