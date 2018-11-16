@@ -104,7 +104,7 @@ class Goods extends AdminController {
 		// $flno = $this->input->get('flno');
 
 		$querys = new Query("Mike_Goods");
-		$querys->ascend("FLNO");
+		$querys->descend("FLNO");
 
 		$querys->select("FLNO");
 		$lists = $querys->find();
@@ -149,7 +149,7 @@ class Goods extends AdminController {
 		$flno = $this->input->get('flno');
 
 		$querys = new Query("Mike_Goods");
-		$querys->ascend("FLNO");
+		$querys->descend("FLNO");
 
 		$querys->select("FLNO");
 		$lists = $querys->find();
