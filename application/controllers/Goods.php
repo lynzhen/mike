@@ -167,7 +167,7 @@ class Goods extends AdminController {
 		// 渲染
 		$data['result'] = $result;
 		$data['title'] = '商品列表';
-		$this->layout->view('flist/index', $data);
+		$this->layout->view('goods/flist', $data);
 	}
 
 	// 商品热销-adminlte

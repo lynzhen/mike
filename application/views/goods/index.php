@@ -29,7 +29,8 @@
 					width:100%;
 					position:absolute;
 					bottom:-24px;
-					/* display:none; */
+					left:0;
+					display:none;
 				}
 				.flist option{
 					height:24px;
@@ -127,17 +128,17 @@
 	$(function () { 
 		$("[data-toggle='popover']").popover();
 		$(".openlist").click(function(){
-			// $(".flist").toggle();
+			$(".flist").show();
 		})
-		function func(){
-			var value = $('.flist option:selected').val();
-			console.log(value);
-			location.href = 'flist?flno='+value;
-		}
 		// $(".getflist").click(function(){
 		// 	var value = $(this).val();
 		// 	console.log(value);
 		// 	location.href = 'flist?flno='+value;
 		// })
 	});
+	function func(){
+		var value = $('.flist option:selected').val();
+		console.log(value);
+		location.href = 'flist?flno='+value;
+	}
 </script>
