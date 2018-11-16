@@ -104,6 +104,7 @@ class Goods extends AdminController {
 		$flno = $this->input->get('flno');
 
 		$querys = new Query("Mike_Goods");
+		$query->descend("FLNO");
 
 		$querys->select("FLNO");
 		$lists = $querys->find();
@@ -151,19 +152,19 @@ class Goods extends AdminController {
 		// 分页查询数据
 		$query->equalTo('FLNO',$flno);
 		$query->descend("updatedAt");
-		$query->limit($this->config->item('per_page'));
-		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
+		// $query->limit($this->config->item('per_page'));
+		// $query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
 
 		// 分页控件
 		// url路径前缀
-		$config['base_url'] = base_url(uri_string());
+		// $config['base_url'] = base_url(uri_string());
 		// 总条数
-		$config['total_rows'] = (new Query("Mike_Goods"))->count();
+		// $config['total_rows'] = $result->count();
 		// 初始化
-		$this->pagination->initialize($config); 
+		// $this->pagination->initialize($config); 
 		
-		$data['pagination'] = $this->pagination->create_links();
+		// $data['pagination'] = $this->pagination->create_links();
 		// 渲染
 		$data['result'] = $result;
 		$data['title'] = '商品列表';

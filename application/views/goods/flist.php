@@ -89,7 +89,6 @@
 				</script>
 			</div><!-- /.box-body -->
 			<div class="box-footer">
-			<?=$pagination;?>
 			</div><!-- box-footer -->
 		</div><!-- /.box -->
 	</section>
