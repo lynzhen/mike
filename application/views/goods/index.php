@@ -27,6 +27,27 @@
 					border:0;
 					outline:0;
 					width:100%;
+					position:absolute;
+					bottom:24px;
+					display:none;
+				}
+				.flist option{
+					height:24px;
+					line-height:24px;
+				}
+				.openlist{
+					position:relative;
+				}
+				.openlist:after{
+					position:absolute;
+					right:10px;
+					bottom:20px;
+					content:'';
+					width:0px;
+					height:0px;
+					border-top: 10px solid black;
+					border-left: 10px solid transparent;
+					border-right: 10px solid transparent;
 				}
 			</style>
 				<table class="table table-hover table-striped table-bordered">
@@ -35,8 +56,8 @@
 							<th>缩略图</th>
 							<th>名称</th>
 							<th>长名称</th>
-							<th style="width:90px;">
-							<select class="flist" name="" id="">
+							<th style="width:90px;" class="openlist">
+							<select class="flist" name="" id="" onchange="func();">
 								<option disabled value="">分类号</option>
 								<?php foreach($list as $item):?>
 									<option class="getflist" value="<?php echo $item; ?>"><?php echo $item; ?></option>
@@ -106,9 +127,18 @@
 <script>
 	$(function () { 
 		$("[data-toggle='popover']").popover();
-		$(".getflist").click(function(){
-			var value = $(this).val();
-			location.href = 'flist?flno='+value;
+		$(".openlist").click(function(){
+			$(".flist").toggle();
 		})
+		function func(){
+			console.log(value);
+			location.href = 'flist?flno='+value;
+			var value = $('.flist option:selected').val();
+		}
+		// $(".getflist").click(function(){
+		// 	var value = $(this).val();
+		// 	console.log(value);
+		// 	location.href = 'flist?flno='+value;
+		// })
 	});
 </script>
