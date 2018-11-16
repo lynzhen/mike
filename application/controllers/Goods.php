@@ -113,7 +113,7 @@ class Goods extends AdminController {
 			$list = $item->get("FLNO");
 			array_push($listArr,$list);
 		}
-		var_dump($listArr);
+		var_dump(array_unique($listArr));
 
 		// 分页查询数据
 		// $query->_include("category");
