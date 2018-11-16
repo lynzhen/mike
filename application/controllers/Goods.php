@@ -113,6 +113,7 @@ class Goods extends AdminController {
 			$list = $item->get("FLNO");
 			array_push($listArr,$list);
 		}
+		$trueArr = array_unique($listArr);
 		// var_dump(array_unique($listArr));
 
 		
@@ -132,13 +133,41 @@ class Goods extends AdminController {
 		// 初始化
 		$this->pagination->initialize($config); 
 
-		$data['list'] = $listArr;
+		$data['list'] = $trueArr;
 		$data['pagination'] = $this->pagination->create_links();
 		// 渲染
 		$data['result'] = $result;
 		$data['title'] = '商品列表';
 		$this->layout->view('goods/index', $data);
 		
+	}
+
+	public function list(){
+		// 获取get参数
+		$pageIndex = $this->input->get('per_page');
+		$flno = $this->input->get('flno');
+
+		$query = new Query("Mike_Goods");
+		// 分页查询数据
+		$query->equalTo('FLNO',$flno);
+		$query->descend("updatedAt");
+		$query->limit($this->config->item('per_page'));
+		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
+		$result = $query->find();
+
+		// 分页控件
+		// url路径前缀
+		$config['base_url'] = base_url(uri_string());
+		// 总条数
+		$config['total_rows'] = (new Query("Mike_Goods"))->count();
+		// 初始化
+		$this->pagination->initialize($config); 
+		
+		$data['pagination'] = $this->pagination->create_links();
+		// 渲染
+		$data['result'] = $result;
+		$data['title'] = '商品列表';
+		$this->layout->view('list/index', $data);
 	}
 
 	// 商品热销-adminlte

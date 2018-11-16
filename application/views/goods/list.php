@@ -17,7 +17,6 @@
 			<div class="box-header with-border">
 				<h3 class="box-title"><?=$title?></h3>
 				<div class="box-tools pull-right">
-					<a class="btn btn-sm btn-primary" href="import">导入表格</a>
 					<a class="btn btn-sm btn-primary" href="add">添加</a>
 				</div><!-- /.box-tools -->
 			</div><!-- /.box-header -->
@@ -35,14 +34,7 @@
 							<th>缩略图</th>
 							<th>名称</th>
 							<th>长名称</th>
-							<th style="width:90px;">
-							<select class="flist" name="" id="">
-								<option disabled value="">分类号</option>
-								<?php foreach($list as $item):?>
-									<option class="getflist" value="<?php echo $item; ?>"><?php echo $item; ?></option>
-								<?php endforeach;?>
-							</select>
-							</th>
+							<th>分类号</th>
 							<th>商品规格</th>
 							<th>商品编号</th>
 							<th>单位</th>
@@ -106,9 +98,5 @@
 <script>
 	$(function () { 
 		$("[data-toggle='popover']").popover();
-		$(".getflist").click(function(){
-			var value = $(this).val();
-			location.href = 'list?flno='+value;
-		})
 	});
 </script>
