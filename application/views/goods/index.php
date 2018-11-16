@@ -108,7 +108,7 @@
 		$("[data-toggle='popover']").popover();
 		$(".getflist").click(function(){
 			var value = $(this).val();
-			location.href = 'list?flno='+value;
+			location.href = 'flist?flno='+value;
 		})
 	});
 </script>

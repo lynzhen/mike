@@ -142,7 +142,7 @@ class Goods extends AdminController {
 		
 	}
 
-	public function list(){
+	public function flist(){
 		// 获取get参数
 		$pageIndex = $this->input->get('per_page');
 		$flno = $this->input->get('flno');
@@ -167,7 +167,7 @@ class Goods extends AdminController {
 		// 渲染
 		$data['result'] = $result;
 		$data['title'] = '商品列表';
-		$this->layout->view('list/index', $data);
+		$this->layout->view('flist/index', $data);
 	}
 
 	// 商品热销-adminlte
