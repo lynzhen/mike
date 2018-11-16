@@ -107,6 +107,7 @@ class Goods extends AdminController {
 
 		$query->select("FLNO");
 		$lists = $query->find();
+		var_dump($lists);
 		forEach($lists as $item) {
 			$list = $item->get("FLNO");
 		}
