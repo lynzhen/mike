@@ -107,7 +107,9 @@ class Goods extends AdminController {
 
 		$query->select("FLNO");
 		$lists = $query->find();
-		$list  = $lists->get("FLNO");
+		forEach($lists as $item) {
+			$list = $item->get("FLNO");
+		}
 		var_dump($list);
 
 		// 分页查询数据

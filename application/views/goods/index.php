@@ -28,7 +28,13 @@
 							<th>缩略图</th>
 							<th>名称</th>
 							<th>长名称</th>
-							<th>分类号</th>
+							<th>分类号
+								<?php foreach($list as $item):?>
+									<select name="" id="">
+										<option value=""></option>
+									</select>
+								<?php endforeach;?>
+							</th>
 							<th>商品规格</th>
 							<th>商品编号</th>
 							<th>单位</th>
