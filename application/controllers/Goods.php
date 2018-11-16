@@ -101,10 +101,10 @@ class Goods extends AdminController {
 	public function index() {
 		// 获取get参数
 		$pageIndex = $this->input->get('per_page');
-		$flno = $this->input->get('flno');
+		// $flno = $this->input->get('flno');
 
 		$querys = new Query("Mike_Goods");
-		$querys->descend("FLNO");
+		$querys->ascend("FLNO");
 
 		$querys->select("FLNO");
 		$lists = $querys->find();
@@ -147,6 +147,20 @@ class Goods extends AdminController {
 		// 获取get参数
 		$pageIndex = $this->input->get('per_page');
 		$flno = $this->input->get('flno');
+
+		$querys = new Query("Mike_Goods");
+		$querys->ascend("FLNO");
+
+		$querys->select("FLNO");
+		$lists = $querys->find();
+		// var_dump($lists);
+		$listArr = [];
+		forEach($lists as $item) {
+			$list = $item->get("FLNO");
+			array_push($listArr,$list);
+		}
+		$trueArr = array_unique($listArr);
+		// var_dump(array_unique($listArr));
 
 		$query = new Query("Mike_Goods");
 		// 分页查询数据
