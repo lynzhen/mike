@@ -210,12 +210,12 @@
 		$(".pagination").html('');
 		$(".flWrap").hide();
 		$.post(
-			'showList',
+			'showLists',
 			{
 				pageIndex : ipage
 			},
 			function (response) {
-				console.log(response);console.log(typeof(response));
+				console.log(response);return;console.log(typeof(response));
 				var data = eval('(' + response + ')');console.log(data);
 				$(".sweet-overlay,.sweet-alert").hide();
 				var arr = data.list;   

@@ -127,11 +127,44 @@ class Goods extends AdminController {
 	}
 
 	//获取商品分类
+	public function showLists(){	
+		$pageIndex = $this->input->get('per_page');
+
+		$query = new Query("Mike_GoodsType");
+		$query->ascend("flno");
+		$query->select("flno","mc");
+		$query->limit(60);
+		$query->skip(60 * ($pageIndex - 1));
+		$lists = $query->find();
+		// var_dump($lists);
+		$listArr = [];
+		forEach($lists as $item) {
+			$flno = $item->get("flno");
+			$mc = $item->get("mc");
+			$obj['flno'] = $flno;
+			$obj['mc'] = $mc;
+			array_push($listArr,$obj);
+		}
+		var_dump($listArr);die();
+		// $trueArr = array_unique($listArr);
+		$fllist = json_encode($trueArr);
+
+		// 总条数
+		$count = (new Query("Mike_Goods"))->count();
+		$ipage = ceil($count / 1000);
+
+		$data = array("ipage"=>$ipage, "list"=>$trueArr);
+
+		echo json_encode ($data);
+		
+	}
+
+	//获取商品分类
 	public function showList(){	
 		$pageIndex = $this->input->get('per_page');
 
 		$query = new Query("Mike_Goods");
-		$query->descend("FLNO");
+		$query->ascend("FLNO");
 		$query->select("FLNO");
 		$query->limit(1000);
 		$query->skip(1000 * ($pageIndex - 1));
@@ -148,7 +181,7 @@ class Goods extends AdminController {
 		// 总条数
 		$count = (new Query("Mike_Goods"))->count();
 		$ipage = ceil($count / 1000);
-		
+
 		$data = array("ipage"=>$ipage, "list"=>$trueArr);
 
 		echo json_encode ($data);
