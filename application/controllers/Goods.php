@@ -170,7 +170,7 @@ class Goods extends AdminController {
 		// $data['ipage'] = $ipage;
 		// $data['list'] = $fllist;
 		// var_dump($trueArr);
-		echo $data;
+		print_r($data) ;
 		
 		// $data['result'] = fllist;
 
