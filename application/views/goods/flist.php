@@ -116,23 +116,60 @@
 	$(function () { 
 		$("[data-toggle='popover']").popover();
 		$(".openlist").click(function(){
-			$.post(
-				'showList',				
-				function (response) {
-					var arr = response;
-					console.log('111111');
-					console.log(arr);
-					console.log('222222222');
-					console.log(JSON.parse(arr));
-					// sweetAlert("提示", response.message, "success");
-					// for(var i = 0;i<)
-				}  
-			);
+			sweetAlert("提示", '正在查询...', "success");
+			getItem(1);
 		})
+
+		$(".flclose").click(function(){
+			$(".flWrap").hide();
+		})
+
+		$(document.body).on('click','.pages',function(){
+			$(this).addClass('active').siblings('.pages').removeClass('active')
+			var page = $(this).find('a').data('index');
+			console.log(page);
+			getItem(page);
+		})
+
+		$(document.body).on('click','.fitem',function(){
+			var value = $(this).data('fl');
+			console.log(value);
+			location.href = 'flist?flno='+value;
+		})
+
 	});
-	function func(){
-		var value = $('.flist option:selected').val();
-		console.log(value);
-		location.href = 'flist?flno='+value;
+	function getItem(ipage){
+		$(".flitems").html('');
+		$(".pagination").html('');
+		$(".flWrap").hide();
+		$.post(
+			'showLists',
+			{
+				pageIndex : ipage
+			},
+			function (response) {
+				console.log(response);console.log(typeof(response));
+				var data = eval('(' + response + ')');console.log(data);
+				$(".sweet-overlay,.sweet-alert").hide();
+				var arr = data.list;   
+				var ipage = data.ipage; 
+				var str = '';
+				for(let index in arr){
+					str += '<div class="fitem" data-fl="'+arr[index]['flno']+'">' + arr[index]['flno']+'<br>'+  arr[index]['mc']+ '</div>';
+				}
+				var pagestr = '';
+				for(var i = 1;i<ipage;i++){
+					if(i == 1){
+						pagestr += '<li class="pages active"><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
+					}else{
+						pagestr += '<li class="pages"><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
+					}
+				}
+				$(".flitems").html(str);
+				$(".pagination").html(pagestr);
+				$(".flWrap").show();
+			}  
+		);
 	}
+
 </script>

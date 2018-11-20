@@ -128,7 +128,8 @@ class Goods extends AdminController {
 
 	//获取商品分类
 	public function showLists(){	
-		$pageIndex = $this->input->get('pageIndex');
+		$pageIndex = $this->input->post('pageIndex');
+		// echo $pageIndex;die;
 
 		$query = new Query("Mike_GoodsType");
 		$query->ascend("flno");
@@ -159,34 +160,6 @@ class Goods extends AdminController {
 		
 	}
 
-	//获取商品分类
-	public function showList(){	
-		$pageIndex = $this->input->get('per_page');
-
-		$query = new Query("Mike_Goods");
-		$query->ascend("FLNO");
-		$query->select("FLNO");
-		$query->limit(1000);
-		$query->skip(1000 * ($pageIndex - 1));
-		$lists = $query->find();
-		// var_dump($lists);
-		$listArr = [];
-		forEach($lists as $item) {
-			$list = $item->get("FLNO");
-			array_push($listArr,$list);
-		}
-		$trueArr = array_unique($listArr);
-		$fllist = json_encode($trueArr);
-
-		// 总条数
-		$count = (new Query("Mike_Goods"))->count();
-		$ipage = ceil($count / 1000);
-
-		$data = array("ipage"=>$ipage, "list"=>$trueArr);
-
-		echo json_encode ($data);
-		
-	}
 
 	public function flist(){
 		// 获取get参数

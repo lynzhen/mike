@@ -207,11 +207,7 @@
 			location.href = 'flist?flno='+value;
 		})
 	});
-	function func(){
-		var value = $(this).data('fl');
-		console.log(value);
-		location.href = 'flist?flno='+value;
-	}
+
 	function getItem(ipage){
 		$(".flitems").html('');
 		$(".pagination").html('');
