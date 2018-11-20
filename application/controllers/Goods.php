@@ -145,7 +145,7 @@ class Goods extends AdminController {
 		
 	}
 
-	public function showList(){		
+	public function showList(){	
 		// $pageIndex = $this->input->get('per_page');
 
 		$query = new Query("Mike_Goods");
@@ -162,8 +162,14 @@ class Goods extends AdminController {
 		}
 		$trueArr = array_unique($listArr);
 		$fllist = json_encode($trueArr);
+
+		// 总条数
+		$count = (new Query("Mike_Goods"))->count();
+		$ipage = $count / 1000;
+		$data['ipage'] = $ipage;
+		$data['list'] = $fllist;
 		// var_dump($trueArr);
-		echo $fllist;
+		echo $data;
 		
 		// $data['result'] = fllist;
 

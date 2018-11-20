@@ -159,33 +159,40 @@
 			color: #fff;
 			border-radius: 5px;
 		}
+		.flclose{
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: #d43f3a;
+			color: #fff;
+			text-align: center;
+			line-height: 20px;
+			cursor: pointer;
+		}
 	</style>
 	<div class="flWrap">
+		<div class="flclose"></div>
 		<div class="fltitle">分类列表</div>
 		<div class="fLists">
-				<!-- <div class="flitem"></div> -->
+		<div class="flitems"></div>
+		<div class="box-footer">
+			<ul class="pagination"></ul>
 		</div>
 	</div>
 </div>
 <script>
 	$(function () { 
 		$("[data-toggle='popover']").popover();
+
 		$(".openlist").click(function(){
-			sweetAlert("提示", '正在查询...', "success");
-			$.post(
-				'showList',				
-				function (response) {
-					$(".sweet-overlay,.sweet-alert").hide();
-					var arr = JSON.parse(response);
-					console.log(arr);
-					var str = '';
-					for(let index in arr){
-						str += '<div class="fitem">' + arr[index] + '</div>';
-					}
-					$(".fLists").html(str);
-					$(".flWrap").show();
-				}  
-			);
+			getItem();
+		})
+
+		$(".flclose").click(function(){
+			$(".flWrap").hide();
 		})
 
 	});
@@ -193,5 +200,35 @@
 		var value = $('.flist option:selected').val();
 		console.log(value);
 		location.href = 'flist?flno='+value;
+	}
+	function getItem(){
+		sweetAlert("提示", '正在查询...', "success");
+		$.post(
+			'showList',
+			{
+				pageIndex : 1
+			},
+			function (response) {
+				var data = JSON.parse(response);
+				$(".sweet-overlay,.sweet-alert").hide();
+				var arr = data.list;  // console.log(arr);
+				var ipage = data.ipage;
+				var str = '';
+				for(let index in arr){
+					str += '<div class="fitem">' + arr[index] + '</div>';
+				}
+				var pagestr = '';
+				for(var i = 0;i<ipage;i++){
+					if(i == 1){
+						pagestr += '<li class="active"><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
+					}else{
+						pagestr += '<li class=""><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
+					}
+				}
+				$(".flitems").html(str);
+				$(".pagination").html(pagestr);
+				$(".flWrap").show();
+			}  
+		);
 	}
 </script>
