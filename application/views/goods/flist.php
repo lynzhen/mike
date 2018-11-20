@@ -2,6 +2,9 @@
 <script src="/bower_components/bs-confirmation/bootstrap-confirmation.js"></script>
 <!-- 引入css -->
 <link rel="stylesheet" type="text/css" href="/assets/css/global.css">
+<!-- sweet alet -->
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
 
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -127,13 +130,13 @@
 		$(document.body).on('click','.pages',function(){
 			$(this).addClass('active').siblings('.pages').removeClass('active')
 			var page = $(this).find('a').data('index');
-			console.log(page);
+			// console.log(page);
 			getItem(page);
 		})
 
 		$(document.body).on('click','.fitem',function(){
 			var value = $(this).data('fl');
-			console.log(value);
+			// console.log(value);
 			location.href = 'flist?flno='+value;
 		})
 
@@ -148,8 +151,8 @@
 				pageIndex : ipage
 			},
 			function (response) {
-				console.log(response);console.log(typeof(response));
-				var data = eval('(' + response + ')');console.log(data);
+				// console.log(response);console.log(typeof(response));
+				var data = eval('(' + response + ')');//console.log(data);
 				$(".sweet-overlay,.sweet-alert").hide();
 				var arr = data.list;   
 				var ipage = data.ipage; 

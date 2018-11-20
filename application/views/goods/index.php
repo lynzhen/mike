@@ -198,13 +198,13 @@
 			$(this).addClass('active');
 			$(this).siblings('.pages').removeClass('active');
 			var page = $(this).find('a').data('index');
-			console.log(page);
+			// console.log(page);
 			getItem(page);
 		})
 
 		$(document.body).on('click','.fitem',function(){
 			var value = $(this).data('fl');
-			console.log(value);
+			// console.log(value);
 			location.href = 'flist?flno='+value;
 		})
 	});
@@ -219,8 +219,8 @@
 				pageIndex : ipage
 			},
 			function (response) {
-				console.log(response);console.log(typeof(response));
-				var data = eval('(' + response + ')');console.log(data);
+				// console.log(response);console.log(typeof(response));
+				var data = eval('(' + response + ')');//console.log(data);
 				$(".sweet-overlay,.sweet-alert").hide();
 				var arr = data.list;   
 				var ipage = data.ipage; 
