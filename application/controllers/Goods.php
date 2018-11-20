@@ -145,24 +145,29 @@ class Goods extends AdminController {
 		
 	}
 
-	public function flist(){
-		// 获取get参数
-		$pageIndex = $this->input->get('per_page');
-		$flno = $this->input->get('flno');
-
+	public function showList(){
+		
 		$querys = new Query("Mike_Goods");
 		$querys->descend("FLNO");
-
 		$querys->select("FLNO");
+		$query->limit(1000);
 		$lists = $querys->find();
-		// var_dump($lists);
-		$listArr = [];
-		forEach($lists as $item) {
-			$list = $item->get("FLNO");
-			array_push($listArr,$list);
-		}
-		$trueArr = array_unique($listArr);
+		var_dump($lists);
+		// $listArr = [];
+		// forEach($lists as $item) {
+		// 	$list = $item->get("FLNO");
+		// 	array_push($listArr,$list);
+		// }
+		// $trueArr = array_unique($listArr);
 		// var_dump(array_unique($listArr));
+
+	}
+
+	public function flist(){
+		// 获取get参数
+		// $pageIndex = $this->input->get('per_page');
+		$flno = $this->input->get('flno');
+
 
 		$query = new Query("Mike_Goods");
 		// 分页查询数据
@@ -183,7 +188,7 @@ class Goods extends AdminController {
 		
 		// $data['pagination'] = $this->pagination->create_links();
 		// 渲染
-		$data['list'] = $trueArr;
+		// $data['list'] = $trueArr;
 		$data['result'] = $result;
 		$data['title'] = '商品列表';
 		$this->layout->view('goods/flist', $data);

@@ -34,13 +34,7 @@
 							<th>缩略图</th>
 							<th>名称</th>
 							<th>长名称</th>
-							<th style="width:90px;" class="openlist">分类号
-							<select class="flist" name="" id="" onchange="func();">
-								<?php foreach($list as $item):?>
-									<option class="getflist" value="<?php echo $item; ?>"><?php echo $item; ?></option>
-								<?php endforeach;?>
-							</select>
-							</th>
+							<th style="width:90px;" class="openlist">分类号</th>
 							<th>商品规格</th>
 							<th>商品编号</th>
 							<th>单位</th>
@@ -104,7 +98,13 @@
 	$(function () { 
 		$("[data-toggle='popover']").popover();
 		$(".openlist").click(function(){
-			$(".flist").show();
+			$.post(
+				'showList',				
+				function (response) {
+					console.log(response);
+					// sweetAlert("提示", response.message, "success");
+				}  
+				);
 		})
 	});
 	function func(){
