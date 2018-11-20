@@ -60,13 +60,7 @@
 							<th>缩略图</th>
 							<th>名称</th>
 							<th>长名称</th>
-							<th style="width:90px;" class="openlist">分类号
-							<select class="flist" name="" id="" onchange="func();">
-								<?php foreach($list as $item):?>
-									<option class="getflist" value="<?php echo $item; ?>"><?php echo $item; ?></option>
-								<?php endforeach;?>
-							</select>
-							</th>
+							<th class="openlist">分类号</th>
 							<th>商品规格</th>
 							<th>商品编号</th>
 							<th>单位</th>
@@ -150,6 +144,10 @@
 			border-radius: 10px;
 			overflow: hidden;
 		}
+		.flitems{
+			overflow:hidden;
+			margin-bottom:20px;
+		}
 		.fitem{
 			float: left;
 			margin: 5px;
@@ -188,46 +186,52 @@
 		$("[data-toggle='popover']").popover();
 
 		$(".openlist").click(function(){
-			getItem();
+			sweetAlert("提示", '正在查询...', "success");
+			getItem(1);
 		})
 
 		$(".flclose").click(function(){
 			$(".flWrap").hide();
 		})
 
+		$(document.body).on('click','.pages',function(){
+			var page = $(this).data('index');
+			getItem(page);
+		})
+
 	});
 	function func(){
-		var value = $('.flist option:selected').val();
+		var value = $(this).text();
 		console.log(value);
 		location.href = 'flist?flno='+value;
 	}
-	function getItem(){
-		sweetAlert("提示", '正在查询...', "success");
+	function getItem(ipage){
+		$(".flitems").html('');
+		$(".pagination").html('');
+		$(".flWrap").hide();
 		$.post(
 			'showList',
 			{
-				pageIndex : 1
+				pageIndex : ipage
 			},
 			function (response) {
-				console.log(response);
-				console.log(typeof(response));
+				console.log(response);console.log(typeof(response));
 				var data = eval('(' + response + ')');console.log(data);
 				$(".sweet-overlay,.sweet-alert").hide();
-				var arr = data.list;   console.log(arr);
-				var ipage = data.ipage; console.log(ipage);
+				var arr = data.list;   
+				var ipage = data.ipage; 
 				var str = '';
 				for(let index in arr){
-					str += '<div class="fitem">' + arr[index] + '</div>';
+					str += '<div class="fitem" onclick="func();">' + arr[index] + '</div>';
 				}
 				var pagestr = '';
-				for(var i = 0;i<ipage;i++){
+				for(var i = 1;i<ipage;i++){
 					if(i == 1){
-						pagestr += '<li class="active"><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
+						pagestr += '<li class="pages active"><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
 					}else{
-						pagestr += '<li class=""><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
+						pagestr += '<li class="pages"><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
 					}
 				}
-				console.log(str);console.log(pagestr);
 				$(".flitems").html(str);
 				$(".pagination").html(pagestr);
 				$(".flWrap").show();

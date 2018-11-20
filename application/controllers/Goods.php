@@ -101,24 +101,6 @@ class Goods extends AdminController {
 	public function index() {
 		// 获取get参数
 		$pageIndex = $this->input->get('per_page');
-		// $flno = $this->input->get('flno');
-
-		$querys = new Query("Mike_Goods");
-		$querys->descend("FLNO");
-		$results = $querys->find();
-		// var_dump($results);die();
-
-		$querys->select("FLNO");
-		$lists = $querys->find();
-		$listArr = [];
-		forEach($lists as $item) {
-			$list = $item->get("FLNO");
-			array_push($listArr,$list);
-		}
-		// var_dump($listArr);
-		$trueArr = array_unique($listArr);
-		// var_dump($trueArr);
-
 		
 		$query = new Query("Mike_Goods");
 		// 分页查询数据
@@ -136,7 +118,6 @@ class Goods extends AdminController {
 		// 初始化
 		$this->pagination->initialize($config); 
 
-		$data['list'] = $trueArr;
 		$data['pagination'] = $this->pagination->create_links();
 		// 渲染
 		$data['result'] = $result;
@@ -145,14 +126,15 @@ class Goods extends AdminController {
 		
 	}
 
+	//获取商品分类
 	public function showList(){	
-		// $pageIndex = $this->input->get('per_page');
+		$pageIndex = $this->input->get('per_page');
 
 		$query = new Query("Mike_Goods");
 		$query->descend("FLNO");
 		$query->select("FLNO");
 		$query->limit(1000);
-		// $query->skip(1000 * ($pageIndex - 1));
+		$query->skip(1000 * ($pageIndex - 1));
 		$lists = $query->find();
 		// var_dump($lists);
 		$listArr = [];
@@ -166,15 +148,11 @@ class Goods extends AdminController {
 		// 总条数
 		$count = (new Query("Mike_Goods"))->count();
 		$ipage = ceil($count / 1000);
-		$data = array("ipage"=>$ipage, "list"=>$trueArr);
-		// $data['ipage'] = $ipage;
-		// $data['list'] = $fllist;
-		// var_dump($trueArr);
 		
+		$data = array("ipage"=>$ipage, "list"=>$trueArr);
+
 		echo json_encode ($data);
 		
-		// $data['result'] = fllist;
-
 	}
 
 	public function flist(){
