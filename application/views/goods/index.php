@@ -211,9 +211,7 @@
 			function (response) {
 				console.log(response);
 				console.log(typeof(response));
-				console.log(eval('(' + response + ')'));//return;
-				// var data = JSON.parse(response);
-				var data = response;
+				var data = eval('(' + response + ')');console.log(data);
 				$(".sweet-overlay,.sweet-alert").hide();
 				var arr = data.list;   console.log(arr);
 				var ipage = data.ipage; console.log(ipage);
