@@ -167,7 +167,7 @@ class Goods extends AdminController {
 		$count = (new Query("Mike_Goods"))->count();
 		$ipage = $count / 1000;
 		$data['ipage'] = $ipage;
-		$data['list'] = $fllist;
+		$data['list'] = $trueArr;
 		// var_dump($trueArr);
 		echo $data;
 		
