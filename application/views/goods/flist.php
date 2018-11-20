@@ -104,7 +104,7 @@
 					console.log(response);
 					// sweetAlert("提示", response.message, "success");
 				}  
-				);
+			);
 		})
 	});
 	function func(){

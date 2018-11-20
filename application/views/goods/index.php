@@ -128,13 +128,15 @@
 	$(function () { 
 		$("[data-toggle='popover']").popover();
 		$(".openlist").click(function(){
-			$(".flist").show();
+			$.post(
+				'showList',				
+				function (response) {
+					console.log(response);
+					// sweetAlert("提示", response.message, "success");
+				}  
+			);
 		})
-		// $(".getflist").click(function(){
-		// 	var value = $(this).val();
-		// 	console.log(value);
-		// 	location.href = 'flist?flno='+value;
-		// })
+
 	});
 	function func(){
 		var value = $('.flist option:selected').val();

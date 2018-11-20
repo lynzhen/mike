@@ -147,11 +147,11 @@ class Goods extends AdminController {
 
 	public function showList(){
 		
-		$querys = new Query("Mike_Goods");
-		$querys->descend("FLNO");
-		$querys->select("FLNO");
+		$query = new Query("Mike_Goods");
+		$query->descend("FLNO");
+		$query->select("FLNO");
 		$query->limit(1000);
-		$lists = $querys->find();
+		$lists = $query->find();
 		var_dump($lists);
 		// $listArr = [];
 		// forEach($lists as $item) {
