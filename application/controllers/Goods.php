@@ -166,10 +166,11 @@ class Goods extends AdminController {
 		// 总条数
 		$count = (new Query("Mike_Goods"))->count();
 		$ipage = ceil($count / 1000);
-		$data['ipage'] = $ipage;
-		$data['list'] = $fllist;
+		$data = array("ipage"=>$ipage, "list"=>$fllist);
+		// $data['ipage'] = $ipage;
+		// $data['list'] = $fllist;
 		// var_dump($trueArr);
-		return $data;
+		echo $data;
 		
 		// $data['result'] = fllist;
 
