@@ -160,6 +160,8 @@ class Goods extends AdminController {
 		}
 		$trueArr = array_unique($listArr);
 		var_dump($trueArr);
+		
+		$data['result'] = $trueArr;
 
 	}
 
