@@ -174,7 +174,7 @@
 		}
 	</style>
 	<div class="flWrap">
-		<div class="flclose"></div>
+		<div class="flclose">X</div>
 		<div class="fltitle">分类列表</div>
 		<div class="fLists">
 		<div class="flitems"></div>
@@ -209,7 +209,9 @@
 				pageIndex : 1
 			},
 			function (response) {
-				console.log(response);//return;
+				console.log(response);
+				console.log(typeof(response));
+				console.log(eval(response));//return;
 				// var data = JSON.parse(response);
 				var data = response;
 				$(".sweet-overlay,.sweet-alert").hide();
