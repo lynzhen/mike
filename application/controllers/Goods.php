@@ -145,7 +145,7 @@ class Goods extends AdminController {
 			$obj['mc'] = $mc;
 			array_push($listArr,$obj);
 		}
-		var_dump($listArr);
+		// var_dump($listArr);
 		// $trueArr = array_unique($listArr);
 		// $fllist = json_encode($listArr);
 

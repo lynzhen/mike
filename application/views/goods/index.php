@@ -196,6 +196,7 @@
 
 		$(document.body).on('click','.pages',function(){
 			var page = $(this).data('index');
+			console.log(page);
 			getItem(page);
 		})
 
@@ -222,7 +223,7 @@
 				var ipage = data.ipage; 
 				var str = '';
 				for(let index in arr){
-					str += '<div class="fitem" onclick="func();">' + arr[index] + '</div>';
+					str += '<div class="fitem" onclick="func();">' + arr[index]['flno']+'<br>'+  arr[index]['mc']+ '</div>';
 				}
 				var pagestr = '';
 				for(var i = 1;i<ipage;i++){
