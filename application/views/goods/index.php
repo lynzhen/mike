@@ -123,16 +123,64 @@
 		</div><!-- /.box -->
 	</section>
 	<!-- /.content -->
+	<style>
+		.flWrap{
+			display:none;
+			position: fixed;
+			width: 800px;
+			height: auto;
+			padding: 20px;
+			top: 50%;
+			left: 50%;
+			background: rgba(0,0,0,.4);
+			border-radius: 10px;
+			transform: translate(-50%,-50%);
+		}
+		.fltitle{
+			height: 30px;
+			line-height: 25px;
+			color: #fff;
+		}
+		.fLists{
+			background: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			overflow: hidden;
+		}
+		.fitem{
+			float: left;
+			margin: 5px;
+			padding: 3px 10px;
+			background: #337ab7;
+			border: 1px solid #2e6da4;
+			color: #fff;
+			border-radius: 5px;
+		}
+	</style>
+	<div class="flWrap">
+		<div class="fltitle">分类列表</div>
+		<div class="fLists">
+				<!-- <div class="flitem"></div> -->
+		</div>
+	</div>
 </div>
 <script>
 	$(function () { 
 		$("[data-toggle='popover']").popover();
 		$(".openlist").click(function(){
+			sweetAlert("提示", '正在查询...', "success");
 			$.post(
 				'showList',				
 				function (response) {
-					console.log(response);
-					// sweetAlert("提示", response.message, "success");
+					$(".sweet-overlay,.sweet-alert").hide();
+					var arr = JSON.parse(response);
+					console.log(arr);
+					var str = '';
+					for(let index in arr){
+						str += '<div class="fitem">' + arr[index] + '</div>';
+					}
+					$(".fLists").html(str);
+					$(".flWrap").show();
 				}  
 			);
 		})

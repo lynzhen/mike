@@ -27,6 +27,24 @@
 					outline:0;
 					width:100%;
 				}
+				.flist option{
+					height:24px;
+					line-height:24px;
+				}
+				.openlist{
+					position:relative;
+				}
+				.openlist:after{
+					position:absolute;
+					right:10px;
+					bottom:20px;
+					content:'';
+					width:0px;
+					height:0px;
+					border-top: 5px solid black;
+					border-left: 5px solid transparent;
+					border-right: 5px solid transparent;
+				}
 			</style>
 				<table class="table table-hover table-striped table-bordered">
 					<thead>

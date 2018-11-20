@@ -145,12 +145,14 @@ class Goods extends AdminController {
 		
 	}
 
-	public function showList(){
-		
+	public function showList(){		
+		// $pageIndex = $this->input->get('per_page');
+
 		$query = new Query("Mike_Goods");
 		$query->descend("FLNO");
 		$query->select("FLNO");
 		$query->limit(1000);
+		// $query->skip(1000 * ($pageIndex - 1));
 		$lists = $query->find();
 		// var_dump($lists);
 		$listArr = [];
