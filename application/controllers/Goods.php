@@ -128,7 +128,7 @@ class Goods extends AdminController {
 
 	//获取商品分类
 	public function showLists(){	
-		$pageIndex = $this->input->get('per_page');
+		$pageIndex = $this->input->get('pageIndex');
 
 		$query = new Query("Mike_GoodsType");
 		$query->ascend("flno");

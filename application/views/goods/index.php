@@ -201,6 +201,11 @@
 			getItem(page);
 		})
 
+		$(document.body).on('click','.fitem',function(){
+			var value = $(this).data('fl');
+			console.log(value);
+			location.href = 'flist?flno='+value;
+		})
 	});
 	function func(){
 		var value = $(this).data('fl');
@@ -224,7 +229,7 @@
 				var ipage = data.ipage; 
 				var str = '';
 				for(let index in arr){
-					str += '<div class="fitem" onclick="func();" data-fl="'+arr[index]['flno']+'">' + arr[index]['flno']+'<br>'+  arr[index]['mc']+ '</div>';
+					str += '<div class="fitem" data-fl="'+arr[index]['flno']+'">' + arr[index]['flno']+'<br>'+  arr[index]['mc']+ '</div>';
 				}
 				var pagestr = '';
 				for(var i = 1;i<ipage;i++){
