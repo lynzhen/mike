@@ -113,7 +113,67 @@
 			</div><!-- box-footer -->
 		</div><!-- /.box -->
 	</section>
-	<!-- /.content -->
+	<!-- /.content -->	
+	<style>
+		.flWrap{
+			display:none;
+			position: fixed;
+			width: 800px;
+			height: auto;
+			padding: 20px;
+			top: 50%;
+			left: 50%;
+			background: rgba(0,0,0,.4);
+			border-radius: 10px;
+			transform: translate(-50%,-50%);
+		}
+		.fltitle{
+			height: 30px;
+			line-height: 25px;
+			color: #fff;
+		}
+		.fLists{
+			background: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			overflow: hidden;
+		}
+		.flitems{
+			overflow:hidden;
+			margin-bottom:20px;
+		}
+		.fitem{
+			float: left;
+			margin: 5px;
+			padding: 3px 10px;
+			background: #337ab7;
+			border: 1px solid #2e6da4;
+			color: #fff;
+			border-radius: 5px;
+		}
+		.flclose{
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: #d43f3a;
+			color: #fff;
+			text-align: center;
+			line-height: 20px;
+			cursor: pointer;
+		}
+	</style>
+	<div class="flWrap">
+		<div class="flclose">X</div>
+		<div class="fltitle">分类列表</div>
+		<div class="fLists">
+		<div class="flitems"></div>
+		<div class="box-footer">
+			<ul class="pagination"></ul>
+		</div>
+	</div>
 </div>
 <script>
 	$(function () { 

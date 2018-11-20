@@ -230,7 +230,7 @@
 				}
 				var pagestr = '';
 				for(var i = 1;i<ipage+1;i++){
-					if(i == 1){
+					if(i == ipage){
 						pagestr += '<li class="pages active"><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
 					}else{
 						pagestr += '<li class="pages"><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
