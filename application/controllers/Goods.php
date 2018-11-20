@@ -145,13 +145,13 @@ class Goods extends AdminController {
 			$obj['mc'] = $mc;
 			array_push($listArr,$obj);
 		}
-		var_dump($listArr);die();
+		var_dump($listArr);
 		// $trueArr = array_unique($listArr);
 		$fllist = json_encode($trueArr);
 
 		// 总条数
-		$count = (new Query("Mike_Goods"))->count();
-		$ipage = ceil($count / 1000);
+		$count = (new Query("Mike_GoodsType"))->count();
+		$ipage = ceil($count / 60);
 
 		$data = array("ipage"=>$ipage, "list"=>$trueArr);
 
