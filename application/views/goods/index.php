@@ -195,7 +195,8 @@
 		})
 
 		$(document.body).on('click','.pages',function(){
-			$(this).addClass('active').siblings('.pages').removeClass('active')
+			$(this).addClass('active');
+			$(this).siblings('.pages').removeClass('active');
 			var page = $(this).find('a').data('index');
 			console.log(page);
 			getItem(page);
@@ -228,7 +229,7 @@
 					str += '<div class="fitem" data-fl="'+arr[index]['flno']+'">' + arr[index]['flno']+'<br>'+  arr[index]['mc']+ '</div>';
 				}
 				var pagestr = '';
-				for(var i = 1;i<ipage;i++){
+				for(var i = 1;i<ipage+1;i++){
 					if(i == 1){
 						pagestr += '<li class="pages active"><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
 					}else{
