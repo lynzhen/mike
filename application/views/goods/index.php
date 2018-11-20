@@ -213,8 +213,8 @@
 				// var data = JSON.parse(response);
 				var data = response;
 				$(".sweet-overlay,.sweet-alert").hide();
-				var arr = data.list;  // console.log(arr);
-				var ipage = data.ipage;
+				var arr = data.list;   console.log(arr);
+				var ipage = data.ipage; console.log(ipage);
 				var str = '';
 				for(let index in arr){
 					str += '<div class="fitem">' + arr[index] + '</div>';
@@ -227,6 +227,7 @@
 						pagestr += '<li class=""><a href="javascript:;" data-index="'+i+'">'+i+'</a></li>';
 					}
 				}
+				console.log(str);console.log(pagestr);
 				$(".flitems").html(str);
 				$(".pagination").html(pagestr);
 				$(".flWrap").show();
