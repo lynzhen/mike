@@ -101,8 +101,11 @@
 			$.post(
 				'showList',				
 				function (response) {
-					// console.log(response);
-					console.log(JSON.parse(response));
+					var arr = response;
+					console.log('111111');
+					console.log(arr);
+					console.log('222222222');
+					console.log(JSON.parse(arr));
 					// sweetAlert("提示", response.message, "success");
 					// for(var i = 0;i<)
 				}  
