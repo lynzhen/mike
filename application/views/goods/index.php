@@ -195,14 +195,15 @@
 		})
 
 		$(document.body).on('click','.pages',function(){
-			var page = $(this).data('index');
+			$(this).addClass('active').siblings('.pages').removeClass('active')
+			var page = $(this).find('a').data('index');
 			console.log(page);
 			getItem(page);
 		})
 
 	});
 	function func(){
-		var value = $(this).text();
+		var value = $(this).data('fl');
 		console.log(value);
 		location.href = 'flist?flno='+value;
 	}
@@ -223,7 +224,7 @@
 				var ipage = data.ipage; 
 				var str = '';
 				for(let index in arr){
-					str += '<div class="fitem" onclick="func();">' + arr[index]['flno']+'<br>'+  arr[index]['mc']+ '</div>';
+					str += '<div class="fitem" onclick="func();" data-fl="'+arr[index]['flno']+'">' + arr[index]['flno']+'<br>'+  arr[index]['mc']+ '</div>';
 				}
 				var pagestr = '';
 				for(var i = 1;i<ipage;i++){
