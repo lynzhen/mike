@@ -209,7 +209,7 @@
 				pageIndex : 1
 			},
 			function (response) {
-				console.log(response);//return;
+				console.log(response);return;
 				var data = JSON.parse(response);
 				$(".sweet-overlay,.sweet-alert").hide();
 				var arr = data.list;  // console.log(arr);
