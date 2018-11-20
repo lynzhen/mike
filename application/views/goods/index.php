@@ -211,7 +211,7 @@
 			function (response) {
 				console.log(response);
 				console.log(typeof(response));
-				console.log(eval(response));//return;
+				console.log(JSON.stringify(response));return;
 				// var data = JSON.parse(response);
 				var data = response;
 				$(".sweet-overlay,.sweet-alert").hide();
