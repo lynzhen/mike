@@ -102,6 +102,7 @@
 				'showList',				
 				function (response) {
 					console.log(response);
+					console.log(JSON.parse(response))
 					// sweetAlert("提示", response.message, "success");
 				}  
 			);
