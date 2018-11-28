@@ -33,18 +33,19 @@ class Category extends AdminController {
 	public function edit() {
 		// 正在编辑的category对象的objectId值
 		$objectId = $this->input->get('objectId');
-		$data['editingId'] = $objectId;
+		// $data['editingId'] = $objectId;
 		// 编辑状态，读取原来分类信息
-		$query = new Query('Category');
-		$editingCategory = $query->get($objectId);
+		$query = new Query('Mike_GoodsType');
+		$category = $query->get($objectId);
+		$data['category'] = $category;
 		// 判断是否已经是顶级分类了
-		$data['objectId'] = '';
-		if ($editingCategory->get('parent') != null) {
-			$data['objectId'] = $editingCategory->get('parent')->get('objectId');
-		} 
+		// $data['objectId'] = $objectId;
+		// if ($editingCategory->get('parent') != null) {
+		// 	$data['objectId'] = $editingCategory->get('parent')->get('objectId');
+		// } 
 		// 全部分类
-		$data['categories'] = $this->category_model->findAll();
-		$data['editingCategory'] = $editingCategory;
+		// $data['categories'] = $this->category_model->findAll();
+		// $data['editingCategory'] = $editingCategory;
 		$this->layout->view('category/edit', $data);
 	}
 	
