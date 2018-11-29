@@ -94,8 +94,9 @@ class Category extends AdminController {
 		$querys = new Query('Mike_GoodsType');
 		$querys->get($parentId);
 		$parent = $querys->find();
-		var_dump($parent);die();
+		var_dump($parent);
 		$parentname = $parent->get('mc');
+		var_dump($parentname);die();
 
 		// 标题
 		$object->set("mc", $mc);
