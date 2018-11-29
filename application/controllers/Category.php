@@ -55,44 +55,49 @@ class Category extends AdminController {
 	// 保存分类
 	public function save() {
 		// 父类id
-		$parent = $this->input->post('category');
+		$objectId = $this->input->post('objectId');
+		$mc = $this->input->post('mc');
+		$parentId = $this->input->post('parentId');
+		$onlyid = $this->input->post('onlyid');
+		$flno = $this->input->post('flno');
+
+		// save to leanCloud
+		$object = new LeanObject("Mike_GoodsType");
+		// 默认是新建一个Category对象，如果存在$editingId，则读取
+		if (isset($objectId)) {
+			$query = new Query('Mike_GoodsType');
+			$category = $query->get($objectId);
+		}
+
 		// $category = null;
 		// if ($objectId != "") {
 			// 创建的非顶级分类
 			// $category = Object::create('Category', $objectId);
 		// }
-		// 序号
-		$index = $this->input->post('index');
+
 		// 分类图片上传
 		if (!empty($_FILES['avatar']['tmp_name'])) {
 			$avatar = File::createWithLocalFile($_FILES['avatar']['tmp_name'], $_FILES['avatar']['type']);
 			// 保存图片
 			$avatar->save();
-			// 分类图
 		}
 		// banner图片上传
 		if (!empty($_FILES['banner']['tmp_name'])) {
 			$banner = File::createWithLocalFile($_FILES['banner']['tmp_name'], $_FILES['banner']['type']);
 			// 保存图片
 			$banner->save();
-			// banner图
 		}
-		// save to leanCloud
-		$object = new LeanObject("Mike_GoodsType");
-		$objectId = $this->input->post('objectId');
-		// 默认是新建一个Category对象，如果存在$editingId，则读取
-		if (isset($objectId)) {
-			$query = new Query('Mike_GoodsType');
-			$category = $query->get($objectId);
-		}
-		// 获取参数
-		$mc = $this->input->post('mc');
+
+		$querys = new Query('Mike_GoodsType');
+		$parent = $querys.equalTo('id',$parentId);
+		$parentname = $parent->get('mc');
+
 		// 标题
 		$object->set("mc", $mc);
-		// 将category转为LeanCloud对象
-		$object->set("fid", $category);
-		// 序号
-		// $object->set("index", (int)$index);
+		$object->set("fid", (int)$parentId);
+		$object->set("onlyid", $onlyid);
+		$object->set("flno", $flno);
+		$object->set("fathermc", $parentname);
 		// 图片
 		if (isset($avatar)) {
 			$object->set("avatar", $avatar);

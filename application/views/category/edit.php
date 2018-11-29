@@ -54,15 +54,15 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="index" class="col-sm-2 control-label">唯一ID</label>
+                  <label for="onlyId" class="col-sm-2 control-label">唯一ID</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="index" id="index" placeholder="最小最靠前"value="<?=$categorys->get('onlyid');?>">
+                    <input type="number" class="form-control" name="onlyId" id="onlyId" placeholder="最小最靠前" value="<?=$categorys->get('onlyid');?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="index" class="col-sm-2 control-label">分类号</label>
+                  <label for="flno" class="col-sm-2 control-label">分类号</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="index" id="index" placeholder="最小最靠前"value="<?=$categorys->get('flno');?>">
+                    <input type="number" class="form-control" name="flno" id="flno" value="<?=$categorys->get('flno');?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -122,13 +122,16 @@
         alert('请上传分类图');
         e.preventDefault();
       }
+      
+			var parentId = $("#category").find("option:selected").val();
       $.post(
         'save',
         {
           objectId: $('#objectId').val(),
           mc:$("#title").val(),
-          category:$("#category").val(),
-          onlyid:$("#index").val(),
+          parentId:parentId,
+          onlyid:$("#onlyId").val(),
+          flno:$("#flno").val(),
           banner:$("#banner").val(),
           avatar:$("#avatar").val()
         },
