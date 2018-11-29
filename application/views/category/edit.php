@@ -123,7 +123,7 @@
         e.preventDefault();
       }
       
-      console.log('parentId'+$("#parentId").val();+"objectId"+$('#objectId').val()+"mc"+$("#title").val()+"onlyid"+$("#onlyid").val()+"flno"+$("#flno").val());
+      console.log('parentId'+$("#parentId").val()+"objectId"+$('#objectId').val()+"mc"+$("#mc").val()+"onlyid"+$("#onlyid").val()+"flno"+$("#flno").val());
       return false;
       $.post(
         'save',
