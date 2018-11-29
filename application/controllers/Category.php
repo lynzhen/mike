@@ -90,7 +90,7 @@ class Category extends AdminController {
 		// 标题
 		$object->set("mc", $mc);
 		// 将category转为LeanCloud对象
-		$object->set("parent", $category);
+		$object->set("fid", $category);
 		// 序号
 		// $object->set("index", (int)$index);
 		// 图片
