@@ -102,7 +102,16 @@
   <!-- /.content -->
 </div>
 <script src="/assets/js/category/edit.js"></script>
+<script src='/assets/js/category/av-weapp-min.js'></script>
 <script type="text/javascript">
+  const appId = "xim8nwfJmEWgWrarLzhh4DYe-gzGzoHsz";
+  const appKey = "RSxqmzUqDiBT2LamDvKhLwgB";
+
+  AV.init({
+    appId: appId,
+    appKey: appKey
+  });
+
   $(function () { 
 
     // var avatar = <?=json_encode($categorys->get('avatar'))?>;//分类图
