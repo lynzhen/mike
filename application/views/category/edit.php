@@ -124,6 +124,7 @@
 
     $('select').select2({
     });
+
     $('#submit').click(function (e) {
       // 渲染回#images控件，用于post传值
       if (avatar.files.length > 0) {
@@ -162,22 +163,25 @@
       
       console.log('parentId'+$("#parentId").val()+"objectId"+$('#objectId').val()+"mc"+$("#mc").val()+"onlyid"+$("#onlyid").val()+"flno"+$("#flno").val());
       // return false;
-      $.post(
-        'save',
-        {
-          objectId: $('#objectId').val(),
-          mc:$("#mc").val(),
-          parentId:$("#parentId").val(),
-          onlyid:$("#onlyid").val(),
-          flno:$("#flno").val(),
-          banner:$("#ibanner").val(),
-          avatar:$("#iavatar").val()
-        },
-        function (response) {
-          console.log(response);
-          // sweetAlert("提示", response.message, "success");
-        }
-      )
+      
+      setTimeout(() => {
+        $.post(
+          'save',
+          {
+            objectId: $('#objectId').val(),
+            mc:$("#mc").val(),
+            parentId:$("#parentId").val(),
+            onlyid:$("#onlyid").val(),
+            flno:$("#flno").val(),
+            banner:$("#ibanner").val(),
+            avatar:$("#iavatar").val()
+          },
+          function (response) {
+            console.log(response);
+            sweetAlert("提示", response.message, "success");
+          }
+        )
+      }, 500);
       
     });
 
