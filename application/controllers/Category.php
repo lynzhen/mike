@@ -61,35 +61,24 @@ class Category extends AdminController {
 		$onlyid = $this->input->post('onlyid');
 		$flno = $this->input->post('flno');
 
-		// echo $parentId."---".$objectId."----".$mc."-----".$onlyid."--------".$flno;
-		// die();
-
-		// save to leanCloud
 		$object = new LeanObject("Mike_GoodsType");
 		// 默认是新建一个Category对象，如果存在$editingId，则读取
 		if (isset($objectId)) {
-			$query = new Query('Mike_GoodsType');
-			$category = $query->get($objectId);
+			$object = LeanObject::create('Mike_GoodsType', $objectId);
 		}
-
-		// $category = null;
-		// if ($objectId != "") {
-			// 创建的非顶级分类
-			// $category = Object::create('Category', $objectId);
-		// }
 
 		// 分类图片上传
-		if (!empty($_FILES['avatar']['tmp_name'])) {
-			$avatar = File::createWithLocalFile($_FILES['avatar']['tmp_name'], $_FILES['avatar']['type']);
-			// 保存图片
-			$avatar->save();
-		}
+		// if (!empty($_FILES['avatar']['tmp_name'])) {
+		// 	$avatar = File::createWithLocalFile($_FILES['avatar']['tmp_name'], $_FILES['avatar']['type']);
+		// 	// 保存图片
+		// 	$avatar->save();
+		// }
 		// banner图片上传
-		if (!empty($_FILES['banner']['tmp_name'])) {
-			$banner = File::createWithLocalFile($_FILES['banner']['tmp_name'], $_FILES['banner']['type']);
-			// 保存图片
-			$banner->save();
-		}
+		// if (!empty($_FILES['banner']['tmp_name'])) {
+		// 	$banner = File::createWithLocalFile($_FILES['banner']['tmp_name'], $_FILES['banner']['type']);
+		// 	// 保存图片
+		// 	$banner->save();
+		// }
 
 		$querys = new Query('Mike_GoodsType');
 		$querys->get($parentId);
