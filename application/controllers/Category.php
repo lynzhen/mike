@@ -98,6 +98,7 @@ class Category extends AdminController {
 		$parentname = $parent[0]->get('mc');
 		// var_dump($parentname);die();
 
+
 		// 标题
 		$object->set("mc", $mc);
 		$object->set("fid", (int)$parentId);
@@ -105,12 +106,12 @@ class Category extends AdminController {
 		$object->set("flno", $flno);
 		$object->set("fathermc", $parentname);
 		// 图片
-		if (isset($avatar)) {
-			$object->set("avatar", $avatar);
-		}
-		if (isset($banner)) {
-			$object->set("banner", $banner);
-		}
+		// if (isset($avatar)) {
+		// 	$object->set("avatar", $avatar);
+		// }
+		// if (isset($banner)) {
+		// 	$object->set("banner", $banner);
+		// }
 		// 提示信息 
 		$data['redirect'] = 'add';
 		try {
