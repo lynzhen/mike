@@ -32,11 +32,11 @@
             <div class="box-body">
               <form class="form-horizontal" action="save" method="post" enctype="multipart/form-data">
                 <!-- 原objectId值，用于保存 -->
-                <input type="hidden" name="editingId" value="<?=$editingId?>" />
+                <input type="hidden" name="editingId" value="<?=$categorys->get('objectId')?>" />
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入分类的标题" value="<?=$editingCategory->get('title');?>">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入分类的标题" value="<?=$categorys->get('title');?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -56,15 +56,15 @@
                 <div class="form-group">
                   <label for="index" class="col-sm-2 control-label">序号</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="index" id="index" placeholder="最小最靠前"value="<?=$editingCategory->get('index');?>">
+                    <input type="number" class="form-control" name="index" id="index" placeholder="最小最靠前"value="<?=$category->get('index');?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="avatar" class="col-sm-2 control-label">分类图</label>
                   <div class="col-sm-8">
                     <?php
-                      if ($editingCategory->get('avatar') != null) {
-                        echo '<img class="avatar" src="' . $editingCategory->get('avatar')->get('url') . '">';
+                      if ($category->get('avatar') != null) {
+                        echo '<img class="avatar" src="' . $category->get('avatar')->get('url') . '">';
                       }
                     ?>
                     <input type="file" name="avatar" id="avatar">
@@ -74,8 +74,8 @@
                   <label for="banner" class="col-sm-2 control-label">横幅图</label>
                   <div class="col-sm-8">
                     <?php
-                      if ($editingCategory->get('banner') != null) {
-                        echo '<img class="avatar" src="' . $editingCategory->get('banner')->get('url') . '">';
+                      if ($category->get('banner') != null) {
+                        echo '<img class="avatar" src="' . $category->get('banner')->get('url') . '">';
                       }
                     ?>
                     <input type="file" name="banner" id="banner">
@@ -96,8 +96,8 @@
 <script type="text/javascript">
   $(function () { 
 
-    var avatar = <?=json_encode($editingCategory->get('avatar'))?>;//分类图
-    var banner = <?=json_encode($editingCategory->get('banner'))?>;//横幅图
+    var avatar = <?=json_encode($category->get('avatar'))?>;//分类图
+    var banner = <?=json_encode($category->get('banner'))?>;//横幅图
 
     $('select').select2({
     });
