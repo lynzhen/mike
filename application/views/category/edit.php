@@ -130,7 +130,7 @@
         {
           objectId: $('#objectId').val(),
           mc:$("#mc").val(),
-          parentId:$("#parentId").val();,
+          parentId:$("#parentId").val(),
           onlyid:$("#onlyid").val(),
           flno:$("#flno").val(),
           banner:$("#banner").val(),
