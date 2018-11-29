@@ -117,7 +117,7 @@
       }else{
         // var avatar_control_value = JSON.parse($('#avatar').val());
         var avatar_control_value = $('#avatar').val();
-        var new_avatar = images_control_value.concat(avatar);
+        var new_avatar = avatar_control_value.concat(avatar);
         $('#avatar').val(JSON.stringify(new_avatar));
       }
       
@@ -127,8 +127,8 @@
         e.preventDefault();
       }else{
         // var avatar_control_value = JSON.parse($('#avatar').val());
-        var avatar_control_value = $('#avatar').val();
-        var new_banner = images_control_value.concat(banner);
+        var banner_control_value = $('#banner').val();
+        var new_banner = banner_control_value.concat(banner);
         $('#banner').val(JSON.stringify(new_banner));
       }
       
