@@ -71,7 +71,7 @@
                   <div class="col-sm-8">
                     <?php
                       if ($categorys->get('avatar') != null) {
-                        echo '<img class="avatar" src="' . $categorys->get('avatar')'">';
+                        echo '<img class="avatar" src="' . $categorys->get('avatar').'">';
                       }
                     ?>
                     <input type="file" name="avatar" id="avatar" value="[]">
@@ -83,7 +83,7 @@
                   <div class="col-sm-8">
                     <?php
                       if ($categorys->get('banner') != null) {
-                        echo '<img class="avatar" src="' . $categorys->get('banner')'">';
+                        echo '<img class="avatar" src="' . $categorys->get('banner').'">';
                       }
                     ?>
                     <input type="file" name="banner" id="banner" value="[]">
