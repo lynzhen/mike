@@ -41,9 +41,12 @@ class Category extends AdminController {
 
 		// 判断是否已经是顶级分类了
 		// $data['objectId'] = $objectId;
-		// if ($editingCategory->get('parent') != null) {
-		// 	$data['objectId'] = $editingCategory->get('parent')->get('objectId');
-		// } 
+		if ($category->get('fid') != 0) {
+			$parentId = $category->get('fid');
+			$query->equalTo('id',$parentId);
+			$parent = $query->find();
+			$data['parent'] = $parent;
+		} 
 		// 全部分类
 		$data['categories'] = $this->category_model->findAll();
 		$this->layout->view('category/edit', $data);
