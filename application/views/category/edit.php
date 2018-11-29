@@ -74,7 +74,8 @@
                         echo '<img class="avatar" src="' . $categorys->get('avatar')->get('url') . '">';
                       }
                     ?>
-                    <input type="file" name="avatar" id="avatar">
+                    <input type="file" name="avatar" id="avatar" value="[]">
+                    
                   </div>
                 </div>
                 <div class="form-group">
@@ -85,7 +86,7 @@
                         echo '<img class="avatar" src="' . $categorys->get('banner')->get('url') . '">';
                       }
                     ?>
-                    <input type="file" name="banner" id="banner">
+                    <input type="file" name="banner" id="banner" value="[]">
                   </div>
                 </div>
               </div>
@@ -104,35 +105,49 @@
 <script type="text/javascript">
   $(function () { 
 
-    var avatar = <?=json_encode($categorys->get('avatar'))?>;//分类图
-    var banner = <?=json_encode($categorys->get('banner'))?>;//横幅图
+    // var avatar = <?=json_encode($categorys->get('avatar'))?>;//分类图
+    // var banner = <?=json_encode($categorys->get('banner'))?>;//横幅图
+
+      var avatar = $('#avatar')[0];
+      var banner = $('#banner')[0];
 
     $('select').select2({
     });
     $('#submit').click(function (e) {
       // 渲染回#images控件，用于post传值
-      if($('#avatar').val() == ''){
-        sweetAlert("提示", "请上传分类图", "error");
-        e.preventDefault();
+      if (avatar.files.length > 0) {
+        var localFile = avatar.files[0];
+        var name = localFile.name;
+
+        var file = new AV.File(name, localFile);
+        file.save().then(function(file) {
+          // 文件保存成功
+          console.log(file.url());
+          $("#avatar").val(file.url());
+        }, function(error) {
+          // 异常处理
+          console.error(error);
+        });
+      }else{
+        sweetAlert("提示", "请上传描述图", "error");
       }
-      // else{
-      //   // var avatar_control_value = JSON.parse($('#avatar').val());
-      //   var avatar_control_value = $('#avatar').val();
-      //   var new_avatar = avatar_control_value.concat(avatar);
-      //   $('#avatar').val(JSON.stringify(new_avatar));
-      // }
-      
-      // 渲染回#detail控件，用于post传值
-      if($('#banner').val() == ''){
+
+      if (banner.files.length > 0) {
+        var localFile = banner.files[0];
+        var name = localFile.name;
+
+        var file = new AV.File(name, localFile);
+        file.save().then(function(file) {
+          // 文件保存成功
+          console.log(file.url());
+          $("#banner").val(file.url());
+        }, function(error) {
+          // 异常处理
+          console.error(error);
+        });
+      }else{
         sweetAlert("提示", "请上传横幅图", "error");
-        e.preventDefault();
       }
-      // else{
-      //   // var avatar_control_value = JSON.parse($('#avatar').val());
-      //   var banner_control_value = $('#banner').val();
-      //   var new_banner = banner_control_value.concat(banner);
-      //   $('#banner').val(JSON.stringify(new_banner));
-      // }
       
       console.log('parentId'+$("#parentId").val()+"objectId"+$('#objectId').val()+"mc"+$("#mc").val()+"onlyid"+$("#onlyid").val()+"flno"+$("#flno").val());
       // return false;
