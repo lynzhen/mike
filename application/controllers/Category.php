@@ -31,24 +31,24 @@ class Category extends AdminController {
 
 	// 编辑分类
 	public function edit() {
-		// 正在编辑的category对象的objectId值
+		// objectId值
 		$objectId = $this->input->get('objectId');
 	
-		// 编辑状态，读取原来分类信息
+		// 查找分类对象
 		$query = new Query('Mike_GoodsType');
 		$category = $query->get($objectId);
-		$data['categorys'] = $category;
 
 		// 判断是否已经是顶级分类了
-		// $data['objectId'] = $objectId;
-		if ($category->get('fid') != 0) {
-			$parentId = $category->get('fid');
-			$query->equalTo('id',$parentId);
-			$parent = $query->find();
+		$parentId = $category->get('fid');
+		if ($parentId != 0) {
+			$querys = new Query('Mike_GoodsType');
+			$querys->equalTo('id',$parentId);
+			$parent = $querys->find();
 			$data['parent'] = $parent;
 		} 
 		// 全部分类
 		$data['categories'] = $this->category_model->findAll();
+		$data['categorys'] = $category;
 		$this->layout->view('category/edit', $data);
 	}
 	
