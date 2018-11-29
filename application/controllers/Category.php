@@ -37,7 +37,7 @@ class Category extends AdminController {
 		// 查找分类对象
 		$query = new Query('Mike_GoodsType');
 		$category = $query->get($objectId);
-var_dump($category);die();
+
 		// 判断是否已经是顶级分类了
 		$parentId = $category->get('fid');
 		if ($parentId != 0) {

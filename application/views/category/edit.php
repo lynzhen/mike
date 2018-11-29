@@ -71,10 +71,10 @@
                   <div class="col-sm-8">
                     <?php
                       if ($categorys->get('avatar') != null) {
-                        echo '<img class="avatar" src="' . $categorys->get('avatar').'">';
+                        echo '<img class="avatar" src="' . $categorys->get('flno').'">';
                       }
                     ?>
-                    <input type="file" name="avatar" id="avatar" value="[]">
+                    <input type="file" name="avatar" id="avatar" value="">
                     
                   </div>
                 </div>
@@ -83,10 +83,10 @@
                   <div class="col-sm-8">
                     <?php
                       if ($categorys->get('banner') != null) {
-                        echo '<img class="avatar" src="' . $categorys->get('banner').'">';
+                        echo '<img class="avatar" src="' . $categorys->get('flno').'">';
                       }
                     ?>
-                    <input type="file" name="banner" id="banner" value="[]">
+                    <input type="file" name="banner" id="banner" value="">
                   </div>
                 </div>
               </div>
