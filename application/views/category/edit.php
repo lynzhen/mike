@@ -30,8 +30,8 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
-              <!-- <form class="form-horizontal"  enctype="multipart/form-data"> -->
-              <div class="form-horizontal">
+              <form class="form-horizontal"  enctype="multipart/form-data">
+              <!-- <div class="form-horizontal"> -->
                 <!-- 原objectId值，用于保存 -->
                 <input type="hidden" name="objectId" value="<?=$categorys->get('objectId')?>" id="objectId" />
                 <div class="form-group">
@@ -94,8 +94,8 @@
                 <button type="button" id="submit" class="btn btn-primary">保存</button>
               </div>
               <!-- /.box-footer -->
-            </div>
-            <!-- </form> -->
+            <!-- </div> -->
+            </form>
           </div>
   </section>
   <!-- /.content -->
@@ -111,18 +111,23 @@
     });
     $('#submit').click(function (e) {
       // 渲染回#images控件，用于post传值
-      var avatar_control_value = JSON.parse($('#avatar').val());
-      var new_avatar = images_control_value.concat(avatar);
-      $('#avatar').val(JSON.stringify(new_avatar));
-
-      // 渲染回#detail控件，用于post传值
-      var banner_control_value = JSON.parse($('#banner').val());
-      var new_banner = detail_control_value.concat(banner);
-      $('#banner').val(JSON.stringify(new_banner));
-
-      if ($('#avatar').val() == '') {
-        alert('请上传分类图');
+      if($('#avatar').val() == '[]'){
+        sweetAlert("提示", "请上传分类图", "error");
         e.preventDefault();
+      }else{
+        var avatar_control_value = JSON.parse($('#avatar').val());
+        var new_avatar = images_control_value.concat(avatar);
+        $('#avatar').val(JSON.stringify(new_avatar));
+      }
+      
+      // 渲染回#detail控件，用于post传值
+      if($('#banner').val() == '[]'){
+        sweetAlert("提示", "请上传横幅图", "error");
+        e.preventDefault();
+      }else{
+        var banner_control_value = JSON.parse($('#banner').val());
+        var new_banner = images_control_value.concat(banner);
+        $('#banner').val(JSON.stringify(new_banner));
       }
       
       console.log('parentId'+$("#parentId").val()+"objectId"+$('#objectId').val()+"mc"+$("#mc").val()+"onlyid"+$("#onlyid").val()+"flno"+$("#flno").val());
