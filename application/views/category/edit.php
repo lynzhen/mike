@@ -45,9 +45,9 @@
                     <select class="form-control select2" style="width: 100%;" name="category" id="category">
                       <option value="">顶级分类</option>
                       <?php foreach ($categories as $category):?>
-                        <option <?=$category->get('id') == $categorys->get('id') ? 'selected' : '' ?> value="<?=$category->get('objectId')?>">|--<?=$category->get('mc')?></option>
+                        <option <?=$category->get('id') == $categorys->get('fid') ? 'selected' : '' ?> value="<?=$category->get('objectId')?>">|--<?=$category->get('mc')?></option>
                         <?php foreach ($category->children as $child):?>
-                        <option <?=$child->get('id') == $categorys->get('id') ? 'selected' : '' ?> value="<?=$child->get('objectId')?>">|--|--<?=$child->get('mc')?></option>
+                        <option <?=$child->get('id') == $categorys->get('fid') ? 'selected' : '' ?> value="<?=$child->get('objectId')?>">|--|--<?=$child->get('mc')?></option>
                         <?php endforeach;?>
                       <?php endforeach;?>
                     </select>
@@ -123,24 +123,25 @@
         e.preventDefault();
       }
       
-			var parentId = $("#category").find("option:selected").val();
-      console.log('parentId'+parentId+"objectId"+$('#objectId').val()+"mc"+$("#title").val()+"onlyid"+$("#onlyId").val()+"flno"+$("#flno").val());return;
-      $.post(
-        'save',
-        {
-          objectId: $('#objectId').val(),
-          mc:$("#title").val(),
-          parentId:parentId,
-          onlyid:$("#onlyId").val(),
-          flno:$("#flno").val(),
-          banner:$("#banner").val(),
-          avatar:$("#avatar").val()
-        },
-        function (response) {
-          console.log(response);
-          // sweetAlert("提示", response.message, "success");
-        }
-      )
+			var parentId = $("#category").val();
+      console.log('parentId'+parentId+"objectId"+$('#objectId').val()+"mc"+$("#title").val()+"onlyid"+$("#onlyId").val()+"flno"+$("#flno").val());
+      return false;
+      // $.post(
+      //   'save',
+      //   {
+      //     objectId: $('#objectId').val(),
+      //     mc:$("#title").val(),
+      //     parentId:parentId,
+      //     onlyid:$("#onlyId").val(),
+      //     flno:$("#flno").val(),
+      //     banner:$("#banner").val(),
+      //     avatar:$("#avatar").val()
+      //   },
+      //   function (response) {
+      //     console.log(response);
+      //     // sweetAlert("提示", response.message, "success");
+      //   }
+      // )
       
     });
 
