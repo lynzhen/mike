@@ -92,7 +92,9 @@ class Category extends AdminController {
 		}
 
 		$querys = new Query('Mike_GoodsType');
-		$parent = $querys->equalTo('id',$parentId);
+		$querys->equalTo('id',$parentId);
+		$parent = $querys->find();
+		var_dump($parent);die();
 		$parentname = $parent->get('mc');
 
 		// 标题
