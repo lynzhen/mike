@@ -131,8 +131,8 @@
         var file = new AV.File(name, localFile);
         file.save().then(function(file) {
           // 文件保存成功
-          console.log(file.url());
-          $("#avatar").val(file.url());
+          console.log(file.get('url'));
+          $("#avatar").val(file.get('url'));
         }, function(error) {
           // 异常处理
           console.error(error);
@@ -148,8 +148,8 @@
         var file = new AV.File(name, localFile);
         file.save().then(function(file) {
           // 文件保存成功
-          console.log(file.url());
-          $("#banner").val(file.url());
+          console.log(file.get('url'));
+          $("#banner").val(file.get('url'));
         }, function(error) {
           // 异常处理
           console.error(error);
