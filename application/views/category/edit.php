@@ -124,6 +124,7 @@
       }
       
 			var parentId = $("#category").find("option:selected").val();
+      // console.log('parentId'+parentId+"objectId"+$('#objectId').val()+"mc"+$("#title").val()+"onlyid"+$("#onlyId").val()+"flno"+$("#flno").val());return;
       $.post(
         'save',
         {

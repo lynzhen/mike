@@ -61,6 +61,8 @@ class Category extends AdminController {
 		$onlyid = $this->input->post('onlyid');
 		$flno = $this->input->post('flno');
 
+		echo 'parentId'.$parentId."objectId".$objectId."mc".$mc."onlyid".$onlyid."flno".$flno;
+
 		// save to leanCloud
 		$object = new LeanObject("Mike_GoodsType");
 		// 默认是新建一个Category对象，如果存在$editingId，则读取
