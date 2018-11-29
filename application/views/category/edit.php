@@ -114,26 +114,28 @@
       if($('#avatar').val() == ''){
         sweetAlert("提示", "请上传分类图", "error");
         e.preventDefault();
-      }else{
-        // var avatar_control_value = JSON.parse($('#avatar').val());
-        var avatar_control_value = $('#avatar').val();
-        var new_avatar = avatar_control_value.concat(avatar);
-        $('#avatar').val(JSON.stringify(new_avatar));
       }
+      // else{
+      //   // var avatar_control_value = JSON.parse($('#avatar').val());
+      //   var avatar_control_value = $('#avatar').val();
+      //   var new_avatar = avatar_control_value.concat(avatar);
+      //   $('#avatar').val(JSON.stringify(new_avatar));
+      // }
       
       // 渲染回#detail控件，用于post传值
       if($('#banner').val() == ''){
         sweetAlert("提示", "请上传横幅图", "error");
         e.preventDefault();
-      }else{
-        // var avatar_control_value = JSON.parse($('#avatar').val());
-        var banner_control_value = $('#banner').val();
-        var new_banner = banner_control_value.concat(banner);
-        $('#banner').val(JSON.stringify(new_banner));
       }
+      // else{
+      //   // var avatar_control_value = JSON.parse($('#avatar').val());
+      //   var banner_control_value = $('#banner').val();
+      //   var new_banner = banner_control_value.concat(banner);
+      //   $('#banner').val(JSON.stringify(new_banner));
+      // }
       
       console.log('parentId'+$("#parentId").val()+"objectId"+$('#objectId').val()+"mc"+$("#mc").val()+"onlyid"+$("#onlyid").val()+"flno"+$("#flno").val());
-      return false;
+      // return false;
       $.post(
         'save',
         {
