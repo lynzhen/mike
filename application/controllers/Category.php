@@ -62,6 +62,7 @@ class Category extends AdminController {
 		$flno = $this->input->post('flno');
 
 		echo $parentId."---".$objectId."----".$mc."-----".$onlyid."--------".$flno;
+		die();
 
 		// save to leanCloud
 		$object = new LeanObject("Mike_GoodsType");
@@ -109,22 +110,12 @@ class Category extends AdminController {
 		}
 		// 提示信息 
 		$data['redirect'] = 'add';
-		// var_dump();
 		try {
 			$object->save();
-			// $this->echo_json('保存成功');
-			$data['msg'] = '保存成功';
-			$data['level'] = 'info';
-			// $this->layout->view('category/msg', $data);
+			$this->echo_json('发布成功');
 		} catch (Exception $ex) {
-			// $this->echo_json('保存失败');
-			$data['msg'] = '操作失败';
-			$data['level'] = 'warning';
-			// var_dump($ex);
-		} 
-		// finally {
-		// 	$this->layout->view('category/msg', $data);
-		// }
+			$this->echo_json('操作失败');
+		}
 	}
 
 	// 删除分类
