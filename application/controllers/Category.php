@@ -61,8 +61,8 @@ class Category extends AdminController {
 		$onlyid = $this->input->post('onlyid');
 		$flno = $this->input->post('flno');
 
-		echo $parentId."---".$objectId."----".$mc."-----".$onlyid."--------".$flno;
-		die();
+		// echo $parentId."---".$objectId."----".$mc."-----".$onlyid."--------".$flno;
+		// die();
 
 		// save to leanCloud
 		$object = new LeanObject("Mike_GoodsType");
