@@ -30,9 +30,10 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
-              <form class="form-horizontal" method="post" enctype="multipart/form-data">
+              <!-- <form class="form-horizontal"  enctype="multipart/form-data"> -->
+              <div class="form-horizontal">
                 <!-- 原objectId值，用于保存 -->
-                <input type="hidden" name="editingId" value="<?=$categorys->get('objectId')?>" id="objectId" />
+                <input type="hidden" name="objectId" value="<?=$categorys->get('objectId')?>" id="objectId" />
                 <div class="form-group">
                   <label for="mc" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
@@ -90,15 +91,16 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" id="submit" class="btn btn-primary">保存</button>
+                <button type="button" id="submit" class="btn btn-primary">保存</button>
               </div>
               <!-- /.box-footer -->
-            </form>
+            </div>
+            <!-- </form> -->
           </div>
   </section>
   <!-- /.content -->
 </div>
-<!-- <script src="/assets/js/category/edit.js"></script> -->
+<script src="/assets/js/category/edit.js"></script>
 <script type="text/javascript">
   $(function () { 
 
@@ -107,7 +109,7 @@
 
     $('select').select2({
     });
-    $('form').submit(function (e) {
+    $('#submit').click(function (e) {
       // 渲染回#images控件，用于post传值
       var avatar_control_value = JSON.parse($('#avatar').val());
       var new_avatar = images_control_value.concat(avatar);
