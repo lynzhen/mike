@@ -115,7 +115,8 @@
         sweetAlert("提示", "请上传分类图", "error");
         e.preventDefault();
       }else{
-        var avatar_control_value = JSON.parse($('#avatar').val());
+        // var avatar_control_value = JSON.parse($('#avatar').val());
+        var avatar_control_value = $('#avatar').val();
         var new_avatar = images_control_value.concat(avatar);
         $('#avatar').val(JSON.stringify(new_avatar));
       }
@@ -125,7 +126,8 @@
         sweetAlert("提示", "请上传横幅图", "error");
         e.preventDefault();
       }else{
-        var banner_control_value = JSON.parse($('#banner').val());
+        // var avatar_control_value = JSON.parse($('#avatar').val());
+        var avatar_control_value = $('#avatar').val();
         var new_banner = images_control_value.concat(banner);
         $('#banner').val(JSON.stringify(new_banner));
       }
