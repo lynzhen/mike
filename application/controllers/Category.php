@@ -109,7 +109,7 @@ class Category extends AdminController {
 		}
 		// 提示信息 
 		$data['redirect'] = 'add';
-		var_dump();
+		// var_dump();
 		try {
 			$object->save();
 			// $this->echo_json('保存成功');

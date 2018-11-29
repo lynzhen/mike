@@ -30,19 +30,19 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
-              <form class="form-horizontal" action="save" method="post" enctype="multipart/form-data">
+              <form class="form-horizontal" method="post" enctype="multipart/form-data">
                 <!-- 原objectId值，用于保存 -->
                 <input type="hidden" name="editingId" value="<?=$categorys->get('objectId')?>" id="objectId" />
                 <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">标题</label>
+                  <label for="mc" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入分类的标题" value="<?=$categorys->get('mc');?>">
+                    <input type="text" class="form-control" name="mc" id="mc" placeholder="请输入分类的标题" value="<?=$categorys->get('mc');?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">父类</label>
+                  <label for="parentId" class="col-sm-2 control-label">父类</label>
                   <div class="col-sm-8">
-                    <select class="form-control select2" style="width: 100%;" name="category" id="category">
+                    <select class="form-control select2" style="width: 100%;" name="parentId" id="parentId">
                       <option value="">顶级分类</option>
                       <?php foreach ($categories as $category):?>
                         <option <?=$category->get('id') == $categorys->get('fid') ? 'selected' : '' ?> value="<?=$category->get('objectId')?>">|--<?=$category->get('mc')?></option>
@@ -54,9 +54,9 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="onlyId" class="col-sm-2 control-label">唯一ID</label>
+                  <label for="onlyid" class="col-sm-2 control-label">唯一ID</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="onlyId" id="onlyId" placeholder="最小最靠前" value="<?=$categorys->get('onlyid');?>">
+                    <input type="number" class="form-control" name="onlyid" id="onlyid" placeholder="最小最靠前" value="<?=$categorys->get('onlyid');?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -123,25 +123,24 @@
         e.preventDefault();
       }
       
-			var parentId = $("#category").val();
-      console.log('parentId'+parentId+"objectId"+$('#objectId').val()+"mc"+$("#title").val()+"onlyid"+$("#onlyId").val()+"flno"+$("#flno").val());
+      console.log('parentId'+$("#parentId").val();+"objectId"+$('#objectId').val()+"mc"+$("#title").val()+"onlyid"+$("#onlyid").val()+"flno"+$("#flno").val());
       return false;
-      // $.post(
-      //   'save',
-      //   {
-      //     objectId: $('#objectId').val(),
-      //     mc:$("#title").val(),
-      //     parentId:parentId,
-      //     onlyid:$("#onlyId").val(),
-      //     flno:$("#flno").val(),
-      //     banner:$("#banner").val(),
-      //     avatar:$("#avatar").val()
-      //   },
-      //   function (response) {
-      //     console.log(response);
-      //     // sweetAlert("提示", response.message, "success");
-      //   }
-      // )
+      $.post(
+        'save',
+        {
+          objectId: $('#objectId').val(),
+          mc:$("#mc").val(),
+          parentId:$("#parentId").val();,
+          onlyid:$("#onlyid").val(),
+          flno:$("#flno").val(),
+          banner:$("#banner").val(),
+          avatar:$("#avatar").val()
+        },
+        function (response) {
+          console.log(response);
+          // sweetAlert("提示", response.message, "success");
+        }
+      )
       
     });
 
