@@ -95,7 +95,7 @@ class Category extends AdminController {
 		$querys->get($parentId);
 		$parent = $querys->find();
 		var_dump($parent);
-		$parentname = $parent->get('mc');
+		$parentname = $parent[0]->get('mc');
 		var_dump($parentname);die();
 
 		// 标题
