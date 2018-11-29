@@ -33,32 +33,31 @@ class Category extends AdminController {
 	public function edit() {
 		// 正在编辑的category对象的objectId值
 		$objectId = $this->input->get('objectId');
-		echo $objectId;
-		// $data['editingId'] = $objectId;
+	
 		// 编辑状态，读取原来分类信息
 		$query = new Query('Mike_GoodsType');
 		$category = $query->get($objectId);
 		$data['categorys'] = $category;
+
 		// 判断是否已经是顶级分类了
 		// $data['objectId'] = $objectId;
 		// if ($editingCategory->get('parent') != null) {
 		// 	$data['objectId'] = $editingCategory->get('parent')->get('objectId');
 		// } 
 		// 全部分类
-		// $data['categories'] = $this->category_model->findAll();
-		// $data['editingCategory'] = $editingCategory;
+		$data['categories'] = $this->category_model->findAll();
 		$this->layout->view('category/edit', $data);
 	}
 	
 	// 保存分类
 	public function save() {
 		// 父类id
-		$objectId = $this->input->post('category');
-		$category = null;
-		if ($objectId != "") {
+		$parent = $this->input->post('category');
+		// $category = null;
+		// if ($objectId != "") {
 			// 创建的非顶级分类
-			$category = Object::create('Category', $objectId);
-		}
+			// $category = Object::create('Category', $objectId);
+		// }
 		// 序号
 		$index = $this->input->post('index');
 		// 分类图片上传
@@ -76,21 +75,21 @@ class Category extends AdminController {
 			// banner图
 		}
 		// save to leanCloud
-		$object = new LeanObject("Category");
-		$editingId = $this->input->post('editingId');
+		$object = new LeanObject("Mike_GoodsType");
+		$objectId = $this->input->post('objectId');
 		// 默认是新建一个Category对象，如果存在$editingId，则读取
-		if (isset($editingId)) {
-			$query = new Query('Category');
-			$object = $query->get($editingId);
+		if (isset($objectId)) {
+			$query = new Query('Mike_GoodsType');
+			$category = $query->get($objectId);
 		}
 		// 获取参数
-		$title = $this->input->post('title');
+		$mc = $this->input->post('mc');
 		// 标题
-		$object->set("title", $title);
+		$object->set("mc", $mc);
 		// 将category转为LeanCloud对象
 		$object->set("parent", $category);
 		// 序号
-		$object->set("index", (int)$index);
+		// $object->set("index", (int)$index);
 		// 图片
 		if (isset($avatar)) {
 			$object->set("avatar", $avatar);

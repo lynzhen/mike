@@ -32,17 +32,17 @@
             <div class="box-body">
               <form class="form-horizontal" action="save" method="post" enctype="multipart/form-data">
                 <!-- 原objectId值，用于保存 -->
-                <input type="hidden" name="editingId" value="<?=$categorys->get('objectId')?>" />
+                <input type="hidden" name="editingId" value="<?=$categorys->get('objectId')?>" id="objectId" />
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入分类的标题" value="<?=$categorys->get('title');?>">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入分类的标题" value="<?=$categorys->get('mc');?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">父类</label>
                   <div class="col-sm-8">
-                    <select class="form-control select2" style="width: 100%;" name="category">
+                    <select class="form-control select2" style="width: 100%;" name="category" id="category">
                       <option value="">顶级分类</option>
                       <?php foreach ($categories as $category):?>
                         <option <?=$category->get('objectId') == $objectId ? 'selected' : '' ?> value="<?=$category->get('objectId')?>">|--<?=$category->get('title')?></option>
@@ -54,9 +54,15 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="index" class="col-sm-2 control-label">序号</label>
+                  <label for="index" class="col-sm-2 control-label">唯一ID</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="index" id="index" placeholder="最小最靠前"value="<?=$categorys->get('index');?>">
+                    <input type="number" class="form-control" name="index" id="index" placeholder="最小最靠前"value="<?=$categorys->get('onlyid');?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="index" class="col-sm-2 control-label">分类号</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" name="index" id="index" placeholder="最小最靠前"value="<?=$categorys->get('flno');?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -119,9 +125,10 @@
       $.post(
         'save',
         {
-          title:$("#title").val(),
+          objectId: $('#objectId').val(),
+          mc:$("#title").val(),
           category:$("#category").val(),
-          index:$("#index").val(),
+          onlyid:$("#index").val(),
           banner:$("#banner").val(),
           avatar:$("#avatar").val()
         },
