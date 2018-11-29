@@ -111,7 +111,7 @@
     });
     $('#submit').click(function (e) {
       // 渲染回#images控件，用于post传值
-      if($('#avatar').val() == '[]'){
+      if($('#avatar').val() == ''){
         sweetAlert("提示", "请上传分类图", "error");
         e.preventDefault();
       }else{
@@ -121,7 +121,7 @@
       }
       
       // 渲染回#detail控件，用于post传值
-      if($('#banner').val() == '[]'){
+      if($('#banner').val() == ''){
         sweetAlert("提示", "请上传横幅图", "error");
         e.preventDefault();
       }else{
