@@ -75,6 +75,7 @@
                       }
                     ?>
                     <input type="file" name="avatar" id="avatar" value="">
+                    <input type="hidden" name="iavatar" id="iavatar" value="">
                     
                   </div>
                 </div>
@@ -87,6 +88,7 @@
                       }
                     ?>
                     <input type="file" name="banner" id="banner" value="">
+                    <input type="hidden" name="ibanner" id="ibanner" value="">
                   </div>
                 </div>
               </div>
@@ -132,7 +134,7 @@
         file.save().then(function(file) {
           // 文件保存成功
           console.log(file.get('url'));
-          $("#avatar").val(file.get('url'));
+          $("#iavatar").val(file.get('url'));
         }, function(error) {
           // 异常处理
           console.error(error);
@@ -149,7 +151,7 @@
         file.save().then(function(file) {
           // 文件保存成功
           console.log(file.get('url'));
-          $("#banner").val(file.get('url'));
+          $("#ibanner").val(file.get('url'));
         }, function(error) {
           // 异常处理
           console.error(error);
@@ -168,8 +170,8 @@
           parentId:$("#parentId").val(),
           onlyid:$("#onlyid").val(),
           flno:$("#flno").val(),
-          banner:$("#banner").val(),
-          avatar:$("#avatar").val()
+          banner:$("#ibanner").val(),
+          avatar:$("#iavatar").val()
         },
         function (response) {
           console.log(response);
