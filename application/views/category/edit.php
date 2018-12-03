@@ -123,8 +123,7 @@
       //赋值到 hidden input 里
       $("#iavatar").val(avatar);
       $("#ibanner").val(banner);
-      $("#avatar").val(avatar);
-      $("#banner").val(banner);
+   
 
       //重新取出
       var avatarVal = $('i#avatar').val();
