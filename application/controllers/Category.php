@@ -75,12 +75,13 @@ class Category extends AdminController {
 		$parent = $querys->find();
 		// var_dump($parent[0]);die();
 		$parentname = $parent[0]->get('mc');
+		$pid = $parent[0]->get('id');
 		// var_dump($parentname);die();
 
 
 		// 标题
 		$object->set("mc", $mc);
-		$object->set("fid", (int)$parentId);
+		$object->set("fid", (int)$pid);
 		$object->set("onlyid", $onlyid);
 		$object->set("flno", $flno);
 		$object->set("fathermc", $parentname);
