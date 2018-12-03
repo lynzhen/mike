@@ -116,18 +116,26 @@
 
   $(function () { 
 
-    // var avatar = <?=json_encode($categorys->get('avatar'))?>;//分类图
-    // var banner = <?=json_encode($categorys->get('banner'))?>;//横幅图
+    //获取数据库里原有的
+     var avatar = <?=json_encode($categorys->get('avatar'))?>;//分类图
+     var banner = <?=json_encode($categorys->get('banner'))?>;//横幅图
 
-      var avatar = $('#avatar')[0];
-      var banner = $('#banner')[0];
+      //赋值到 hidden input 里
+      $("#iavatar").val(avatar);
+      $("#ibanner").val(banner);
+      $("#avatar").val(avatar);
+      $("#banner").val(banner);
+
+      //重新取出
+      var avatarVal = $('i#avatar').val();
+      var bannerVal = $('#ibanner').val()
 
     $('select').select2({
     });
 
     $('#submit').click(function (e) {
       // 渲染回#images控件，用于post传值
-      if (avatar.files.length > 0) {
+      if (avatarVal != "") {
         var localFile = avatar.files[0];
         var name = localFile.name;
 
@@ -144,7 +152,7 @@
         sweetAlert("提示", "请上传描述图", "error");
       }
 
-      if (banner.files.length > 0) {
+      if (bannerVal != "") {
         var localFile = banner.files[0];
         var name = localFile.name;
 
