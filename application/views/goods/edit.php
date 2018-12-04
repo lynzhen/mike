@@ -38,79 +38,85 @@
                 <!-- objectId for goods id -->
                 <input type="hidden" name="objectId" value="<?=$goods->get('objectId')?>" id="objectId">
                 <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">名称</label>
+                  <label for="mc" class="col-sm-2 control-label">名称</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="mc" id="mc" value="<?=$goods->get('MC')?>">
                   </div>
                 </div>                
                 <div class="form-group">
-                  <label for="singleCode" class="col-sm-2 control-label">长名称</label>
+                  <label for="longmc" class="col-sm-2 control-label">长名称</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="longmc" id="longmc" value="<?=$goods->get('LongMc')?>">
                   </div>
                 </div>             
                 <div class="form-group">
-                  <label for="singleCode" class="col-sm-2 control-label">分类号</label>
+                  <label for="flno" class="col-sm-2 control-label">分类号</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="flno" id="flno" value="<?=$goods->get('FLNO')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="suppliers" class="col-sm-2 control-label">商品规格</label>
+                  <label for="spgg" class="col-sm-2 control-label">商品规格</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="spgg" id="spgg" value="<?=$goods->get('SPGG')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="suppliers" class="col-sm-2 control-label">商品编号</label>
+                  <label for="spno" class="col-sm-2 control-label">商品编号</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="spno" id="spno" value="<?=$goods->get('spno')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="price" class="col-sm-2 control-label">单位</label>
+                  <label for="package" class="col-sm-2 control-label">包装规格</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="package" id="package" value="<?=$goods->get('package')?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="bzdw" class="col-sm-2 control-label">单位</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="bzdw" id="bzdw" value="<?=$goods->get('BZDW')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="boxnumber" class="col-sm-2 control-label">零售价</label>
+                  <label for="lsj" class="col-sm-2 control-label">零售价</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="lsj" id="lsj" value="<?=$goods->get('LSJ')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="size" class="col-sm-2 control-label">库存</label>
+                  <label for="dssl" class="col-sm-2 control-label">库存</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="dssl" id="dssl" value="<?=$goods->get('DSSL')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="boxprice" class="col-sm-2 control-label">批发价</label>
+                  <label for="pfj" class="col-sm-2 control-label">批发价</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="pfj" id="pfj" value="<?=$goods->get('PFJ')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="singleTP" class="col-sm-2 control-label">条码</label>
+                  <label for="bz" class="col-sm-2 control-label">条码</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="bz" id="bz" value="<?=$goods->get('bz')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="singleSize" class="col-sm-2 control-label">供货商号</label>
+                  <label for="mrcs" class="col-sm-2 control-label">供货商号</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="mrcs" id="mrcs" value="<?=$goods->get('Mrcs')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="barcode" class="col-sm-2 control-label">柜台存货数</label>
+                  <label for="kcsl" class="col-sm-2 control-label">柜台存货数</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="kcsl" id="kcsl" value="<?=$goods->get('KCSL')?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="barcode" class="col-sm-2 control-label">进货价</label>
+                  <label for="jhj" class="col-sm-2 control-label">进货价</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="jhj" id="jhj" value="<?=$goods->get('KCSL')?>">
                   </div>
@@ -277,6 +283,20 @@
               }
             }
           },
+          spno: {
+            validators: {
+              notEmpty: {
+                message: '商品编号不能为空'
+              }
+            }
+          },
+          package: {
+            validators: {
+              notEmpty: {
+                message: '包装含量不能为空'
+              }
+            }
+          },
           bw: {
             validators: {
               notEmpty: {
@@ -352,6 +372,7 @@
             flno: $('#flno').val(),
             spgg: $('#spgg').val(),
             spno: $('#spno').val(),
+            package: $('#package').val(),
             bzdw: $('#bzdw').val(),
             lsj: $('#lsj').val(),
             dssl: $('#dssl').val(),

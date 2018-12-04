@@ -63,6 +63,7 @@
 							<th class="openlist">分类号</th>
 							<th>商品规格</th>
 							<th>商品编号</th>
+							<th>包装含量</th>
 							<th>单位</th>
 							<th>零售价</th>
 							<th>库存</th>
@@ -84,6 +85,7 @@
 								<td><?=$item->get('FLNO')?></td>
 								<td><?=$item->get('SPGG')?></td>
 								<td><?=$item->get('spno')?></td>
+								<td><?=$item->get('package')?></td>
 								<td><?=$item->get('BZDW')?></td>
 								<td><?=$item->get('LSJ')?></td>
 								<td><?=$item->get('DSSL')?></td>

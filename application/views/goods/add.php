@@ -35,79 +35,85 @@
             <div class="box-body">
               <form id="edit-form" class="form-horizontal" action="save" method="post">
                 <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">名称</label>
+                  <label for="mc" class="col-sm-2 control-label">名称</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="mc" id="mc" placeholder="名称" value="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="category" class="col-sm-2 control-label">长名称</label>
+                  <label for="longmc" class="col-sm-2 control-label">长名称</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="longmc" id="longmc" placeholder="长名称" value="">
                   </div>
                 </div> 
                 <div class="form-group">
-                  <label for="singleCode" class="col-sm-2 control-label">分类号</label>
+                  <label for="flno" class="col-sm-2 control-label">分类号</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="flno" id="flno" placeholder="分类号" value="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="suppliers" class="col-sm-2 control-label">商品规格</label>
+                  <label for="spgg" class="col-sm-2 control-label">商品规格</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="spgg" id="spgg" placeholder="商品规格" value="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="price" class="col-sm-2 control-label">商品编号</label>
+                  <label for="spno" class="col-sm-2 control-label">商品编号</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="spno" id="spno" placeholder="商品编号" value="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="boxnumber" class="col-sm-2 control-label">单位</label>
+                  <label for="package" class="col-sm-2 control-label">包装含量</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="package" id="package" placeholder="包装含量" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="bzdw" class="col-sm-2 control-label">单位</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="bzdw" id="bzdw" placeholder="单位" value="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="size" class="col-sm-2 control-label">零售价</label>
+                  <label for="lsj" class="col-sm-2 control-label">零售价</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="lsj" id="lsj" placeholder="零售价" value="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="boxprice" class="col-sm-2 control-label">库存</label>
+                  <label for="dssl" class="col-sm-2 control-label">库存</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="dssl" id="dssl" placeholder="库存" value="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="singleTP" class="col-sm-2 control-label">批发价</label>
+                  <label for="pfj" class="col-sm-2 control-label">批发价</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="pfj" id="pfj" placeholder="批发价" value="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="singleSize" class="col-sm-2 control-label">条码</label>
+                  <label for="bz" class="col-sm-2 control-label">条码</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="bz" id="bz" placeholder="条码" value="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="barcode" class="col-sm-2 control-label">供货商号</label>
+                  <label for="mrcs" class="col-sm-2 control-label">供货商号</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="mrcs" id="mrcs" placeholder="供货商号" value="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="barcode" class="col-sm-2 control-label">柜台存货数</label>
+                  <label for="kcsl" class="col-sm-2 control-label">柜台存货数</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="kcsl" id="kcsl" placeholder="柜台存货数" value="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="barcode" class="col-sm-2 control-label">进货价</label>
+                  <label for="jhj" class="col-sm-2 control-label">进货价</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="jhj" id="jhj" placeholder="进货价" value="">
                   </div>
@@ -226,6 +232,20 @@
               }
             }
           },
+          spno: {
+            validators: {
+              notEmpty: {
+                message: '商品编号不能为空'
+              }
+            }
+          },
+          package: {
+            validators: {
+              notEmpty: {
+                message: '包装含量不能为空'
+              }
+            }
+          },
           bw: {
             validators: {
               notEmpty: {
@@ -305,6 +325,7 @@
             flno: $('#flno').val(),
             spgg: $('#spgg').val(),
             spno: $('#spno').val(),
+            package: $('#package').val(),
             bzdw: $('#dw').val(),
             lsj: $('#lsj').val(),
             dssl: $('#dssl').val(),

@@ -46,6 +46,7 @@ class Goods extends AdminController {
 		$flno = $this->input->post('flno');
 		$spgg = $this->input->post('spgg');
 		$spno = $this->input->post('spno');
+		$package = $this->input->post('package');
 		$bzdw = $this->input->post('bzdw');
 		$lsj = $this->input->post('lsj');
 		$dssl = $this->input->post('dssl');
@@ -72,6 +73,7 @@ class Goods extends AdminController {
 		$object->set("FLNO", $flno);
 		$object->set("SPGG", $spgg);
 		$object->set("spno", $spno);
+		$object->set("package", $package);
 		$object->set("BZDW", $bzdw);
 		// $object->set("FCL", (bool)$FCL);
 		$object->set("LSJ", $lsj);
