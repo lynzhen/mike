@@ -128,14 +128,17 @@
       var avatarVal = $('i#avatar').val();
       var bannerVal = $('#ibanner').val()
 
+      var eleavatar = $("#avatar")[0];
+      var elebanner = $("#banner")[0];
+
     $('select').select2({
     });
 
     var trueAvatar,trueBanner;
     $('#submit').click(function (e) {
       // 渲染回#images控件，用于post传值
-      if (avatar.files.length > 0) {
-        var localFile = avatar.files[0];
+      if (eleavatar.files.length > 0) {
+        var localFile = eleavatar.files[0];
         var name = localFile.name;
 
         var file = new AV.File(name, localFile);
@@ -154,8 +157,8 @@
         sweetAlert("提示", "请上传描述图", "error");
       }
 
-      if (banner.files.length > 0) {
-        var localFile = banner.files[0];
+      if (elebanner.files.length > 0) {
+        var localFile = elebanner.files[0];
         var name = localFile.name;
 
         var file = new AV.File(name, localFile);
