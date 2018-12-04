@@ -123,7 +123,6 @@
       //赋值到 hidden input 里
       $("#iavatar").val(avatar);
       $("#ibanner").val(banner);
-   
 
       //重新取出
       var avatarVal = $('i#avatar').val();
@@ -132,9 +131,10 @@
     $('select').select2({
     });
 
+    var trueAvatar,trueBanner;
     $('#submit').click(function (e) {
       // 渲染回#images控件，用于post传值
-      if (avatarVal != "") {
+      if (avatar.files.length > 0) {
         var localFile = avatar.files[0];
         var name = localFile.name;
 
@@ -143,15 +143,18 @@
           // 文件保存成功
           console.log(file.get('url'));
           $("#iavatar").val(file.get('url'));
+          trueAvatar = file.get('url');
         }, function(error) {
           // 异常处理
           console.error(error);
         });
+      }else if(avatarVal != ""){
+        trueAvatar = avatarVal;
       }else{
         sweetAlert("提示", "请上传描述图", "error");
       }
 
-      if (bannerVal != "") {
+      if (banner.files.length > 0) {
         var localFile = banner.files[0];
         var name = localFile.name;
 
@@ -160,15 +163,19 @@
           // 文件保存成功
           console.log(file.get('url'));
           $("#ibanner").val(file.get('url'));
+          trueBanner = file.get('url');
         }, function(error) {
           // 异常处理
           console.error(error);
         });
+      }else if(bannerVal != ""){
+        trueBanner = bannerVal;
       }else{
         sweetAlert("提示", "请上传横幅图", "error");
       }
       
-      console.log('parentId'+$("#parentId").val()+"objectId"+$('#objectId').val()+"mc"+$("#mc").val()+"onlyid"+$("#onlyid").val()+"flno"+$("#flno").val());
+      console.log('parentId--'+$("#parentId").val()+"--objectId--"+$('#objectId').val()+"--mc--"+$("#mc").val()+
+      "--onlyid--"+$("#onlyid").val()+"--flno--"+$("#flno").val()+"--avatar--"+trueAvatar+"--banner--"+trueBanner);
       // return false;
       
       setTimeout(() => {
@@ -180,8 +187,8 @@
             parentId:$("#parentId").val(),
             onlyid:$("#onlyid").val(),
             flno:$("#flno").val(),
-            banner:$("#ibanner").val(),
-            avatar:$("#iavatar").val()
+            banner:trueBanner,
+            avatar:trueAvatar
           },
           function (response) {
             console.log(response);
