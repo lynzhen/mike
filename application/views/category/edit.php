@@ -1,7 +1,15 @@
 <!--引入CSS-->
-<link rel="stylesheet" href="/bower_components/AdminLTE/plugins/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="/bower_components/fex-webuploader/dist/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/webuploader.css">
+<!--引入JS-->
+<script type="text/javascript" src="/bower_components/fex-webuploader/dist/webuploader.js"></script>
 <!-- Select2 -->
+<link rel="stylesheet" href="/bower_components/AdminLTE/plugins/select2/select2.min.css">
 <script src="/bower_components/AdminLTE/plugins/select2/select2.full.min.js"></script>
+<!-- 表单验证 -->
+<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.min.js"></script>
+<link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
 <!-- sweet alet -->
 <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
 <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
@@ -30,7 +38,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
-              <form class="form-horizontal"  enctype="multipart/form-data">
+              <form id="edit-form" class="form-horizontal"  enctype="multipart/form-data">
               <!-- <div class="form-horizontal"> -->
                 <!-- 原objectId值，用于保存 -->
                 <input type="hidden" name="objectId" value="<?=$categorys->get('objectId')?>" id="objectId" />
@@ -124,6 +132,14 @@
       $("#iavatar").val(avatar);
       $("#ibanner").val(banner);
 
+
+    $('select').select2({
+    });
+
+    var trueAvatar,trueBanner;
+    var flag = true;
+    $('#submit').click(function (e) {
+      
       //重新取出
       var avatarVal = $('i#avatar').val();
       var bannerVal = $('#ibanner').val()
@@ -131,11 +147,43 @@
       var eleavatar = $("#avatar")[0];
       var elebanner = $("#banner")[0];
 
-    $('select').select2({
-    });
+      var mc = $("#mc").val();
+      var onlyid = $("#onlyid").val();
+      var flno = $("#flno").val();
 
-    var trueAvatar,trueBanner;
-    $('#submit').click(function (e) {
+      $('#edit-form').bootstrapValidator({
+        // live: 'disabled',
+        message: '输入不正确',
+        feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+          mc: {
+            validators: {
+              notEmpty: {
+                message: '标题不能为空'
+              }
+            }
+          },
+          onlyid: {
+            validators: {
+              notEmpty: {
+                message: '唯一ID不能为空'
+              }
+            }
+          },
+          flno: {
+            validators: {
+              notEmpty: {
+                message: '分类号不能为空'
+              }
+            }
+          }
+        }
+      });
+
       // 渲染回#images控件，用于post传值
       if (eleavatar.files.length > 0) {
         var localFile = eleavatar.files[0];
@@ -190,8 +238,8 @@
             parentId:$("#parentId").val(),
             onlyid:$("#onlyid").val(),
             flno:$("#flno").val(),
-            banner:trueBanner,
             avatar:trueAvatar
+            banner:trueBanner,
           },
           function (response) {
             console.log(response);
