@@ -238,8 +238,8 @@
             parentId:$("#parentId").val(),
             onlyid:$("#onlyid").val(),
             flno:$("#flno").val(),
-            avatar:trueAvatar
-            banner:trueBanner,
+            avatar:trueAvatar,
+            banner:trueBanner
           },
           function (response) {
             console.log(response);
