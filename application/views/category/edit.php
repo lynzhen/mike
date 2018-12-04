@@ -76,6 +76,11 @@
                 </div>
                 <div class="form-group">
                   <label for="avatar" class="col-sm-2 control-label">分类图</label>
+                  <style>
+                    .avatar,.banner{
+                      width:100px;
+                    }
+                  </style>
                   <div class="col-sm-8">
                     <?php
                       if ($categorys->get('avatar') != null) {
