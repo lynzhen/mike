@@ -65,13 +65,13 @@
                 <div class="form-group">
                   <label for="onlyid" class="col-sm-2 control-label">唯一ID</label>
                   <div class="col-sm-8">
-                    <input type="number" name="onlyid" id="onlyid" value="<?=$categorys->get('onlyid');?>">
+                    <input type="text" class="form-control" name="onlyid" id="onlyid" value="<?=$categorys->get('onlyid');?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="flno" class="col-sm-2 control-label">分类号</label>
                   <div class="col-sm-8">
-                    <input type="number" name="flno" id="flno" value="<?=$categorys->get('flno');?>">
+                    <input type="text" class="form-control" name="flno" id="flno" value="<?=$categorys->get('flno');?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -146,7 +146,7 @@
     $('#submit').click(function (e) {
       
       //重新取出
-      var avatarVal = $('i#avatar').val();
+      var avatarVal = $('#iavatar').val();
       var bannerVal = $('#ibanner').val()
 
       var eleavatar = $("#avatar")[0];
