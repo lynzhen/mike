@@ -250,8 +250,8 @@
       
     });
 
-		$(document.body).on('click','.confirm',function(){
-			location.reload(true);
-		})
+		// $(document.body).on('click','.confirm',function(){
+		// 	location.reload(true);
+		// })
   });
 </script>
