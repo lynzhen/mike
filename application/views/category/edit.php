@@ -65,13 +65,13 @@
                 <div class="form-group">
                   <label for="onlyid" class="col-sm-2 control-label">唯一ID</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="onlyid" id="onlyid" placeholder="最小最靠前" value="<?=$categorys->get('onlyid');?>">
+                    <input type="number" name="onlyid" id="onlyid" value="<?=$categorys->get('onlyid');?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="flno" class="col-sm-2 control-label">分类号</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="flno" id="flno" value="<?=$categorys->get('flno');?>">
+                    <input type="number" name="flno" id="flno" value="<?=$categorys->get('flno');?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -92,7 +92,7 @@
                   <div class="col-sm-8">
                     <?php
                       if ($categorys->get('banner') != null) {
-                        echo '<img class="avatar" src="' . $categorys->get('banner').'">';
+                        echo '<img class="banner" src="' . $categorys->get('banner').'">';
                       }
                     ?>
                     <input type="file" name="banner" id="banner" value="">
@@ -186,10 +186,10 @@
 
       // 渲染回#images控件，用于post传值
       if (eleavatar.files.length > 0) {
-        var localFile = eleavatar.files[0];
-        var name = localFile.name;
+        var avaFile = eleavatar.files[0];
+        var name = avaFile.name;
 
-        var file = new AV.File(name, localFile);
+        var file = new AV.File(name, avaFile);
         file.save().then(function(file) {
           // 文件保存成功
           console.log(file.get('url'));
@@ -201,15 +201,16 @@
         });
       }else if(avatarVal != ""){
         trueAvatar = avatarVal;
+        console.log(trueAvatar);
       }else{
         sweetAlert("提示", "请上传描述图", "error");
       }
 
       if (elebanner.files.length > 0) {
-        var localFile = elebanner.files[0];
-        var name = localFile.name;
+        var banFile = elebanner.files[0];
+        var name = banFile.name;
 
-        var file = new AV.File(name, localFile);
+        var file = new AV.File(name, banFile);
         file.save().then(function(file) {
           // 文件保存成功
           console.log(file.get('url'));
@@ -221,13 +222,14 @@
         });
       }else if(bannerVal != ""){
         trueBanner = bannerVal;
+        console.log(trueBanner);
       }else{
         sweetAlert("提示", "请上传横幅图", "error");
       }
       
       console.log('parentId--'+$("#parentId").val()+"--objectId--"+$('#objectId').val()+"--mc--"+$("#mc").val()+
       "--onlyid--"+$("#onlyid").val()+"--flno--"+$("#flno").val()+"--avatar--"+trueAvatar+"--banner--"+trueBanner);
-      // return false;
+      return false;
       
       setTimeout(() => {
         $.post(
