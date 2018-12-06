@@ -114,7 +114,7 @@
     var flag = true;
     $('#submit').click(function (e) {
 
-      var parent = $("#parent").val();
+      var parent = $("#parentId").val();
       if(parent == ''){
         parent = 0;
       }
@@ -197,12 +197,14 @@
         sweetAlert("提示", "请上传横幅图", "error");
         return;
       }
+   
       
-      console.log('parentId--'+$("#parentId").val()+"--objectId--空"+"--mc--"+$("#mc").val()+
+      setTimeout(() => {   
+
+      console.log('parentId--'+parent+"--objectId--空"+"--mc--"+$("#mc").val()+
       "--onlyid--"+$("#onlyid").val()+"--flno--"+$("#flno").val()+"--avatar--"+trueAvatar+"--banner--"+trueBanner);
       // return false;
-      
-      setTimeout(() => {
+
         $.post(
           'save',
           {
