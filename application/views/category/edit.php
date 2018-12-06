@@ -234,7 +234,7 @@
       
       console.log('parentId--'+$("#parentId").val()+"--objectId--"+$('#objectId').val()+"--mc--"+$("#mc").val()+
       "--onlyid--"+$("#onlyid").val()+"--flno--"+$("#flno").val()+"--avatar--"+trueAvatar+"--banner--"+trueBanner);
-      return false;
+      // return false;
       
       setTimeout(() => {
         $.post(

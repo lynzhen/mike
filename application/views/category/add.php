@@ -31,23 +31,29 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">父类</label>
+                  <label for="parentId" class="col-sm-2 control-label">父类</label>
                   <div class="col-sm-8">
-                    <select class="form-control select2" style="width: 100%;" name="category">
+                    <select class="form-control select2" style="width: 100%;" name="parentId" id="parentId">
                       <option value="">顶级分类</option>
                       <?php foreach ($categories as $category):?>
-                        <option <?=$category->get('objectId') == $objectId ? 'selected' : '' ?> value="<?=$category->get('objectId')?>">|--<?=$category->get('title')?></option>
-                          <?php foreach ($category->children as $child):?>
-                            <option <?=$child->get('objectId') == $objectId ? 'selected' : '' ?> value="<?=$child->get('objectId')?>">|--|--<?=$child->get('title')?></option>
-                          <?php endforeach;?>
+                        <option <?=$category->get('id') == $categorys->get('fid') ? 'selected' : '' ?> value="<?=$category->get('objectId')?>">|--<?=$category->get('mc')?></option>
+                        <?php foreach ($category->children as $child):?>
+                        <option <?=$child->get('id') == $categorys->get('fid') ? 'selected' : '' ?> value="<?=$child->get('objectId')?>">|--|--<?=$child->get('mc')?></option>
+                        <?php endforeach;?>
                       <?php endforeach;?>
                     </select>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="index" class="col-sm-2 control-label">序号</label>
+                  <label for="onlyid" class="col-sm-2 control-label">唯一ID</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="index" id="index" placeholder="最小最靠前"value="">
+                    <input type="text" class="form-control" name="onlyid" id="onlyid" value="<?=$categorys->get('onlyid');?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="flno" class="col-sm-2 control-label">分类号</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="flno" id="flno" value="<?=$categorys->get('flno');?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -65,7 +71,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" id="submit" class="btn btn-primary">保存</button>
+                <button type="button" id="submit" class="btn btn-primary">保存</button>
               </div>
               <!-- /.box-footer -->
             </form>
@@ -73,7 +79,129 @@
   </section>
   <!-- /.content -->
 </div>
+<script src="/assets/js/category/edit.js"></script>
+<script src='/assets/js/category/av-weapp-min.js'></script>
+<script type="text/javascript">
+  const appId = "xim8nwfJmEWgWrarLzhh4DYe-gzGzoHsz";
+  const appKey = "RSxqmzUqDiBT2LamDvKhLwgB";
 
-<script >
-//提交
+  AV.init({
+    appId: appId,
+    appKey: appKey
+  });
+
+  $(function () { 
+
+    $('select').select2({
+    });
+
+    var trueAvatar,trueBanner;
+    var flag = true;
+    $('#submit').click(function (e) {
+
+      var eleavatar = $("#avatar")[0];
+      var elebanner = $("#banner")[0];
+
+      var mc = $("#mc").val();
+      var onlyid = $("#onlyid").val();
+      var flno = $("#flno").val();
+
+      $('#edit-form').bootstrapValidator({
+        // live: 'disabled',
+        message: '输入不正确',
+        feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+          mc: {
+            validators: {
+              notEmpty: {
+                message: '标题不能为空'
+              }
+            }
+          },
+          onlyid: {
+            validators: {
+              notEmpty: {
+                message: '唯一ID不能为空'
+              }
+            }
+          },
+          flno: {
+            validators: {
+              notEmpty: {
+                message: '分类号不能为空'
+              }
+            }
+          }
+        }
+      });
+
+      // 渲染回#images控件，用于post传值
+      if (eleavatar.files.length > 0) {
+        var avaFile = eleavatar.files[0];
+        var name = avaFile.name;
+
+        var file = new AV.File(name, avaFile);
+        file.save().then(function(file) {
+          // 文件保存成功
+          console.log(file.get('url'));
+          $("#iavatar").val(file.get('url'));
+          trueAvatar = file.get('url');
+        }, function(error) {
+          // 异常处理
+          console.error(error);
+        });
+      }else{
+        sweetAlert("提示", "请上传描述图", "error");
+      }
+
+      if (elebanner.files.length > 0) {
+        var banFile = elebanner.files[0];
+        var name = banFile.name;
+
+        var file = new AV.File(name, banFile);
+        file.save().then(function(file) {
+          // 文件保存成功
+          console.log(file.get('url'));
+          $("#ibanner").val(file.get('url'));
+          trueBanner = file.get('url');
+        }, function(error) {
+          // 异常处理
+          console.error(error);
+        });
+      }else{
+        sweetAlert("提示", "请上传横幅图", "error");
+      }
+      
+      console.log('parentId--'+$("#parentId").val()+"--objectId--空"+"--mc--"+$("#mc").val()+
+      "--onlyid--"+$("#onlyid").val()+"--flno--"+$("#flno").val()+"--avatar--"+trueAvatar+"--banner--"+trueBanner);
+      // return false;
+      
+      setTimeout(() => {
+        $.post(
+          'save',
+          {
+            mc:$("#mc").val(),
+            parentId:$("#parentId").val(),
+            onlyid:$("#onlyid").val(),
+            flno:$("#flno").val(),
+            avatar:trueAvatar,
+            banner:trueBanner
+          },
+          function (response) {
+            console.log(response);
+            sweetAlert("提示", response.message, "success");
+          }
+        )
+      }, 500);
+      
+    });
+
+		// $(document.body).on('click','.confirm',function(){
+		// 	location.reload(true);
+		// })
+  });
 </script>
