@@ -36,9 +36,9 @@
                     <select class="form-control select2" style="width: 100%;" name="parentId" id="parentId">
                       <option value="">顶级分类</option>
                       <?php foreach ($categories as $category):?>
-                        <option <?=$category->get('id') == $categorys->get('fid') ? 'selected' : '' ?> value="<?=$category->get('objectId')?>">|--<?=$category->get('mc')?></option>
+                        <option  value="<?=$category->get('objectId')?>">|--<?=$category->get('mc')?></option>
                         <?php foreach ($category->children as $child):?>
-                        <option <?=$child->get('id') == $categorys->get('fid') ? 'selected' : '' ?> value="<?=$child->get('objectId')?>">|--|--<?=$child->get('mc')?></option>
+                        <option  value="<?=$child->get('objectId')?>">|--|--<?=$child->get('mc')?></option>
                         <?php endforeach;?>
                       <?php endforeach;?>
                     </select>
@@ -47,13 +47,13 @@
                 <div class="form-group">
                   <label for="onlyid" class="col-sm-2 control-label">唯一ID</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="onlyid" id="onlyid" value="<?=$categorys->get('onlyid');?>">
+                    <input type="text" class="form-control" name="onlyid" id="onlyid" value="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="flno" class="col-sm-2 control-label">分类号</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="flno" id="flno" value="<?=$categorys->get('flno');?>">
+                    <input type="text" class="form-control" name="flno" id="flno" value="">
                   </div>
                 </div>
                 <div class="form-group">
