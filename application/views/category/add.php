@@ -168,7 +168,7 @@
         file.save().then(function(file) {
           // 文件保存成功
           console.log(file.get('url'));
-          $("#iavatar").val(file.get('url'));
+          // $("#iavatar").val(file.get('url'));
           trueAvatar = file.get('url');
         }, function(error) {
           // 异常处理
@@ -176,6 +176,7 @@
         });
       }else{
         sweetAlert("提示", "请上传描述图", "error");
+        return;
       }
 
       if (elebanner.files.length > 0) {
@@ -186,7 +187,7 @@
         file.save().then(function(file) {
           // 文件保存成功
           console.log(file.get('url'));
-          $("#ibanner").val(file.get('url'));
+          // $("#ibanner").val(file.get('url'));
           trueBanner = file.get('url');
         }, function(error) {
           // 异常处理
@@ -194,6 +195,7 @@
         });
       }else{
         sweetAlert("提示", "请上传横幅图", "error");
+        return;
       }
       
       console.log('parentId--'+$("#parentId").val()+"--objectId--空"+"--mc--"+$("#mc").val()+
