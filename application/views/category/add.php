@@ -40,9 +40,9 @@
             <div class="box-body">
               <form class="form-horizontal" action="save" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">标题</label>
+                  <label for="mc" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入分类的标题" value="">
+                    <input type="text" class="form-control" name="mc" id="mc" placeholder="请输入分类的标题" value="">
                   </div>
                 </div>
                 <div class="form-group">
@@ -113,6 +113,11 @@
     var trueAvatar,trueBanner;
     var flag = true;
     $('#submit').click(function (e) {
+
+      var parent = $("#parent").val();
+      if(parent == ''){
+        parent = 0;
+      }
 
       var eleavatar = $("#avatar")[0];
       var elebanner = $("#banner")[0];
@@ -200,7 +205,7 @@
           'save',
           {
             mc:$("#mc").val(),
-            parentId:$("#parentId").val(),
+            parentId:parent,
             onlyid:$("#onlyid").val(),
             flno:$("#flno").val(),
             avatar:trueAvatar,
