@@ -70,13 +70,19 @@ class Category extends AdminController {
 			$object = LeanObject::create('Mike_GoodsType', $objectId);
 		}
 
-		$querys = new Query('Mike_GoodsType');
-		$querys->get($parentId);
-		$parent = $querys->find();
-		// var_dump($parent[0]);die();
-		$parentname = $parent[0]->get('mc');
-		$pid = $parent[0]->get('id');
-		// var_dump($parentname);die();
+		if($parentId == '0'){
+			$parentname ='';
+			$pid = '0';
+		}else{
+			$querys = new Query('Mike_GoodsType');
+			$querys->get($parentId);
+			$parent = $querys->find();
+			// var_dump($parent[0]);die();
+			$parentname = $parent[0]->get('mc');
+			$pid = $parent[0]->get('id');
+			// var_dump($parentname);die();
+		}
+		
 
 
 		// 标题
