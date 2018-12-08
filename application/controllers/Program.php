@@ -23,31 +23,46 @@ class Program extends AdminController {
 		$data['result'] = $result;
 		$data['title'] = '轮播图';
 		$this->layout->view('program/banner', $data);
+	}	
+	
+	// 添加banner图
+	public function add() {
+		
+		$this->layout->view('program/add');
 	}
 
+	// 编辑banner图
+	public function edit() {
+		// objectId值
+		$objectId = $this->input->get('objectId');
+	
+		// 查找分类对象
+		$query = new Query('Banner');
+		$banner = $query->get($objectId);
+		$data["banner"] = $banner;
+
+		$this->layout->view('program/edit', $data);
+	}
 	
 	public function save() {
 		  
 		// 获取参数
-		$images = $this->input->post('images');
+		$objectId = $this->input->post('objectId'); 
+		$title = $this->input->post('title');
+		$paixu = $this->input->post('paixu');
+		$avatar = $this->input->post('avatar');
 
 		// save to leanCloud
-		$object = new LeanObject("Mike_Goods");
-		$objectId = $this->input->post('objectId'); 
+		$object = new LeanObject("Banner");
+		// 默认是新建一个Category对象，如果存在$editingId，则读取
 		if (isset($objectId)) {
-			// 编辑产品
-			$object = LeanObject::create('Mike_Goods', $objectId);
-			$data['redirect'] = 'index';
-			$data['msg'] = '修改成功';
+			$object = LeanObject::create('Banner', $objectId);
 		}
-		$object->set("KCSL", $kcsl);
-		$object->set("JHJ", $jhj);
+		$object->set("title", $title);
+		$object->set("paixu", $paixu);
 		$object->set("avatar", $avatar);
 		// 将category转为LeanCloud对象
-		$object->set("images", json_decode($images));
-		$object->set("detail", json_decode($detail));
 
-		$data['redirect'] = 'add';
 		try {
 			$object->save();
 			$this->echo_json('发布成功');
@@ -56,16 +71,16 @@ class Program extends AdminController {
 		}
 	}
 
-	// 删除商品
-	// public function delete() {
-	// 	$objectId = $this->input->get('objectId');
-	// 	$goods = LeanObject::create('Mike_Goods', $objectId);
-	// 	$goods->destroy();
-	// 	$data['msg'] = '删除成功';
-	// 	$data['level'] = 'info';
-	// 	$data['redirect'] = 'index';
-	// 	$this->layout->view('goods/msg', $data);
-	// }
+	// 删除banner图
+	public function delete() {
+		$objectId = $this->input->get('objectId');
+		$banner = LeanObject::create('Banner', $objectId);
+		$banner->destroy();
+		$data['msg'] = '删除成功';
+		$data['level'] = 'info';
+		$data['redirect'] = 'banner';
+		$this->layout->view('program/msg', $data);
+	}
 
 
 	

@@ -83,8 +83,6 @@ class Category extends AdminController {
 			// var_dump($parentname);die();
 		}
 		
-
-
 		// 标题
 		$object->set("mc", $mc);
 		$object->set("fid", (int)$pid);
