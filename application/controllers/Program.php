@@ -39,8 +39,9 @@ class Program extends AdminController {
 		// 查找分类对象
 		$query = new Query('Banner');
 		$banner = $query->get($objectId);
+		
 		$data["banner"] = $banner;
-
+		$data['title'] = '轮播图';
 		$this->layout->view('program/edit', $data);
 	}
 	

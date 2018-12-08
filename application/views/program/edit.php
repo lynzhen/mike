@@ -1,11 +1,10 @@
-<!--引入CSS-->
-<link rel="stylesheet" type="text/css" href="/bower_components/fex-webuploader/dist/webuploader.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/webuploader.css">
-<!--引入JS-->
-<script type="text/javascript" src="/bower_components/fex-webuploader/dist/webuploader.js"></script>
-<!-- Select2 -->
-<link rel="stylesheet" href="/bower_components/AdminLTE/plugins/select2/select2.min.css">
-<script src="/bower_components/AdminLTE/plugins/select2/select2.full.min.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <!-- jQuery 2.2.3 -->
+  <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.6 -->
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- 表单验证 -->
 <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.min.js"></script>
@@ -13,11 +12,6 @@
 <!-- sweet alet -->
 <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
 <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
-<style type="text/css">
-  .avatar {
-    width: 100px;
-  }
-</style>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -32,7 +26,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">修改</h3>
                 <div class="box-tools pull-right">
-                <a class="btn btn-sm btn-primary" href="index">返回列表</a>
+                <a class="btn btn-sm btn-primary" href="banner">返回列表</a>
                 </div><!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
