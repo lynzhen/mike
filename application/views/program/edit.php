@@ -1,7 +1,17 @@
 <!-- 引入bs-confirmation -->
 <script src="/bower_components/bs-confirmation/bootstrap-confirmation.js"></script>
 <!-- 引入css -->
-<link rel="stylesheet" type="text/css" href="/assets/css/global.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/global.css">  
+<!-- Bootstrap 3.3.6 -->
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- 表单验证 -->
+<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.min.js"></script>
+<link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
+<!-- sweet alet -->
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
 
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -50,7 +60,7 @@
               <img class="avatar" src="<?=$banner->get('avatar');?>">
               
               <input type="file" name="avatar" id="avatar" value="">
-              <input type="hidden" name="iavatar" id="iavatar" value="">
+              <input type="hidden" name="iavatar" id="iavatar" value="<?=$banner->get('avatar');?>">
               
             </div>
           </div>
@@ -71,5 +81,91 @@
   $(function () { 
 		$("[data-toggle='popover']").popover();
 
+    var trueAvatar;
+    var flag = true;
+    $('#submit').click(function (e) {
+
+    //重新取出
+    var avatarVal = $('#iavatar').val();
+
+    var eleavatar = $("#avatar")[0];
+
+    var title = $("#mc").val();
+    var paixu = $("#onlyid").val();
+
+    $('#edit-form').bootstrapValidator({
+      // live: 'disabled',
+      message: '输入不正确',
+      feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+        title: {
+          validators: {
+            notEmpty: {
+              message: '标题不能为空'
+            }
+          }
+        },
+        paixu: {
+          validators: {
+            notEmpty: {
+              message: '排序不能为空'
+            }
+          }
+        }
+      }
+    });
+
+    // 渲染回#images控件，用于post传值
+    if (eleavatar.files.length > 0) {
+      var avaFile = eleavatar.files[0];
+      var name = avaFile.name;
+
+      var file = new AV.File(name, avaFile);
+      file.save().then(function(file) {
+        // 文件保存成功
+        console.log(file.get('url'));
+        $("#iavatar").val(file.get('url'));
+        trueAvatar = file.get('url');
+      }, function(error) {
+        // 异常处理
+        console.error(error);
+      });
+    }else if(avatarVal != ""){
+      trueAvatar = avatarVal;
+      console.log(trueAvatar);
+    }else{
+      sweetAlert("提示", "请上传描述图", "error");
+    }
+
+    setTimeout(() => {
+
+    console.log('title--'+$("#title").val()+"--objectId--"+$('#objectId').val()+"--paixu--"+$("#paixu").val()+
+    "--avatar--"+trueAvatar);
+    // return false;
+
+      $.post(
+        'save',
+        {
+          objectId: $('#objectId').val(),
+          title:$("#title").val(),
+          paixu:$("#paixu").val(),
+          avatar:trueAvatar,
+        },
+        function (response) {
+          console.log(response);
+          sweetAlert("提示", response.message, "success");
+        }
+      )
+    }, 500);
+
+    });
+
+// $(document.body).on('click','.confirm',function(){
+// 	location.reload(true);
+// })
   });
 </script>
