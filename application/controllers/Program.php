@@ -66,7 +66,7 @@ class Program extends AdminController {
 			$object = LeanObject::create('Banner', $objectId);
 		}
 		$object->set("title", $title);
-		$object->set("paixu", $paixu);
+		$object->set("paixu",(int) $paixu);
 		$object->set("avatar", $avatar);
 		// 将category转为LeanCloud对象
 
