@@ -67,13 +67,6 @@
 	<!-- /.content -->
 </div>
 <script type="text/javascript">
-  const appId = "xim8nwfJmEWgWrarLzhh4DYe-gzGzoHsz";
-  const appKey = "RSxqmzUqDiBT2LamDvKhLwgB";
-
-  AV.init({
-    appId: appId,
-    appKey: appKey
-  });
 
   $(function () { 
 		$("[data-toggle='popover']").popover();
