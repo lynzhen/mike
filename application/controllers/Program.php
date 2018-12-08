@@ -11,7 +11,13 @@ class Program extends AdminController {
 		$this->load->model('Category_model', 'category_model');
 	}
 	public function index(){
-
+		$query = new Query("Banner");
+		$query->descend("paixu");
+		$result = $query->find();
+		
+		$data['result'] = $result;
+		$data['title'] = '轮播图';
+		$this->layout->view('program/banner', $data);
 	}
 
 	public function banner() {
@@ -39,7 +45,7 @@ class Program extends AdminController {
 		// 查找分类对象
 		$query = new Query('Banner');
 		$banner = $query->get($objectId);
-		
+
 		$data["banner"] = $banner;
 		$data['title'] = '轮播图';
 		$this->layout->view('program/edit', $data);
