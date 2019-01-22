@@ -32,11 +32,11 @@
             <div class="box-body">
               <form id="edit-form" class="form-horizontal" action="save" method="post">
                 <!-- objectId for goods id -->
-                <input type="hidden" name="objectId" value="<?=$goods->get('objectId')?>" id="objectId">
+                <input type="hidden" name="objectId" value="" id="objectId">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题" value="<?=$goods->get('title')?>">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题" value="">
                   </div>
                 </div>
                 <div class="form-group">
